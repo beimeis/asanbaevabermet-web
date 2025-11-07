@@ -1,1 +1,40 @@
-{}
+{
+  "heroTitle": "Карта",
+  "heroSubtitle1": "Finik терминалдарынын картасы, изилдеңиз,",
+  "heroSubtitle2": "белгилеп, упай топтогула",
+
+  "featuresExploreTitle": "Изилдеңиз",
+  "featuresExploreText": "Finik терминалдарынын картасы, изилдеңиз, белгилеп, упай топтогула",
+  "featuresMarkTitle": "Белгилеңиз",
+  "featuresMarkText": "Finik терминалдарынын картасы, изилдеңиз, белгилеп, упай топтогула",
+  "featuresEarnTitle": "Упай топтогула",
+  "featuresEarnText": "Finik терминалдарынын картасы, изилдеңиз, белгилеп, упай топтогула",
+
+  "cardsPlayTitle": "Ойноңуз.",
+  "cardsPlayText": "Кызыктуу оюн",
+  "cardsRedeemTitle": "Алмаштырыңыз.",
+  "cardsRedeemText": "Сыйлыктарды алыңыз",
+  "cardsEverywhereTitle": "Баар жерде.",
+  "cardsEverywhereText": "Бардык платформаларда",
+  "cardsLookTitle": "Караңыз.",
+  "cardsLookText": "Терминалдар баар жерде",
+  "cardsMarkTitle": "Белгилеңиз.",
+  "cardsMarkText": "Биз терминалды орнотобуз",
+  "cardsStudyTitle": "Изилдеңиз.",
+  "cardsStudyText": "Уникалдуу карта",
+
+  "footerBrand": "Finik",
+  "footerDescriptionLine1": "Ыңгайлуу жана ишенимдүү жергиликтүү",
+  "footerDescriptionLine2": "Кыргызстанда төлөм жүргүзүү үчүн колдонмо",
+  "footerCopyright": "©2022 Averspay",
+  "footerLicense": "НБКР лицензиясы № 3006010615, № 2006010615 06.02.2015",
+  "footerProductsTitle": "Продукттар",
+  "footerProductsWallet": "Капчык",
+  "footerProductsTerminals": "Терминалдар",
+  "footerProductsAcquiring": "Эквайринг",
+  "footerAboutTitle": "Биз жөнүндө",
+  "footerAboutCompany": "Компания",
+  "footerAboutDocuments": "Документтер"
+}
+
+

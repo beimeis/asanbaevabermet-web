@@ -1,1 +1,39 @@
-{}
+{
+  "heroTitle": "Map",
+  "heroSubtitle1": "Finik terminal map, explore,",
+  "heroSubtitle2": "mark and earn points",
+  
+  "featuresExploreTitle": "Explore",
+  "featuresExploreText": "Finik terminal map — explore, mark, and earn points",
+  "featuresMarkTitle": "Mark",
+  "featuresMarkText": "Finik terminal map — explore, mark, and earn points",
+  "featuresEarnTitle": "Earn points",
+  "featuresEarnText": "Finik terminal map — explore, mark, and earn points",
+
+  "cardsPlayTitle": "Play.",
+  "cardsPlayText": "An exciting game",
+  "cardsRedeemTitle": "Redeem.",
+  "cardsRedeemText": "Get rewards",
+  "cardsEverywhereTitle": "Everywhere.",
+  "cardsEverywhereText": "On all platforms",
+  "cardsLookTitle": "Look around.",
+  "cardsLookText": "Terminals everywhere",
+  "cardsMarkTitle": "Mark.",
+  "cardsMarkText": "We'll install a terminal",
+  "cardsStudyTitle": "Discover.",
+  "cardsStudyText": "A unique map",
+
+  "footerArand": "Finik",
+  "footerDescriptionLine1": "Convenient and reliable domestic",
+  "footerDescriptionLine2": "payment app in Kyrgyzstan",
+  "footerCopyright": "©2022 Averspay",
+  "footerLicense": "NBKR License № 3006010615, № 2006010615 from 06.02.2015",
+  "footerProductsTitle": "Products",
+  "footerProductsWallet": "Wallet",
+  "footerProductsTerminals": "Terminals",
+  "footerProductsAcquiring": "Acquiring",
+  "footerAboutTitle": "About us",
+  "footerAboutCompany": "Company",
+  "footerAboutDocuments": "Documents"
+
+}

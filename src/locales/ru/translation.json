@@ -1,1 +1,38 @@
-{}
+{
+  "heroTitle": "Карта",
+  "heroSubtitle1": "Карта терминалов от Finik, исследуйте,",
+  "heroSubtitle2": "отмечайте и зарабатывайте баллы",
+
+  "featuresExploreTitle": "Исследуйте",
+  "featuresExploreText": "Карта терминалов от Finik, исследуйте, отмечайте и зарабатывайте баллы",
+  "featuresMarkTitle": "Отмечайте",
+  "featuresMarkText": "Карта терминалов от Finik, исследуйте, отмечайте и зарабатывайте баллы",
+  "featuresEarnTitle": "Зарабатывай баллы",
+  "featuresEarnText": "Карта терминалов от Finik, исследуйте, отмечайте и зарабатывайте баллы",
+
+  "cardsPlayTitle": "Играй.",
+  "cardsPlayText": "Увлекательная игра",
+  "cardsRedeemTitle": "Обменивай.",
+  "cardsRedeemText": "Получай подарки",
+  "cardsEverywhereTitle": "Везде.",
+  "cardsEverywhereText": "На всех платформах",
+  "cardsLookTitle": "Оглянись.",
+  "cardsLookText": "Терминалы везде",
+  "cardsMarkTitle": "Отмечай.",
+  "cardsMarkText": "Мы поставим терминал",
+  "cardsStudyTitle": "Изучай.",
+  "cardsStudyText": "Уникальная карта",
+
+  "footerBrand": "Finik",
+  "footerDescriptionLine1": "Удобное и надежное отечественное",
+  "footerDescriptionLine2": "приложение для оплаты в Кыргызстане",
+  "footerCopyright": "©2022 Averspay",
+  "footerLicense": "Лицензия НБКР № 3006010615, № 2006010615 от 06.02.2015",
+  "footerProductsTitle": "Продукты",
+  "footerProductsWallet": "Кошелек",
+  "footerProductsTerminals": "Терминалы",
+  "footerProductsAcquiring": "Эквайринг",
+  "footerAboutTitle": "О нас",
+  "footerAboutCompany": "Компания",
+  "footerAboutDocuments": "Документы"
+}
