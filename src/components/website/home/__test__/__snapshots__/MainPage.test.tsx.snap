@@ -5,12 +5,34 @@ exports[`MainPage component should match the snapshot 1`] = `
   className="main-container "
 >
   <div
-    className=""
+    className="container "
   >
     <img
       className=""
       src="test-file-stub"
     />
+    <div
+      className="lang-container "
+    >
+      <button
+        className="lang-button "
+        onClick={[Function]}
+      >
+        кыргызский
+      </button>
+      <button
+        className="lang-button "
+        onClick={[Function]}
+      >
+        русский
+      </button>
+      <button
+        className="lang-button "
+        onClick={[Function]}
+      >
+        англиский
+      </button>
+    </div>
   </div>
   <div
     className=""
@@ -45,7 +67,7 @@ exports[`MainPage component should match the snapshot 1`] = `
           className=""
           lineHeight="100%"
         >
-          Карта
+          heroTitle
         </h1>
       </div>
     </div>
@@ -55,12 +77,12 @@ exports[`MainPage component should match the snapshot 1`] = `
       <p
         className=""
       >
-        Карта терминалов от Finik, исследуйте,
+        heroSubtitle1
       </p>
       <p
         className=""
       >
-        отмечайте и зарабатывайте баллы
+        heroSubtitle2
       </p>
     </div>
     <div
@@ -149,26 +171,12 @@ exports[`MainPage component should match the snapshot 1`] = `
         <p
           className=""
         >
-          Исследуйте
+          featuresExploreTitle
         </p>
         <p
           className=""
         >
-          Карта терминалов от Finik, исследуйте, отмечайте и зарабатывайте баллы
-        </p>
-      </div>
-      <div
-        className=""
-      >
-        <p
-          className=""
-        >
-          Отмечайте
-        </p>
-        <p
-          className=""
-        >
-          Карта терминалов от Finik, исследуйте, отмечайте и зарабатывайте баллы
+          featuresExploreText
         </p>
       </div>
       <div
@@ -177,12 +185,26 @@ exports[`MainPage component should match the snapshot 1`] = `
         <p
           className=""
         >
-          Зарабатывай  баллы
+          featuresMarkTitle
         </p>
         <p
           className=""
         >
-          Карта терминалов от Finik, исследуйте, отмечайте и зарабатывайте баллы
+          featuresMarkText
+        </p>
+      </div>
+      <div
+        className=""
+      >
+        <p
+          className=""
+        >
+          featuresEarnTitle
+        </p>
+        <p
+          className=""
+        >
+          featuresEarnText
         </p>
       </div>
     </div>
@@ -211,12 +233,12 @@ exports[`MainPage component should match the snapshot 1`] = `
         <p
           className=""
         >
-          Играй.
+          cardsPlayTitle
         </p>
         <p
           className=""
         >
-          Увлекательная игра
+          cardsPlayText
         </p>
       </div>
     </div>
@@ -229,12 +251,12 @@ exports[`MainPage component should match the snapshot 1`] = `
         <p
           className=""
         >
-          Обменивай.
+          cardsRedeemTitle
         </p>
         <p
           className=""
         >
-          Получай подарки
+          cardsRedeemText
         </p>
       </div>
       <img
@@ -255,34 +277,12 @@ exports[`MainPage component should match the snapshot 1`] = `
         <p
           className=""
         >
-          Везде.
+          cardsEverywhereTitle
         </p>
         <p
           className=""
         >
-          На всех платформах
-        </p>
-      </div>
-    </div>
-    <div
-      className=""
-    >
-      <img
-        className=""
-        src="test-file-stub"
-      />
-      <div
-        className=""
-      >
-        <p
-          className=""
-        >
-          Оглянись.
-        </p>
-        <p
-          className=""
-        >
-          Терминалы везде
+          cardsEverywhereText
         </p>
       </div>
     </div>
@@ -299,12 +299,34 @@ exports[`MainPage component should match the snapshot 1`] = `
         <p
           className=""
         >
-          Отмечай.
+          cardsLookTitle
         </p>
         <p
           className=""
         >
-          Мы поставим терминал
+          cardsLookText
+        </p>
+      </div>
+    </div>
+    <div
+      className=""
+    >
+      <img
+        className=""
+        src="test-file-stub"
+      />
+      <div
+        className=""
+      >
+        <p
+          className=""
+        >
+          cardsMarkTitle
+        </p>
+        <p
+          className=""
+        >
+          cardsMarkText
         </p>
       </div>
     </div>
@@ -329,12 +351,12 @@ exports[`MainPage component should match the snapshot 1`] = `
         <p
           className=""
         >
-          Изучай.
+          cardsStudyTitle
         </p>
         <p
           className=""
         >
-          Уникальная карта
+          cardsStudyText
         </p>
       </div>
     </div>
@@ -355,28 +377,28 @@ exports[`MainPage component should match the snapshot 1`] = `
         <p
           className=""
         >
-          Finik
+          footerBrand
         </p>
       </div>
       <p
         className=""
       >
-        Удобное и надежное отечественное
+        footerDescriptionLine1
       </p>
       <p
         className=""
       >
-        приложение для оплаты в Кыргызстане
+        footerDescriptionLine2
       </p>
       <p
         className=""
       >
-        ©2022 Averspay
+        footerCopyright
       </p>
       <p
         className=""
       >
-        Лицензия НБКР № 3006010615, № 2006010615 от 06.02.2015
+        footerLicense
       </p>
       <div
         className=""
@@ -387,22 +409,22 @@ exports[`MainPage component should match the snapshot 1`] = `
           <p
             className=""
           >
-            Продукты
+            footerProductsTitle
           </p>
           <p
             className=""
           >
-            Кошелек
+            footerProductsWallet
           </p>
           <p
             className=""
           >
-            Терминалы
+            footerProductsTerminals
           </p>
           <p
             className=""
           >
-            Эквайринг
+            footerProductsAcquiring
           </p>
         </div>
         <div
@@ -411,17 +433,17 @@ exports[`MainPage component should match the snapshot 1`] = `
           <p
             className=""
           >
-            О нас
+            footerAboutTitle
           </p>
           <p
             className=""
           >
-            Компания
+            footerAboutCompany
           </p>
           <p
             className=""
           >
-            Документы
+            footerAboutDocuments
           </p>
         </div>
       </div>

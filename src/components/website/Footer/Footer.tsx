@@ -1,7 +1,7 @@
 /* External dependencies */
 import React from 'react';
 import { Div, Image, Text } from 'atomize';
-
+import {useTranslation} from 'react-i18next'
 /* Local dependencies */
 import Logo from '../../../assets/images/footer/Logo.svg';
 import Facebook from '../../../assets/images/footer/Facebook.png';
@@ -12,6 +12,7 @@ import YouTube from '../../../assets/images/footer/YouTube.png';
 import Telegram from '../../../assets/images/footer/Telegram.png';
 
 export default function Footer() {
+  const {t} = useTranslation()
   return (
     <Div w={{ xs: '100%' }} h={{ xs: 'auto', md: '200px' }} m={{ t: '270px' }}>
       <Div w={{ xs: '100%', md: '700px' }} maxW="700px" h={{ xs: 'auto', md: '240px' }}>
@@ -24,46 +25,46 @@ export default function Footer() {
           align="flex-start"
         >
           <Image src={Logo} w={{ xs: '100%', md: '32px' }} maxW="32px" h={{ xs: 'auto', md: '33px' }} m="30px 80px " />
-          <Text textColor="#FFFFFF" textSize="30px" m={{ t: '30px' }}>
-            Finik
+          <Text textColor="#FFFFFF" textSize="30px" m={{ t: '30px',l:'-60px' }}>
+            {t("footerBrand")}
           </Text>
         </Div>
         <Text textColor="#a19d9de3" textSize="16px" m={{ t: '80px', l: '10px' }} d="flex">
-          Удобное и надежное отечественное
+          {t("footerDescriptionLine1")}
         </Text>
         <Text textColor="#a19d9de3" textSize="16px" m={{ t: '10px', l: '10px' }} d="flex">
-          приложение для оплаты в Кыргызстане
+         {t("footerDescriptionLine2")}
         </Text>
         <Text textColor="#a19d9de3" textSize="16px" m={{ t: '20px', l: '10px' }}>
-          ©2022 Averspay
+         {t("footerCopyright")}
         </Text>
         <Text textColor="#a19d9de3" textSize="16px" m={{ t: '8px', l: '10px' }}>
-          Лицензия НБКР № 3006010615, № 2006010615 от 06.02.2015
+          {t("footerLicense")}
         </Text>
         <Div d="flex" align="flex-start" m={{ t: '-150px', l: '700px' }}>
           <Div d="flex" flexDir="column">
             <Text textColor="#a19d9de3" textSize="16px">
-              Продукты
+             {t("footerProductsTitle")}
             </Text>
             <Text textColor="#FFFFFF" textSize="16px" p={{ t: '16px' }}>
-              Кошелек
+              {t("footerProductsWallet")}
             </Text>
             <Text textColor="#FFFFFF" textSize="16px" p={{ t: '16px' }}>
-              Терминалы
+              {t("footerProductsTerminals")}
             </Text>
             <Text textColor="#FFFFFF" textSize="16px" p={{ t: '16px' }}>
-              Эквайринг
+              {t("footerProductsAcquiring")}
             </Text>
           </Div>
           <Div d="flex" flexDir="column" m={{ l: '90px' }}>
             <Text textColor="#a19d9de3" textSize="16px">
-              О нас
+             {t("footerAboutTitle")}
             </Text>
             <Text textColor="#FFFFFF" textSize="16px" p={{ t: '16px' }}>
-              Компания
+             {t("footerAboutCompany")}
             </Text>
             <Text textColor="#FFFFFF" textSize="16px" p={{ t: '16px' }}>
-              Документы
+              {t("footerAboutDocuments")}
             </Text>
           </Div>
         </Div>

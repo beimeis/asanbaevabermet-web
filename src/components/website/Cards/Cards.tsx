@@ -1,7 +1,7 @@
 /* External dependencies */
 import React from 'react';
 import { Div, Text, Image } from 'atomize';
-
+import {useTranslation} from 'react-i18next'
 /* Local dependencies */
 import Phones from '../../../assets/images/cards/Phones.png';
 import Box from '../../../assets/images/cards/Box.png';
@@ -13,6 +13,7 @@ import MapOne from '../../../assets/images/cards/Kyrgyzstan(2).png';
 import MapTwo from '../../../assets/images/cards/Kyrgyzstan(3).png';
 
 export default function Cards() {
+  const{t} = useTranslation()
   return (
     <Div>
       <Div
@@ -26,11 +27,11 @@ export default function Cards() {
       >
         <Image src={Phones} w="690px" h="425px" />
         <Div>
-          <Text textSize="64px" textWeight="700" textColor="rgba(61, 60, 60, 0.7)" p={{ t: '70px' }} m={{ l: '90px' }}>
-            Играй.
+          <Text textSize="64px" textWeight="700" textColor="rgba(61, 60, 60, 0.7)" p={{ t: '130px' }} m={{ l: '70px' }}>
+           {t("cardsPlayTitle")}
           </Text>
-          <Text textSize="64px" textWeight="700" p={{ t: '30px' }} m={{ l: '90px' }}>
-            Увлекательная игра
+          <Text textSize="64px" textWeight="700" p={{ t: '10px' }} m={{ l: '70px' }}>
+           {t("cardsPlayText")}
           </Text>
         </Div>
       </Div>
@@ -44,11 +45,11 @@ export default function Cards() {
         d="flex"
       >
         <Div>
-          <Text textSize="64px" textWeight="700" textColor="rgba(61, 60, 60, 0.7)" m={{ t: '90px', l: '90px' }}>
-            Обменивай.
+          <Text textSize="64px" textWeight="700" textColor="rgba(61, 60, 60, 0.7)" m={{ t: '90px', l: '70px' }}>
+           {t("cardsRedeemTitle")}
           </Text>
-          <Text textSize="64px" textWeight="700" m={{ l: '90px' }} p={{ t: '20px' }}>
-            Получай подарки
+          <Text textSize="64px" textWeight="700" m={{ l: '70px' }} p={{ t: '20px' }}>
+          {t("cardsRedeemText")}
           </Text>
         </Div>
         <Image
@@ -70,11 +71,11 @@ export default function Cards() {
       >
         <Image src={MacBook} w={{ xs: '100%', md: '668px' }} maxW="668px" h={{ xs: 'auto', md: '502px' }} />
         <Div>
-          <Text textSize="64px" textWeight="700" textColor="rgba(255, 255, 255, 0.6)" m={{ t: '105px', l: '250px' }}>
-            Везде.
+          <Text textSize="64px" textWeight="700" textColor="rgba(255, 255, 255, 0.6)" m={{ t: '105px', l: '180px' }}>
+            {t("cardsEverywhereTitle")}
           </Text>
-          <Text textSize="64px" textWeight="700" textColor="#FFF" m={{ t: '23px', l: '250px' }}>
-            На всех платформах
+          <Text textSize="64px" textWeight="700" textColor="#FFF" m={{ t: '23px', l: '180px' }}>
+           {t("cardsEverywhereText")}
           </Text>
         </Div>
       </Div>
@@ -96,11 +97,11 @@ export default function Cards() {
           m={{ t: '52px', l: '270px' }}
         />
         <Div>
-          <Text textSize="64px" textWeight="700" textColor="rgba(61, 60, 60, 0.7)" m={{ t: '150px', l: '230px' }}>
-            Оглянись.
+          <Text textSize="64px" textWeight="700" textColor="rgba(61, 60, 60, 0.7)" m={{ t: '160px', l: '230px' }}>
+            {t("cardsLookTitle")}
           </Text>
-          <Text textSize="64px" textWeight="700" m={{ t: '30px', l: '230px' }}>
-            Терминалы везде
+          <Text textSize="64px" textWeight="700" m={{ t: '10px', l: '230px' }}>
+            {t("cardsLookText")}
           </Text>
         </Div>
       </Div>
@@ -121,10 +122,10 @@ export default function Cards() {
           bg="#FFFFFF"
         >
           <Text textSize="64px" textWeight="700" textColor="rgba(61, 60, 60, 0.7)" m={{ t: '80px', l: '60px' }}>
-            Отмечай.
+            {t("cardsMarkTitle")}
           </Text>
           <Text textSize="64px" textWeight="700" m={{ l: '60px' }} p={{ t: '10px' }}>
-            Мы поставим терминал
+            {t("cardsMarkText")}
           </Text>
         </Div>
       </Div>
@@ -155,11 +156,11 @@ export default function Cards() {
           d="flex"
         />
         <Div>
-          <Text textSize="64px" textWeight="700" textColor="rgba(255, 255, 255, 0.67)" m={{ t: '-400px', l: '630px' }}>
-            Изучай.
+          <Text textSize="64px" textWeight="700" textColor="rgba(255, 255, 255, 0.67)" m={{ t: '-400px', l: '560px' }}>
+          {t("cardsStudyTitle")}
           </Text>
           <Text textSize="64px" textWeight="700" textColor="#FFFFFF" m={{ t: '10px', l: '480px' }}>
-            Уникальная карта
+            {t("cardsStudyText")}
           </Text>
         </Div>
       </Div>
