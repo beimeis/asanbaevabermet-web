@@ -1,19 +1,17 @@
 /* External dependencies */;
-import {useTranslation} from 'react-i18next'
 import React from 'react';
+import {useTranslation} from 'react-i18next'
 import { Div, Image, Text, Button } from 'atomize'
+import { Link } from 'gatsby';
 /* Local dependencies */
 import Logo from '../../../assets/images/header/Logo.svg'
 import EarthIcon from '../../../assets/images/hero/EarthIcon.png'
 import AppIcon from '../../../assets/images/hero/AppIcon.png'
 import AppleIcon from '../../../assets/images/hero/AppleIcon.png'
-
 import './Hero.scss';
-
 
 export default function Hero() {
   const { t} = useTranslation();
-  
 
   return (
     <Div m={{ t: '-750px' }}>
@@ -56,6 +54,7 @@ export default function Hero() {
         </Text>
       </Div>
       <Div d="flex" m={{ l: '320px', t: '20px' }}>
+      <Link to='/webApp'>
         <Button
           w={{ xs: '100%', md: '176px' }}
           h={{ xs: 'auto', md: '52px' }}
@@ -81,6 +80,7 @@ export default function Hero() {
             </Text>
           </Div>
         </Button>
+      </Link>
         <Button
           w={{ xs: '100%', md: '176px' }}
           h={{ xs: 'auto', md: '52px' }}

@@ -1,7 +1,7 @@
 /* External dependencies */
-import React from 'react';
+import React from 'react'
 import {Div} from 'atomize'
-import { I18nextProvider } from 'react-i18next';
+import { I18nextProvider } from 'react-i18next'
 /* Local dependencies */
 import i18n from '../../../locales/i18next.js'
 import './MainPage.scss'

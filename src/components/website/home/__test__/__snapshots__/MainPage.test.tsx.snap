@@ -88,30 +88,34 @@ exports[`MainPage component should match the snapshot 1`] = `
     <div
       className=""
     >
-      <button
-        className=""
+      <a
+        href="/webApp"
       >
-        <img
-          bg="black"
+        <button
           className=""
-          src="test-file-stub"
-        />
-        <div
-          className=""
-          gridAutoFlow="column"
         >
-          <p
+          <img
+            bg="black"
             className=""
-          >
-            Go to the
-          </p>
-          <p
+            src="test-file-stub"
+          />
+          <div
             className=""
+            gridAutoFlow="column"
           >
-            Web App
-          </p>
-        </div>
-      </button>
+            <p
+              className=""
+            >
+              Go to the
+            </p>
+            <p
+              className=""
+            >
+              Web App
+            </p>
+          </div>
+        </button>
+      </a>
       <button
         className=""
       >

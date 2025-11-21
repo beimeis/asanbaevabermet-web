@@ -5,7 +5,8 @@ import React from 'react';
 /* Local dependencies */
 import Layout from '../components/layout';
 import SEO from '../components/layout/seo';
-import Map from '../components/website/Map/Map';
+import WebApp from '../components/WebApp/WebApp'
+import MapApp from '../components/WebApp/MapApp/MapApp';
 
 export default function HomePage({ data }) {
   const title = 'Мой базовый сайт Mancho School';
@@ -22,7 +23,8 @@ export default function HomePage({ data }) {
         title={titleTemplate.replace('%s', title)}
         description={title}
       />
-      <Map/>
+      <MapApp/>
+      <WebApp/>
     </Layout>
   );
 }
