@@ -1,7 +1,7 @@
 /* External dependencies */
 import { ApolloClient, ApolloLink, InMemoryCache, NormalizedCacheObject } from '@apollo/client';
 import { createHttpLink } from '@apollo/client/core';
-import { LocalStorageWrapper, persistCache } from 'apollo3-cache-persist';
+// import { LocalStorageWrapper, persistCache } from 'apollo3-cache-persist';
 import { AUTH_TYPE, createAuthLink } from 'aws-appsync-auth-link';
 import { createSubscriptionHandshakeLink } from 'aws-appsync-subscription-link';
 import { v4 as uuidv4 } from 'uuid';
@@ -36,6 +36,7 @@ export async function setAnonymousClient(): Promise<ApolloClient<NormalizedCache
   const cache = new InMemoryCache();
 
   if (typeof window !== 'undefined') {
+    const { LocalStorageWrapper, persistCache } = await import('apollo3-cache-persist');
     await persistCache({
       cache,
       storage: new LocalStorageWrapper(window.localStorage),
