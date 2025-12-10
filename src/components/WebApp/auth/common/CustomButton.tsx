@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Button, Div } from 'atomize';
 
 interface CustomButtonProps {
-  text?: string;
-  onClick?: object;
-  bg: string;
+  onClick?: string;
+  bg?: string;
+  style?: string;
+  textColor?: string;
+  children?: ReactNode;
 }
 
 const CustomButton = (props: CustomButtonProps) => {
-  const { text, onClick, bg } = props;
+  const { children, onClick, bg, style, textColor } = props;
   return (
-    <Div p={{ t: '20px' }} d="felx">
-      <Button w="300px" h="50px" bg={bg} textColor="#000000ff" onClick={onClick} type={'button'}>
-        {text}
+    <Div p={{ t: '10px' }} d="flex">
+      <Button w="300px" h="50px" bg={bg} style={style} textColor={textColor} onClick={onClick} type={'button'}>
+        {children}
       </Button>
     </Div>
   );

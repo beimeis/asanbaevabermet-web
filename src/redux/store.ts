@@ -5,20 +5,22 @@ import { combineEpics, createEpicMiddleware } from 'redux-observable';
 
 /* Local dependencies */
 import getDevices from '../components/devices/getDevices/redux/reducer';
+import { authReducer } from '../components/WebApp/modal/redux/reducer';
 
 const rootEpic = combineEpics();
 
-const rootReducer = combineReducers( {
+const rootReducer = combineReducers({
   getDevices,
-} );
+  authReducer,
+});
 
 let store;
 
 export function createStore(): Store {
   const epicMiddleware = createEpicMiddleware();
-  store = createReduxStore( rootReducer, composeWithDevTools( applyMiddleware( epicMiddleware ) ) );
+  store = createReduxStore(rootReducer, composeWithDevTools(applyMiddleware(epicMiddleware)));
 
-  epicMiddleware.run( rootEpic );
+  epicMiddleware.run(rootEpic);
 
   return store;
 }

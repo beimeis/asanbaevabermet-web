@@ -1,23 +1,49 @@
 /* External dependencies */
-import React, { useState } from 'react';
+import React from 'react';
 import { Div, Button, Image, Text } from 'atomize';
 import { Link } from 'gatsby';
+import { useDispatch, useSelector } from 'react-redux';
 
 /* Local dependencies */
 import Logo from '../../assets/images/mapApp/Logo.png';
 import AccIcon from '../../assets/images/mapApp/accountIcon.png';
 import CustomModal from './CustomModal';
+import { openModal, closeModal, setModalView } from './modal/redux/action';
+import { RootState } from '../../redux/store';
+
+// interface RootState {
+//   authReducer: {
+//     isModalOpen: boolean;
+//     currentView: 'intro' | 'login' | 'register';
+//     email: string;
+//     password: string;
+//   };
+// }
 
 export default function WebApp() {
-  const [isOpen, setIsOpen] = useState(false);
+  const useAppDispatch = () => useDispatch<any>();
+  const dispatch = useAppDispatch();
+
+  const { isModalOpen, currentView } = useSelector((state: RootState) => state.authReducer);
 
   const handleOpen = () => {
-    setIsOpen(true);
+    dispatch(openModal('intro'));
+  };
+  const onClose = () => {
+    dispatch(closeModal());
   };
 
-  const onClose = () => {
-    setIsOpen(false);
+  const switchToLogin = () => {
+    dispatch(setModalView('login'));
   };
+
+  const switchToRegister = () => {
+    dispatch(setModalView('register'));
+  };
+  const goBack = () => {
+    dispatch(setModalView('intro'));
+  };
+
   return (
     <Div d="flex" align="flex-start">
       <Div>
@@ -56,7 +82,16 @@ export default function WebApp() {
           <Text p={{ l: '10px' }}>войти</Text>
         </Button>
       </Div>
-      {isOpen && <CustomModal isOpen={isOpen} onClose={onClose} />}
+      {isModalOpen && (
+        <CustomModal
+          isOpen={isModalOpen}
+          onClose={onClose}
+          currentView={currentView}
+          onSwitchToLogin={switchToLogin}
+          onSwitchToRegister={switchToRegister}
+          onGoBack={goBack}
+        />
+      )}
     </Div>
   );
 }
