@@ -8,23 +8,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import Logo from '../../assets/images/mapApp/Logo.png';
 import AccIcon from '../../assets/images/mapApp/accountIcon.png';
 import CustomModal from './CustomModal';
-import { openModal, closeModal, setModalView } from './modal/redux/action';
-import { RootState } from '../../redux/store';
-
-// interface RootState {
-//   authReducer: {
-//     isModalOpen: boolean;
-//     currentView: 'intro' | 'login' | 'register';
-//     email: string;
-//     password: string;
-//   };
-// }
+import { openModal, closeModal, setModalView, setModalStep } from './modal/redux/action';
+import { RootState, AppDispatch } from '../../redux/store';
 
 export default function WebApp() {
-  const useAppDispatch = () => useDispatch<any>();
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
-  const { isModalOpen, currentView } = useSelector((state: RootState) => state.authReducer);
+  const { isModalOpen, currentView, currentStep } = useSelector((state: RootState) => state.authReducer);
 
   const handleOpen = () => {
     dispatch(openModal('intro'));
@@ -41,7 +31,11 @@ export default function WebApp() {
     dispatch(setModalView('register'));
   };
   const goBack = () => {
-    dispatch(setModalView('intro'));
+    if (currentView === 'register' && currentStep === 'confirm') {
+      dispatch(setModalStep('register'));
+    } else if (currentView === 'login' || (currentView === 'register' && currentStep === 'register')) {
+      dispatch(setModalView('intro'));
+    }
   };
 
   return (

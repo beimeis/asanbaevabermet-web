@@ -2,14 +2,12 @@ export enum AuthActionTypes {
   OPEN_MODAL = 'OPEN_MODAL',
   CLOSE_MODAL = 'CLOSE_MODAL',
   SET_MODAL_VIEW = 'SET_MODAL_VIEW',
-  GO_BACK = 'GO_BACK',
-
+  SET_MODAL_STEP = 'SET_MODAL_STEP',
   SET_EMAIL = 'SET_EMAIL',
   SET_PASSWORD = 'SET_PASSWORD',
-
-  SIGN_UP_REQUEST = 'SIGN_UP_REQUEST',
-  SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS',
-  SIGN_UP_FAIL = 'SIGN_UP_FAIL',
+  SET_CONFIRM_PASSWORD = 'SET_CONFIRM_PASSWORD',
+  VALIDATE_CREDENTIALS = 'VALIDATE_CREDENTIALS',
+  RESET_REGISTRATION = 'RESET_REGISTRATION',
 }
 
 export interface OpenModalActionType {
@@ -25,40 +23,44 @@ export interface SetModalViewActionType {
   type: AuthActionTypes.SET_MODAL_VIEW;
   payload: 'intro' | 'login' | 'register';
 }
+
+export interface SetModalStepActionType {
+  type: AuthActionTypes.SET_MODAL_STEP;
+  payload: 'register' | 'confirm' | null;
+}
 export interface SetEmailActionType {
   type: AuthActionTypes.SET_EMAIL;
-  email: string;
+  payload: string;
 }
 
 export interface SetPasswordActionType {
   type: AuthActionTypes.SET_PASSWORD;
-  password: string;
+  payload: string;
 }
 
-export interface SignUpRequestActionType {
-  type: AuthActionTypes.SIGN_UP_REQUEST;
-  email: string;
-  password: string;
+export interface SetConfirmPasswordActionType {
+  type: AuthActionTypes.SET_CONFIRM_PASSWORD;
+  payload: string;
 }
 
-export interface SingUpSuccessActionType {
-  type: AuthActionTypes.SIGN_UP_SUCCESS;
+export interface ValidateCredentialsActionType {
+  type: AuthActionTypes.VALIDATE_CREDENTIALS;
 }
 
-export interface SingUpFailActionType {
-  type: AuthActionTypes.SIGN_UP_FAIL;
-  error: string;
+export interface ResetRegistrationActionType {
+  type: AuthActionTypes.RESET_REGISTRATION;
 }
 
 export type AuthActions =
   | OpenModalActionType
   | CloseModalActionType
   | SetModalViewActionType
+  | SetModalStepActionType
   | SetEmailActionType
   | SetPasswordActionType
-  | SignUpRequestActionType
-  | SingUpSuccessActionType
-  | SingUpFailActionType;
+  | SetConfirmPasswordActionType
+  | ValidateCredentialsActionType
+  | ResetRegistrationActionType;
 
 export const openModal = (view: 'intro' | 'login' | 'register' = 'intro'): OpenModalActionType => ({
   type: AuthActionTypes.OPEN_MODAL,
@@ -74,27 +76,30 @@ export const setModalView = (view: 'intro' | 'login' | 'register'): SetModalView
   payload: view,
 });
 
-export const signUpRequest = (email, password): SignUpRequestActionType => ({
-  type: AuthActionTypes.SIGN_UP_REQUEST,
-  email,
-  password,
+export const setModalStep = (step: 'register' | 'confirm' | null): SetModalStepActionType => ({
+  type: AuthActionTypes.SET_MODAL_STEP,
+  payload: step,
 });
 
-export const singUpSuccess = (): SingUpSuccessActionType => ({
-  type: AuthActionTypes.SIGN_UP_SUCCESS,
-});
-
-export const singUpFail = (error): SingUpFailActionType => ({
-  type: AuthActionTypes.SIGN_UP_FAIL,
-  error,
-});
-
-export const setEmail = (email): SetEmailActionType => ({
+export const setEmail = (email: string): SetEmailActionType => ({
   type: AuthActionTypes.SET_EMAIL,
-  email,
+  payload: email,
 });
 
-export const setPassword = (password): SetPasswordActionType => ({
+export const setPassword = (password: string): SetPasswordActionType => ({
   type: AuthActionTypes.SET_PASSWORD,
-  password,
+  payload: password,
+});
+
+export const setConfirmPassword = (confirmPassword: string): SetConfirmPasswordActionType => ({
+  type: AuthActionTypes.SET_CONFIRM_PASSWORD,
+  payload: confirmPassword,
+});
+
+export const validateCredentials = (): ValidateCredentialsActionType => ({
+  type: AuthActionTypes.VALIDATE_CREDENTIALS,
+});
+
+export const resetRegistration = (): ResetRegistrationActionType => ({
+  type: AuthActionTypes.RESET_REGISTRATION,
 });

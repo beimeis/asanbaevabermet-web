@@ -1,19 +1,35 @@
+/* External dependencies */
 import React from 'react';
 import { Div, Input } from 'atomize';
 
 interface CustomInputProps {
   children?: string;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   bg: string;
   onInput?: string;
   placeholder: string;
+  borderColor?: string;
+  focusBorderColor?: string;
 }
 
 const CustomInput = (props: CustomInputProps) => {
-  const { children, bg, onInput, placeholder } = props;
+  const { children, value, bg, onInput, placeholder, onChange, borderColor, focusBorderColor } = props;
 
   return (
-    <Div>
-      <Input w="300px" h="50px" bg={bg} textColor="#000000ff" placeholder={placeholder} onInput={onInput}>
+    <Div p={{ b: '20px' }}>
+      <Input
+        w="350px"
+        h="60px"
+        textColor="#000000ff"
+        bg={bg}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        onInput={onInput}
+        borderColor={borderColor}
+        focusBorderColor={focusBorderColor}
+      >
         {children}
       </Input>
     </Div>
