@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Logo from '../../assets/images/mapApp/Logo.png';
 import AccIcon from '../../assets/images/mapApp/accountIcon.png';
 import CustomModal from './CustomModal';
-import { openModal, closeModal, setModalView, setModalStep } from './modal/redux/action';
+import { openModal, closeModal, setModalView, setModalStep } from './auth/redux/action';
 import { RootState, AppDispatch } from '../../redux/store';
 
 export default function WebApp() {

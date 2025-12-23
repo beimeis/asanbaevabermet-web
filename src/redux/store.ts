@@ -5,7 +5,7 @@ import { combineEpics, createEpicMiddleware } from 'redux-observable';
 
 /* Local dependencies */
 import getDevices from '../components/devices/getDevices/redux/reducer';
-import { authReducer } from '../components/WebApp/modal/redux/reducer';
+import { authReducer } from '../components/WebApp/auth/redux/reducer';
 
 const rootEpic = combineEpics();
 

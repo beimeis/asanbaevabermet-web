@@ -1,4 +1,6 @@
 // Environment variables for testing purpose only.
+process.env.GATSBY_COGNITO_CLIENT_ID = '7nm1627efll9vkbn9dnqhimp4g';
+process.env.GATSBY_COGNITO_USER_POOL_ID = 'us-west-2_Vks7GkhlO';
 
 // List of native ES6 modules in dependencies,
 // which must also be transformed.

@@ -5,10 +5,10 @@ import { Modal, Image, Text, Div, Icon } from 'atomize';
 /* Local dependencies */
 import Logo from '../../assets/images/mapApp/Logo.png';
 import CustomButton from './auth/common/CustomButton';
-import SingIn from './auth/sing-in/SingIn';
-import SingUp from './auth/sign-up/SingUp';
+import SignIn from './auth/sign-in/SignIn';
+import SignUp from './auth/sign-up/SignUp';
 import { useDispatch } from 'react-redux';
-import { resetRegistration } from '../../components/WebApp/modal/redux/action';
+import { resetRegistration } from './auth/redux/action';
 import { AppDispatch } from '../../redux/store';
 
 interface CustomModal {
@@ -33,10 +33,10 @@ const CustomModal = (props) => {
   const renderContent = () => {
     switch (currentView) {
       case 'login':
-        return <SingIn />;
+        return <SignIn />;
 
       case 'register':
-        return <SingUp />;
+        return <SignUp />;
 
       case 'intro':
       default:

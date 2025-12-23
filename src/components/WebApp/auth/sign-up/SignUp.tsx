@@ -1,13 +1,13 @@
 /* External dependencies */
 import React from 'react';
-import { Div, Text } from 'atomize';
+import { Div, Text, Icon } from 'atomize';
 import { useDispatch, useSelector } from 'react-redux';
 
 /* Local dependencies */
 import CustomInput from '../common/CustomInput';
 import CustomButton from '../common/CustomButton';
 import Confirm from './Confirm';
-import { setEmail, setPassword, setConfirmPassword, validateCredentials } from '../../modal/redux/action';
+import { setEmail, setPassword, setConfirmPassword, validateCredentials } from '../redux/action';
 import { RootState, AppDispatch } from '../../../../redux/store';
 
 const SingUp = () => {
@@ -49,6 +49,7 @@ const SingUp = () => {
           borderColor={hasPasswordError ? '#ff0000ff' : undefined}
           focusBorderColor={hasPasswordError ? '#ff0000ff' : undefined}
         />
+        <Icon name="Eye" size="20px" color="#ffff" />
         <Text textSize="11px" textColor="#ffff">
           Повторите пароль
         </Text>
