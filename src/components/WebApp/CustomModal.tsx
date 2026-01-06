@@ -1,91 +1,125 @@
 /* External dependencies */
 import React from 'react';
-import { Modal, Image, Text, Div, Icon } from 'atomize';
+import { Modal, Div, Image, Text, Button, Icon } from 'atomize';
+import { useDispatch } from 'react-redux';
 
 /* Local dependencies */
 import Logo from '../../assets/images/mapApp/Logo.png';
-import CustomButton from './auth/common/CustomButton';
-import SignIn from './auth/sign-in/SignIn';
-import SignUp from './auth/sign-up/SignUp';
-import { useDispatch } from 'react-redux';
-import { resetRegistration } from './auth/redux/action';
+import { openLoginModal, openSignupModal, closeIntroModal } from './auth/redux/action';
 import { AppDispatch } from '../../redux/store';
 
-interface CustomModal {
+interface CustomModalProps {
   isOpen: boolean;
-  onClose: () => void;
-  currentView: 'intro' | 'login' | 'register';
-  currentStep: 'register' | 'confirm' | null;
-  onSwitchToLogin: () => void;
-  onSwitchToRegister: () => void;
-  onGoBack: () => void;
 }
 
-const CustomModal = (props) => {
+const CustomModal = ({ isOpen }: CustomModalProps) => {
   const dispatch = useDispatch<AppDispatch>();
-  const { isOpen, onClose, currentView, onSwitchToLogin, onSwitchToRegister, onGoBack } = props;
 
-  const handleGoBack = () => {
-    dispatch(resetRegistration());
-    if (onGoBack) onGoBack();
-  };
-
-  const renderContent = () => {
-    switch (currentView) {
-      case 'login':
-        return <SignIn />;
-
-      case 'register':
-        return <SignUp />;
-
-      case 'intro':
-      default:
-        return (
-          <Div>
-            <Text textSize="40px" textColor="#ffff" textAlign="center">
-              Финик Карта
-            </Text>
-            <Div d="flex" justify="center" align="center" w="100%">
-              <Text textSize="18px" textColor="#ffff" m={{ t: '40px' }} textAlign="center" maxW="80%">
-                Отмечай места на карте где нет нашего терминала, мы поставим его, а тебе пришлем бонусы которые ты
-                сможешь обменять на реальные призы
-              </Text>
-            </Div>
-
-            <Div m={{ t: '80px', l: { xs: '20px', xl: '150px' } }}>
-              <CustomButton children="Войти в аккаунт" bg="#9be426ff" textColor="black" onClick={onSwitchToLogin} />
-              <CustomButton children="Регистрация" bg="#f7f0f0ff" textColor="black" onClick={onSwitchToRegister} />
-            </Div>
-          </Div>
-        );
-    }
-  };
+  const handleLogin = () => dispatch(openLoginModal());
+  const handleSignup = () => dispatch(openSignupModal());
+  const handleClose = () => dispatch(closeIntroModal());
 
   return (
     <Modal
       isOpen={isOpen}
-      w={{ xl: '700px', xs: '90%' }}
-      maxW="700px"
-      h={{ xl: '600px', xs: 'auto' }}
+      onClose={handleClose}
+      align="center"
+      w={{ xs: '90%', md: '43.125rem' }}
+      h={{ xs: 'auto', md: '32.25rem' }}
       minH="600px"
-      m={{ t: { xs: '10px', xl: '160px' } }}
-      bg="black"
-      rounded="16px"
-      p={{ x: '20px', b: '20px' }}
+      minW="700px"
       pos="relative"
+      rounded="20px"
+      style={{
+        background: 'rgba(0, 0, 0, 0.55)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+        borderRadius: '20px',
+      }}
+      overflow="hidden"
+      onClick={(e) => e.stopPropagation()}
     >
-      <Div pos="relative" h="80px">
-        <Div pos="absolute" left="50%" top="50%" transform="translate(-50%, -50%)">
-          <Image src={Logo} w="50px" h="50px" />
+      <Div
+        d="flex"
+        flexDir="column"
+        align="center"
+        pos="absolute"
+        top={{ xs: '15%', md: '25%' }}
+        left="50%"
+        transform="translate(-50%, -50%)"
+        w={{ xs: '85%', md: 'auto' }}
+      >
+        <Image src={Logo} w="46px" h="46px" />
+        <Div d="flex" flexDir="column" textAlign="center" p={{ t: '20px' }} style={{ gap: '8px' }} maxW="360px">
+          <Text textSize={{ xs: '32px', md: '40px' }} textWeight="500" textColor="white">
+            Финик Карта
+          </Text>
+          <Text textSize="14px" textWeight="400" textColor="white">
+            Отмечай места на карте где нет нашего
+          </Text>
+          <Text textSize="14px" textWeight="400" textColor="white">
+            терминала, мы поставим его, а тебе пришлем
+          </Text>
+          <Text textSize="14px" textWeight="400" textColor="white">
+            бонусы которые ты сможешь обменять на
+          </Text>
+          <Text textSize="14px" textWeight="400" textColor="white">
+            реальные призы
+          </Text>
         </Div>
 
-        {currentView !== 'intro' && (
-          <Icon name="LeftArrow" size="32px" color="#fff" pos="absolute" left="24px" top="50%" onClick={handleGoBack} />
-        )}
-        <Icon name="Cross" size="25px" color="#fff" pos="absolute" right="24px" top="50%" onClick={onClose} />
-      </Div>
+        <Div
+          d="flex"
+          flexDir="column"
+          pos="absolute"
+          top={{ xs: '180px', md: '280px' }}
+          left="50%"
+          transform="translateX(-50%)"
+          w={{ xs: '80%', md: 'auto' }}
+          style={{ gap: '18px' }}
+        >
+          <Button
+            w={{ xs: '100%', md: '343px' }}
+            h="52px"
+            bg="#ACF709"
+            hoverBg="#92d030"
+            rounded="12px"
+            textWeight="700"
+            textSize="16px"
+            textColor="black"
+            shadow="3"
+            onClick={handleLogin}
+          >
+            Войти в аккаунт
+          </Button>
 
-      {renderContent()}
+          <Button
+            w={{ xs: '100%', md: '343px' }}
+            h="52px"
+            bg="#101010"
+            border="1px solid #ACF709"
+            hoverBg="#181b17"
+            rounded="12px"
+            textWeight="700"
+            textSize="16px"
+            textColor="#ACF709"
+            hoverTextColor="#ACF709"
+            onClick={handleSignup}
+          >
+            Регистрация
+          </Button>
+        </Div>
+      </Div>
+      <Icon
+        name="Cross"
+        size="25px"
+        color="#fff"
+        pos="absolute"
+        top={{ xs: '16px', md: '24px' }}
+        right={{ xs: '16px', md: '24px' }}
+        cursor="pointer"
+        onClick={handleClose}
+      />
     </Modal>
   );
 };

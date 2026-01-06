@@ -1,66 +1,140 @@
 /* External dependencies */
 import React from 'react';
-import { Div, Text } from 'atomize';
+import { Modal, Div, Image, Text, Input, Button, Icon } from 'atomize';
 import { useDispatch, useSelector } from 'react-redux';
 
 /* Local dependencies */
-import CustomInput from '../common/CustomInput';
-import CustomButton from '../common/CustomButton';
-import { setEmail, setPassword, validateCredentials, closeModal } from '../redux/action';
+import Logo from '../../../../assets/images/mapApp/Logo.png';
+import { setEmail, setPassword, closeLoginModal, openIntroFromLogin } from '../redux/action';
 import { RootState, AppDispatch } from '../../../../redux/store';
 
-const SingIn = () => {
+const SignIn = () => {
   const dispatch = useDispatch<AppDispatch>();
-
-  const { currentStep, email, password, hasEmailError, hasPasswordError } = useSelector(
+  const { isLoginModalOpen, email, password, hasEmailError, hasPasswordError } = useSelector(
     (state: RootState) => state.authReducer,
   );
 
-  const handleNext = () => {
-    dispatch(validateCredentials());
-  };
+  const handleClose = () => dispatch(closeLoginModal());
+  const handleGoBackIntro = () => dispatch(openIntroFromLogin());
 
-  const onClose = () => {
-    dispatch(closeModal());
+  if (!isLoginModalOpen) return null;
+
+  const handleLogin = () => {
+    console.log('Login:', { email, password });
   };
 
   return (
-    <Div p={{ l: '160px' }}>
-      <Text textSize="30px" textColor="#fff" p={{ t: '20px', l: '70px' }}>
+    <Modal
+      isOpen={isLoginModalOpen}
+      onClose={handleClose}
+      align="center"
+      w={{ xs: '90%', md: '43.125rem' }}
+      h={{ xs: 'auto', md: '32.25rem' }}
+      minH="600px"
+      minW="700px"
+      pos="relative"
+      rounded="20px"
+      style={{
+        background: 'rgba(0, 0, 0, 0.55)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+        borderRadius: '20px',
+      }}
+      overflow="hidden"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <Icon
+        name="LeftArrow"
+        size="30px"
+        color="#fff"
+        hoverColor="#ACF709"
+        pos="absolute"
+        left="24px"
+        top="24px"
+        cursor="pointer"
+        onClick={handleGoBackIntro}
+      />
+      <Div pos="absolute" top="30px" left="50%" transform="translateX(-50%)">
+        <Image src={Logo} w="46px" h="46px" />
+      </Div>
+
+      <Icon
+        name="Cross"
+        size="30px"
+        color="#fff"
+        pos="absolute"
+        right="25px"
+        top="25px"
+        cursor="pointer"
+        onClick={handleClose}
+      />
+
+      <Text
+        textSize={{ xs: '28px', md: '35px' }}
+        textWeight="600"
+        textColor="white"
+        textAlign="center"
+        p={{ t: '60px' }}
+      >
         Войти в аккаунт
       </Text>
-      <Div p={{ t: '60px' }}>
-        <Text textSize="11px" textColor="#ffff" p={{ b: '5px' }}>
-          эл.почта
+      <Div p={{ t: '80px', l: '130px' }}>
+        <Text textSize="14px" textColor="#ddd" p={{ b: '8px' }}>
+          Эл. почта
         </Text>
-        <CustomInput
+        <Input
+          w="370px"
+          h="50px"
           placeholder="Введите адрес эл. почты"
-          bg="#5e5e5eff"
           value={email}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => dispatch(setEmail(e.target.value))}
-          borderColor={hasEmailError ? '#ff0000ff' : undefined}
-          focusBorderColor={hasEmailError ? '#ff0000ff' : undefined}
+          onChange={(e) => dispatch(setEmail(e.target.value))}
+          p={{ x: '16px', y: '14px' }}
+          rounded="12px"
+          bg="#2a2a2a"
+          border="1px solid"
+          borderColor={hasEmailError ? '#ff4444' : '#444'}
+          textColor="white"
+          focusBorderColor="#ffffffff"
+          placeholderTextColor="#888"
         />
-        <Text textSize="11px" textColor="#ffff" p={{ b: '5px' }}>
-          Введите пароль
+
+        <Text textSize="14px" textColor="#ddd" p={{ t: '24px', b: '8px' }}>
+          Пароль
         </Text>
-        <CustomInput
+        <Input
+          w="370px"
+          h="50px"
+          type="password"
           placeholder="Введите пароль"
-          bg="#5e5e5eff"
           value={password}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => dispatch(setPassword(e.target.value))}
-          borderColor={hasPasswordError ? '#ff0000ff' : undefined}
-          focusBorderColor={hasPasswordError ? '#ff0000ff' : undefined}
+          onChange={(e) => dispatch(setPassword(e.target.value))}
+          p={{ x: '16px', y: '14px' }}
+          rounded="12px"
+          bg="#2a2a2a"
+          border="1px solid"
+          borderColor={hasPasswordError ? '#ff4444' : '#444'}
+          focusBorderColor="#ffffffff"
+          textColor="white"
+          placeholderTextColor="#888"
         />
-        <CustomButton children="Далее" bg="#9be426ff" textColor="black" onClick={handleNext} />
+
+        <Button
+          w="370px"
+          h="52px"
+          bg="#ACF709"
+          hoverBg="#92d030"
+          rounded="12px"
+          textWeight="700"
+          textSize="16px"
+          textColor="#333"
+          m={{ t: '40px' }}
+          // onClick={handleLogin}
+        >
+          Войти
+        </Button>
       </Div>
-      <Text textSize="13px" textColor="#ffff" p={{ t: '70px', l: '30px' }}>
-        Нажимая кнопку “Далее”, вы соглашаетесь с
-      </Text>
-      <Text textSize="13px" textColor="#9be426ff" p={{ l: '70px' }}>
-        пользовательским соглашением
-      </Text>
-    </Div>
+    </Modal>
   );
 };
-export default SingIn;
+
+export default SignIn;

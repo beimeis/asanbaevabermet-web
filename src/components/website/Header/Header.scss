@@ -1,7 +1,8 @@
-.container{
-     display: flex;
+.container {
+    display: flex;
     margin-top: 50px;
 }
+
 .lang-container {
     display: flex;
     margin-top: 20px;
@@ -9,20 +10,20 @@
 }
 
 .lang-button {
-        margin-left: 50px;
-        margin-top: 0px;
-        width: 110px;
-        height: 50px;
-        max-width: 176px;
-        border: 2px solid #C0C0C0;
-        color: rgba(255, 254, 254, 0.97);
-        transition: all 0.3s ease;
-        font-size: 16px;
-        border-radius: 15px;
-       
+    margin-left: 50px;
+    margin-top: 0px;
+    width: 110px;
+    height: 50px;
+    max-width: 176px;
+    color: rgba(255, 254, 254, 0.97);
+    transition: all 0.3s ease;
+    font-size: 16px;
+    border-radius: 15px;
+
 }
+
 .lang-button:hover {
-    background-color: #b4c967;
-    color: #fff;
+    background-color: #a5f003ff;
+    color: #333;
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
 }

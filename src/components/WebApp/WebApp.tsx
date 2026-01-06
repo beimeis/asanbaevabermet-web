@@ -7,85 +7,79 @@ import { useDispatch, useSelector } from 'react-redux';
 /* Local dependencies */
 import Logo from '../../assets/images/mapApp/Logo.png';
 import AccIcon from '../../assets/images/mapApp/accountIcon.png';
-import CustomModal from './CustomModal';
-import { openModal, closeModal, setModalView, setModalStep } from './auth/redux/action';
+import CustomModal from '../WebApp/CustomModal';
+import SignIn from './auth/sign-in/SignIn';
+import SignUp from './auth/sign-up/SignUp';
+
+import { openIntroModal } from './auth/redux/action';
 import { RootState, AppDispatch } from '../../redux/store';
 
 export default function WebApp() {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { isModalOpen, currentView, currentStep } = useSelector((state: RootState) => state.authReducer);
+  const { isIntroModalOpen, isLoginModalOpen, isSignupModalOpen } = useSelector(
+    (state: RootState) => state.authReducer,
+  );
 
-  const handleOpen = () => {
-    dispatch(openModal('intro'));
-  };
-  const onClose = () => {
-    dispatch(closeModal());
-  };
-
-  const switchToLogin = () => {
-    dispatch(setModalView('login'));
-  };
-
-  const switchToRegister = () => {
-    dispatch(setModalView('register'));
-  };
-  const goBack = () => {
-    if (currentView === 'register' && currentStep === 'confirm') {
-      dispatch(setModalStep('register'));
-    } else if (currentView === 'login' || (currentView === 'register' && currentStep === 'register')) {
-      dispatch(setModalView('intro'));
-    }
+  const handleOpenIntro = () => {
+    dispatch(openIntroModal());
   };
 
   return (
-    <Div d="flex" align="flex-start">
-      <Div>
+    <Div>
+      <Div
+        d="flex"
+        justify="space-between"
+        align="center"
+        p={{ t: '20px', x: { xs: '20px', xl: '50px' } }}
+        flexWrap="wrap"
+      >
         <Link to="/">
           <Button
-            w={{ xs: '120px', xl: '120px' }}
-            h={{ xs: '46px', xl: '46px' }}
-            m={{ t: '20px', l: '50px' }}
-            border="2px solid"
-            borderColor=" #C0C0C0"
+            bg="#333"
+            border="2px solid #ccc3c3ff"
+            hoverBg="#a5f003ff"
+            hoverTextColor="black"
             rounded="16px"
+            d="flex"
+            align="center"
+            justify="center"
+            p={{ x: '20px', y: '12px' }}
+            h="52px"
+            minW="140px"
           >
-            <Image src={Logo} w={{ xs: '20px', xl: '20px' }} h={{ xs: '20px', xl: '20px' }} />
-            <Text p={{ l: '13px' }} textSize="18px">
+            <Image src={Logo} w="24px" h="24px" />
+            <Text textSize="18px" textWeight="500" p={{ l: '12px' }}>
               Карта
             </Text>
           </Button>
         </Link>
-      </Div>
-      <Div>
+
         <Button
-          w={{ xs: '120px', xl: '120px' }}
-          h={{ xs: '46px', xl: '46px' }}
-          m={{ t: '20px', l: '1350px' }}
-          border="2px solid"
-          borderColor=" #ffffffff"
-          hover={{
-            bg: '#b4c967',
-            color: 'white',
-            shadow: '0 0 8px rgba(255, 255, 255, 0.7)',
-          }}
+          onClick={handleOpenIntro}
+          bg="#333"
+          border="2px solid white"
+          hoverBg="#ACF709"
+          hoverTextColor="black"
+          hoverBorderColor="#ACF709"
           rounded="16px"
-          onClick={handleOpen}
+          d="flex"
+          align="center"
+          justify="center"
+          p={{ x: '20px', y: '12px' }}
+          h="52px"
+          minW="140px"
+          textWeight="600"
         >
-          <Image src={AccIcon} w={{ xs: '20px', xl: '20px' }} h={{ xs: '20px', xl: '20px' }} />
-          <Text p={{ l: '10px' }}>войти</Text>
+          <Image src={AccIcon} w="24px" h="24px" />
+          <Text textSize="18px" p={{ l: '12px' }}>
+            Войти
+          </Text>
         </Button>
       </Div>
-      {isModalOpen && (
-        <CustomModal
-          isOpen={isModalOpen}
-          onClose={onClose}
-          currentView={currentView}
-          onSwitchToLogin={switchToLogin}
-          onSwitchToRegister={switchToRegister}
-          onGoBack={goBack}
-        />
-      )}
+      <CustomModal isOpen={isIntroModalOpen} />
+      <SignIn />
+      <SignUp />
     </Div>
   );
 }
