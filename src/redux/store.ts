@@ -5,13 +5,16 @@ import { combineEpics, createEpicMiddleware } from 'redux-observable';
 
 /* Local dependencies */
 import getDevices from '../components/devices/getDevices/redux/reducer';
-import { authReducer } from '../components/WebApp/auth/redux/reducer';
+import { authReducer } from '../components/WebApp/auth/authRedux/authReducer';
+import { uiReducer } from '../components/WebApp/auth/Modal/uiRedux/uiReducer';
+import {} from '../components/WebApp/auth/authRedux/Epic';
 
 const rootEpic = combineEpics();
 
 const rootReducer = combineReducers({
   getDevices,
-  authReducer,
+  auth: authReducer,
+  ui: uiReducer,
 });
 
 let store;

@@ -1,28 +1,20 @@
-/* External dependencies */
 import React from 'react';
 import { Modal, Div, Image, Text, Button, Icon } from 'atomize';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState, AppDispatch } from '../../../../redux/store';
+import { setActiveModal } from './uiRedux/uiAction';
 
-/* Local dependencies */
-import Logo from '../../assets/images/mapApp/Logo.png';
-import { openLoginModal, openSignupModal, closeIntroModal } from './auth/redux/action';
-import { AppDispatch } from '../../redux/store';
+import Logo from '../../../../assets/images/mapApp/Logo.png';
 
-interface CustomModalProps {
-  isOpen: boolean;
-}
-
-const CustomModal = ({ isOpen }: CustomModalProps) => {
+const CustomModal = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const { activeModal, isLoading } = useSelector((state: RootState) => state.ui);
 
-  const handleLogin = () => dispatch(openLoginModal());
-  const handleSignup = () => dispatch(openSignupModal());
-  const handleClose = () => dispatch(closeIntroModal());
+  if (activeModal !== 'intro') return null;
 
   return (
     <Modal
-      isOpen={isOpen}
-      onClose={handleClose}
+      isOpen={activeModal === 'intro'}
       align="center"
       w={{ xs: '90%', md: '43.125rem' }}
       h={{ xs: 'auto', md: '32.25rem' }}
@@ -50,6 +42,7 @@ const CustomModal = ({ isOpen }: CustomModalProps) => {
         w={{ xs: '85%', md: 'auto' }}
       >
         <Image src={Logo} w="46px" h="46px" />
+
         <Div d="flex" flexDir="column" textAlign="center" p={{ t: '20px' }} style={{ gap: '8px' }} maxW="360px">
           <Text textSize={{ xs: '32px', md: '40px' }} textWeight="500" textColor="white">
             Финик Карта
@@ -88,7 +81,8 @@ const CustomModal = ({ isOpen }: CustomModalProps) => {
             textSize="16px"
             textColor="black"
             shadow="3"
-            onClick={handleLogin}
+            onClick={() => dispatch(setActiveModal('login'))}
+            disabled={isLoading}
           >
             Войти в аккаунт
           </Button>
@@ -104,12 +98,14 @@ const CustomModal = ({ isOpen }: CustomModalProps) => {
             textSize="16px"
             textColor="#ACF709"
             hoverTextColor="#ACF709"
-            onClick={handleSignup}
+            onClick={() => dispatch(setActiveModal('signup'))}
+            disabled={isLoading}
           >
             Регистрация
           </Button>
         </Div>
       </Div>
+
       <Icon
         name="Cross"
         size="25px"
@@ -118,7 +114,7 @@ const CustomModal = ({ isOpen }: CustomModalProps) => {
         top={{ xs: '16px', md: '24px' }}
         right={{ xs: '16px', md: '24px' }}
         cursor="pointer"
-        onClick={handleClose}
+        onClick={() => dispatch(setActiveModal(null))}
       />
     </Modal>
   );

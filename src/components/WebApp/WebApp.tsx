@@ -7,22 +7,47 @@ import { useDispatch, useSelector } from 'react-redux';
 /* Local dependencies */
 import Logo from '../../assets/images/mapApp/Logo.png';
 import AccIcon from '../../assets/images/mapApp/accountIcon.png';
-import CustomModal from '../WebApp/CustomModal';
+import CustomModal from './auth/Modal/CustomModal';
 import SignIn from './auth/sign-in/SignIn';
 import SignUp from './auth/sign-up/SignUp';
-
-import { openIntroModal } from './auth/redux/action';
+import SignUpPassword from './auth/sign-up/SignUpPassword';
+import SignUpPinCode from './auth/sign-up/SignUpPinCode';
+import ForgotPassword from '../../components/WebApp/auth/sign-in/ForgotPassword';
+import NewPassword from '../../components/WebApp/auth/sign-in/NewPassword';
+import SignInPinCode from './auth/sign-in/SignInPinCode';
+import { setActiveModal } from './auth/Modal/uiRedux/uiAction';
 import { RootState, AppDispatch } from '../../redux/store';
 
 export default function WebApp() {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { isIntroModalOpen, isLoginModalOpen, isSignupModalOpen } = useSelector(
-    (state: RootState) => state.authReducer,
-  );
+  const activeModal = useSelector((state: RootState) => state.ui?.activeModal);
 
   const handleOpenIntro = () => {
-    dispatch(openIntroModal());
+    dispatch(setActiveModal('intro'));
+  };
+
+  const renderModal = () => {
+    switch (activeModal) {
+      case 'intro':
+        return <CustomModal />;
+      case 'login':
+        return <SignIn />;
+      case 'signup':
+        return <SignUp />;
+      case 'password':
+        return <SignUpPassword />;
+      case 'forgot-password':
+        return <ForgotPassword />;
+      case 'reset-code':
+        return <SignInPinCode />;
+      case 'new-password':
+        return <NewPassword />;
+      case 'signup-code':
+        return <SignUpPinCode />;
+      default:
+        return null;
+    }
   };
 
   return (
@@ -34,8 +59,8 @@ export default function WebApp() {
         p={{ t: '20px', x: { xs: '20px', xl: '50px' } }}
         flexWrap="wrap"
       >
-        <Link to="/">
-          <Button
+        <Link to="/" style={{ textDecoration: 'none' }}>
+          <Div
             bg="#333"
             border="2px solid #ccc3c3ff"
             hoverBg="#a5f003ff"
@@ -47,12 +72,15 @@ export default function WebApp() {
             p={{ x: '20px', y: '12px' }}
             h="52px"
             minW="140px"
+            cursor="pointer"
+            textColor="white"
+            transition
           >
             <Image src={Logo} w="24px" h="24px" />
             <Text textSize="18px" textWeight="500" p={{ l: '12px' }}>
               Карта
             </Text>
-          </Button>
+          </Div>
         </Link>
 
         <Button
@@ -77,9 +105,8 @@ export default function WebApp() {
           </Text>
         </Button>
       </Div>
-      <CustomModal isOpen={isIntroModalOpen} />
-      <SignIn />
-      <SignUp />
+
+      {activeModal && renderModal()}
     </Div>
   );
 }

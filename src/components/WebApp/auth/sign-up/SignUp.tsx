@@ -5,44 +5,37 @@ import { useDispatch, useSelector } from 'react-redux';
 
 /* Local dependencies */
 import Logo from '../../../../assets/images/mapApp/Logo.png';
-import Confirm from './Confirm';
-import {
-  setEmail,
-  setPassword,
-  setConfirmPassword,
-  validateCredentials,
-  closeSignupModal,
-  openIntroFromSignup,
-} from '../redux/action';
+import { setActiveModal, setEmail, validateCredentials } from '../Modal/uiRedux/uiAction';
+
 import { RootState, AppDispatch } from '../../../../redux/store';
 
 const SignUp = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const {
-    isSignupModalOpen,
-    signupStep,
-    email,
-    password,
-    confirmPassword,
-    hasEmailError,
-    hasPasswordError,
-    hasConfirmPasswordError,
-  } = useSelector((state: RootState) => state.authReducer);
 
-  const handleClose = () => dispatch(closeSignupModal());
-  const handleNext = () => dispatch(validateCredentials());
-  const handleGoBackIntro = () => dispatch(openIntroFromSignup());
+  const { activeModal, email, emailError, isLoading, serverError } = useSelector((state: RootState) => state.ui);
 
-  if (!isSignupModalOpen) return null;
+  if (activeModal !== 'signup') return null;
+
+  const handleNext = () => {
+    dispatch(validateCredentials());
+
+    if (emailError) return;
+  };
+  const handleBack = () => {
+    dispatch(setActiveModal('intro'));
+  };
+
+  const handleClose = () => {
+    dispatch(setActiveModal(null));
+  };
 
   return (
     <Modal
-      isOpen={isSignupModalOpen}
-      onClose={handleClose}
+      isOpen={activeModal === 'signup'}
       align="center"
       w={{ xs: '90%', md: '43.125rem' }}
-      h={{ xs: 'auto', md: signupStep === 'confirm' ? '38rem' : '42rem' }}
-      minH="650px"
+      h={{ xs: 'auto', md: '32.25rem' }}
+      minH="600px"
       minW="700px"
       pos="relative"
       rounded="20px"
@@ -54,18 +47,17 @@ const SignUp = () => {
       }}
       onClick={(e) => e.stopPropagation()}
     >
-      {signupStep !== 'confirm' && (
-        <Icon
-          name="LeftArrow"
-          size="30px"
-          color="#fff"
-          pos="absolute"
-          left="24px"
-          top="24px"
-          cursor="pointer"
-          onClick={handleGoBackIntro}
-        />
-      )}
+      <Icon
+        name="LeftArrow"
+        size="30px"
+        color="#fff"
+        pos="absolute"
+        left="24px"
+        top="24px"
+        cursor="pointer"
+        onClick={handleBack}
+      />
+
       <Div pos="absolute" top="30px" left="50%" transform="translateX(-50%)">
         <Image src={Logo} w="46px" h="46px" />
       </Div>
@@ -82,104 +74,74 @@ const SignUp = () => {
       />
 
       <Div>
-        {signupStep === 'register' || signupStep === 'credentials' ? (
-          <Div>
-            <Text
-              textSize={{ xs: '28px', md: '35px' }}
-              textWeight="600"
-              textColor="white"
-              textAlign="center"
-              p={{ b: '20px', t: '60px' }}
-            >
-              Создайте аккаунт
+        <Div>
+          <Text
+            textSize={{ xs: '28px', md: '35px' }}
+            textWeight="600"
+            textColor="white"
+            textAlign="center"
+            p={{ b: '20px', t: '120px' }}
+          >
+            Создайте аккаунт
+          </Text>
+
+          <Text textSize="15px" textColor="#ddd" p={{ l: '180px', b: '8px' }}>
+            Карта терминалов от Finik, исследуйте,
+          </Text>
+          <Text textSize="15px" textColor="#ddd" p={{ l: '190px' }}>
+            отмечайте и зарабатывайте баллы
+          </Text>
+
+          <Div p={{ l: '140px', t: '50px' }}>
+            <Text textSize="14px" textColor="#ddd" p={{ b: '8px', l: '8px' }}>
+              Нам нужна только ваша почта
             </Text>
-            <Div p={{ l: '150px' }}>
-              <Text textSize="14px" textColor="#ddd" p={{ b: '8px' }}>
-                Эл. почта
+
+            <Input
+              w="370px"
+              h="52px"
+              placeholder="Введите адрес эл. почты"
+              value={email}
+              onChange={(e) => dispatch(setEmail(e.target.value))}
+              p={{ x: '16px', y: '14px' }}
+              rounded="12px"
+              bg="#2a2a2a"
+              border="1px solid"
+              borderColor={emailError ? '#ff4444' : '#444'}
+              focusBorderColor="#ffffffff"
+              textColor="white"
+              placeholderTextColor="#888"
+            />
+
+            {emailError && (
+              <Text textSize="12px" textColor="#ff4444" p={{ t: '8px', l: '8px' }}>
+                {emailError}
               </Text>
-              <Input
-                w="370px"
-                h="50px"
-                placeholder="Введите адрес эл. почты"
-                value={email}
-                onChange={(e) => dispatch(setEmail(e.target.value))}
-                p={{ x: '16px', y: '14px' }}
-                rounded="12px"
-                bg="#2a2a2a"
-                border="1px solid"
-                borderColor={hasEmailError ? '#ff4444' : '#444'}
-                focusBorderColor="#ffffffff"
-                textColor="white"
-                placeholderTextColor="#888"
-              />
+            )}
 
-              <Text textSize="14px" textColor="#ddd" p={{ t: '24px', b: '8px' }}>
-                Пароль
+            {serverError && (
+              <Text textSize="12px" textColor="#ff4444" p={{ t: '8px', l: '8px' }}>
+                {serverError}
               </Text>
-              <Input
-                w="370px"
-                h="50px"
-                type="password"
-                placeholder="Введите пароль"
-                value={password}
-                onChange={(e) => dispatch(setPassword(e.target.value))}
-                p={{ x: '16px', y: '14px' }}
-                rounded="12px"
-                bg="#2a2a2a"
-                border="1px solid"
-                borderColor={hasPasswordError ? '#ff4444' : '#444'}
-                focusBorderColor="#ffffffff"
-                textColor="white"
-                placeholderTextColor="#888"
-              />
+            )}
 
-              <Text textSize="14px" textColor="#ddd" p={{ t: '24px', b: '8px' }}>
-                Повторите пароль
-              </Text>
-              <Input
-                w="370px"
-                h="50px"
-                type="password"
-                placeholder="Повторите пароль"
-                value={confirmPassword}
-                onChange={(e) => dispatch(setConfirmPassword(e.target.value))}
-                p={{ x: '16px', y: '14px' }}
-                rounded="12px"
-                bg="#2a2a2a"
-                border="1px solid"
-                borderColor={hasConfirmPasswordError ? '#ff4444' : '#444'}
-                focusBorderColor="#ffffffff"
-                textColor="white"
-                placeholderTextColor="#888"
-              />
-
-              <Div textSize="13px" textColor="#ddd" p={{ t: '20px', b: '30px' }}>
-                <Text>Пароль должен содержать:</Text>
-                <Text>• минимум 8 символов</Text>
-                <Text>• хотя бы одну заглавную букву</Text>
-                <Text>• хотя бы одну строчную букву или цифру</Text>
-                <Text>• один спецсимвол: ~ # @ $ % & ! * _ ? ^ -</Text>
-              </Div>
-
-              <Button
-                w="370px"
-                h="52px"
-                bg="#ACF709"
-                hoverBg="#92d030"
-                rounded="12px"
-                textWeight="700"
-                textSize="16px"
-                textColor="#333"
-                onClick={handleNext}
-              >
-                Далее
-              </Button>
-            </Div>
+            <Button
+              w="370px"
+              h="52px"
+              bg="#ACF709"
+              hoverBg="#92d030"
+              rounded="12px"
+              textWeight="700"
+              textSize="16px"
+              textColor="#333"
+              onClick={handleNext}
+              m={{ t: '20px' }}
+              disabled={isLoading}
+            >
+              {isLoading ? 'Проверяем...' : 'Далее'}
+            </Button>
           </Div>
-        ) : signupStep === 'confirm' ? (
-          // === КОМПОНЕНТ CONFIRM ===
-          <Confirm />
-        ) : null}
+        </Div>
       </Div>
     </Modal>
   );

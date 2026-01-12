@@ -3,38 +3,34 @@ import { Modal, Div, Image, Text, Input, Button, Icon } from 'atomize';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Logo from '../../../../assets/images/mapApp/Logo.png';
-import { setActiveModal, setEmail, setPassword, validateCredentials } from '../Modal/uiRedux/uiAction';
+import { setActiveModal, setPassword, setConfirmPassword, validateCredentials } from '../Modal/uiRedux/uiAction';
 
 import { RootState, AppDispatch } from '../../../../redux/store';
 
-const SignIn = () => {
+const NewPassword = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { activeModal, email, password, emailError, passwordError, isLoading, serverError } = useSelector(
+  const { activeModal, password, confirmPassword, passwordError, confirmError } = useSelector(
     (state: RootState) => state.ui,
   );
 
-  if (activeModal !== 'login') return null;
+  if (activeModal !== 'new-password') return null;
 
-  const handleLogin = () => {
+  const handleNext = () => {
     dispatch(validateCredentials());
   };
 
   const handleBack = () => {
-    dispatch(setActiveModal('intro'));
+    dispatch(setActiveModal('reset-code'));
   };
 
   const handleClose = () => {
     dispatch(setActiveModal(null));
   };
 
-  const handleForgotPassword = () => {
-    dispatch(setActiveModal('forgot-password'));
-  };
-
   return (
     <Modal
-      isOpen={activeModal === 'login'}
+      isOpen={activeModal === 'new-password'}
       align="center"
       w={{ xs: '90%', md: '43.125rem' }}
       h={{ xs: 'auto', md: '32.25rem' }}
@@ -54,7 +50,6 @@ const SignIn = () => {
         name="LeftArrow"
         size="30px"
         color="#fff"
-        hoverColor="#ACF709"
         pos="absolute"
         left="24px"
         top="24px"
@@ -77,42 +72,12 @@ const SignIn = () => {
         onClick={handleClose}
       />
 
-      <Text
-        textSize={{ xs: '28px', md: '35px' }}
-        textWeight="600"
-        textColor="white"
-        textAlign="center"
-        p={{ t: '60px' }}
-      >
-        Войти в аккаунт
-      </Text>
-
-      <Div p={{ t: '80px', l: '130px' }}>
-        <Text textSize="14px" textColor="#ddd" p={{ b: '8px' }}>
-          Эл. почта
+      <Div p={{ x: '140px', t: '100px' }}>
+        <Text textSize="28px" textWeight="600" textColor="white" textAlign="center" p={{ b: '40px' }}>
+          Новый пароль
         </Text>
-        <Input
-          w="370px"
-          h="50px"
-          placeholder="Введите адрес эл. почты"
-          value={email}
-          onChange={(e) => dispatch(setEmail(e.target.value))}
-          p={{ x: '16px', y: '14px' }}
-          rounded="12px"
-          bg="#2a2a2a"
-          border="1px solid"
-          borderColor={emailError ? '#ff4444' : '#444'}
-          textColor="white"
-          focusBorderColor="#ffffffff"
-          placeholderTextColor="#888"
-        />
-        {emailError && (
-          <Text textSize="12px" textColor="#ff4444" p={{ t: '8px' }}>
-            {emailError}
-          </Text>
-        )}
 
-        <Text textSize="14px" textColor="#ddd" p={{ t: '24px', b: '8px' }}>
+        <Text textSize="14px" textColor="#ddd" p={{ b: '8px' }}>
           Пароль
         </Text>
         <Input
@@ -137,11 +102,38 @@ const SignIn = () => {
           </Text>
         )}
 
-        {serverError && (
-          <Text textSize="12px" textColor="#ff4444" p={{ t: '16px' }}>
-            {serverError}
+        <Text textSize="14px" textColor="#ddd" p={{ t: '24px', b: '8px' }}>
+          Повторите пароль
+        </Text>
+        <Input
+          w="370px"
+          h="50px"
+          type="password"
+          placeholder="Повторите пароль"
+          value={confirmPassword}
+          onChange={(e) => dispatch(setConfirmPassword(e.target.value))}
+          p={{ x: '16px', y: '14px' }}
+          rounded="12px"
+          bg="#2a2a2a"
+          border="1px solid"
+          borderColor={confirmError ? '#ff4444' : '#444'}
+          focusBorderColor="#ffffffff"
+          textColor="white"
+          placeholderTextColor="#888"
+        />
+        {confirmError && (
+          <Text textSize="12px" textColor="#ff4444" p={{ t: '8px' }}>
+            {confirmError}
           </Text>
         )}
+
+        <Div textSize="13px" textColor="#ddd" p={{ t: '20px', b: '30px' }}>
+          <Text>Пароль должен содержать:</Text>
+          <Text>• минимум 8 символов</Text>
+          <Text>• хотя бы одну заглавную букву</Text>
+          <Text>• хотя бы одну строчную букву или цифру</Text>
+          <Text>• один спецсимвол: ~ # @ $ % & ! * _ ? ^ -</Text>
+        </Div>
 
         <Button
           w="370px"
@@ -152,19 +144,12 @@ const SignIn = () => {
           textWeight="700"
           textSize="16px"
           textColor="#333"
-          m={{ t: '40px' }}
-          onClick={handleLogin}
-          disabled={isLoading}
-        >
-          {isLoading ? 'Входим...' : 'Войти'}
-        </Button>
-
-        <Text textSize="14px" textColor="#ACF709" cursor="pointer" p={{ t: '16px' }} onClick={handleForgotPassword}>
-          Забыли пароль?
-        </Text>
+          onClick={handleNext}
+          m={{ t: '20px' }}
+        ></Button>
       </Div>
     </Modal>
   );
 };
 
-export default SignIn;
+export default NewPassword;

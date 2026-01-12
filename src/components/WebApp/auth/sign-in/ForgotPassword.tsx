@@ -3,38 +3,32 @@ import { Modal, Div, Image, Text, Input, Button, Icon } from 'atomize';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Logo from '../../../../assets/images/mapApp/Logo.png';
-import { setActiveModal, setEmail, setPassword, validateCredentials } from '../Modal/uiRedux/uiAction';
+import { setActiveModal, setEmail, validateCredentials } from '../Modal/uiRedux/uiAction';
 
 import { RootState, AppDispatch } from '../../../../redux/store';
 
-const SignIn = () => {
+const ForgotPassword = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { activeModal, email, password, emailError, passwordError, isLoading, serverError } = useSelector(
-    (state: RootState) => state.ui,
-  );
+  const { activeModal, email, emailError, isLoading, serverError } = useSelector((state: RootState) => state.ui);
 
-  if (activeModal !== 'login') return null;
+  if (activeModal !== 'forgot-password') return null;
 
-  const handleLogin = () => {
+  const handleNext = () => {
     dispatch(validateCredentials());
   };
 
   const handleBack = () => {
-    dispatch(setActiveModal('intro'));
+    dispatch(setActiveModal('login'));
   };
 
   const handleClose = () => {
     dispatch(setActiveModal(null));
   };
 
-  const handleForgotPassword = () => {
-    dispatch(setActiveModal('forgot-password'));
-  };
-
   return (
     <Modal
-      isOpen={activeModal === 'login'}
+      isOpen={activeModal === 'forgot-password'}
       align="center"
       w={{ xs: '90%', md: '43.125rem' }}
       h={{ xs: 'auto', md: '32.25rem' }}
@@ -54,7 +48,6 @@ const SignIn = () => {
         name="LeftArrow"
         size="30px"
         color="#fff"
-        hoverColor="#ACF709"
         pos="absolute"
         left="24px"
         top="24px"
@@ -77,20 +70,15 @@ const SignIn = () => {
         onClick={handleClose}
       />
 
-      <Text
-        textSize={{ xs: '28px', md: '35px' }}
-        textWeight="600"
-        textColor="white"
-        textAlign="center"
-        p={{ t: '60px' }}
-      >
-        Войти в аккаунт
-      </Text>
-
-      <Div p={{ t: '80px', l: '130px' }}>
-        <Text textSize="14px" textColor="#ddd" p={{ b: '8px' }}>
-          Эл. почта
+      <Div p={{ x: '140px', t: '100px' }}>
+        <Text textSize="28px" textWeight="600" textColor="white" textAlign="center" p={{ b: '40px' }}>
+          Восстановление пароля
         </Text>
+
+        <Text textSize="14px" textColor="#ddd" p={{ b: '8px' }}>
+          Введите email
+        </Text>
+
         <Input
           w="370px"
           h="50px"
@@ -106,34 +94,10 @@ const SignIn = () => {
           focusBorderColor="#ffffffff"
           placeholderTextColor="#888"
         />
+
         {emailError && (
           <Text textSize="12px" textColor="#ff4444" p={{ t: '8px' }}>
             {emailError}
-          </Text>
-        )}
-
-        <Text textSize="14px" textColor="#ddd" p={{ t: '24px', b: '8px' }}>
-          Пароль
-        </Text>
-        <Input
-          w="370px"
-          h="50px"
-          type="password"
-          placeholder="Введите пароль"
-          value={password}
-          onChange={(e) => dispatch(setPassword(e.target.value))}
-          p={{ x: '16px', y: '14px' }}
-          rounded="12px"
-          bg="#2a2a2a"
-          border="1px solid"
-          borderColor={passwordError ? '#ff4444' : '#444'}
-          focusBorderColor="#ffffffff"
-          textColor="white"
-          placeholderTextColor="#888"
-        />
-        {passwordError && (
-          <Text textSize="12px" textColor="#ff4444" p={{ t: '8px' }}>
-            {passwordError}
           </Text>
         )}
 
@@ -152,19 +116,15 @@ const SignIn = () => {
           textWeight="700"
           textSize="16px"
           textColor="#333"
+          onClick={handleNext}
           m={{ t: '40px' }}
-          onClick={handleLogin}
           disabled={isLoading}
         >
-          {isLoading ? 'Входим...' : 'Войти'}
+          {isLoading ? 'Отправляем...' : 'Получить код'}
         </Button>
-
-        <Text textSize="14px" textColor="#ACF709" cursor="pointer" p={{ t: '16px' }} onClick={handleForgotPassword}>
-          Забыли пароль?
-        </Text>
       </Div>
     </Modal>
   );
 };
 
-export default SignIn;
+export default ForgotPassword;
