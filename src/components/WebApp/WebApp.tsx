@@ -60,7 +60,7 @@ export default function WebApp() {
         flexWrap="wrap"
       >
         <Link to="/" style={{ textDecoration: 'none' }}>
-          <Div
+          <Button
             bg="#333"
             border="2px solid #ccc3c3ff"
             hoverBg="#a5f003ff"
@@ -80,7 +80,7 @@ export default function WebApp() {
             <Text textSize="18px" textWeight="500" p={{ l: '12px' }}>
               Карта
             </Text>
-          </Div>
+          </Button>
         </Link>
 
         <Button

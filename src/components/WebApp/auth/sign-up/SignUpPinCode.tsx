@@ -4,19 +4,24 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Logo from '../../../../assets/images/mapApp/Logo.png';
 import { setActiveModal } from '../Modal/uiRedux/uiAction';
-
+import { signUpCodeRequest } from '../authRedux/authAction';
 import { RootState, AppDispatch } from '../../../../redux/store';
 
 const SignUpPinCode = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { activeModal, isLoading, serverError } = useSelector((state: RootState) => state.ui);
+  const { activeModal, email, isLoading, serverError } = useSelector((state: RootState) => state.ui);
 
   const [pinCode, setPinCode] = useState('');
 
   if (activeModal !== 'signup-code') return null;
 
-  const handleNext = () => {};
+  const handleNext = () => {
+    if (pinCode.length === 6) {
+      dispatch(signUpCodeRequest(email, pinCode));
+      setPinCode('');
+    }
+  };
 
   const handleBack = () => {
     dispatch(setActiveModal('password'));

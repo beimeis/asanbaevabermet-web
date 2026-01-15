@@ -7,9 +7,9 @@ import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import getDevices from '../components/devices/getDevices/redux/reducer';
 import { authReducer } from '../components/WebApp/auth/authRedux/authReducer';
 import { uiReducer } from '../components/WebApp/auth/Modal/uiRedux/uiReducer';
-import {} from '../components/WebApp/auth/authRedux/Epic';
+import { signUpEpic, signUpConfirmCodeEpic } from '../components/WebApp/auth/authRedux/Epic';
 
-const rootEpic = combineEpics();
+const rootEpic = combineEpics(signUpEpic, signUpConfirmCodeEpic);
 
 const rootReducer = combineReducers({
   getDevices,

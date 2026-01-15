@@ -1,25 +1,37 @@
 /* External dependencies */
-import React from 'react';
+import React, { useState } from 'react';
 import { Modal, Div, Image, Text, Input, Button, Icon } from 'atomize';
 import { useDispatch, useSelector } from 'react-redux';
 
 /* Local dependencies */
 import Logo from '../../../../assets/images/mapApp/Logo.png';
-import { setActiveModal, setEmail, validateCredentials } from '../Modal/uiRedux/uiAction';
-
+import { setActiveModal, setEmail } from '../Modal/uiRedux/uiAction';
 import { RootState, AppDispatch } from '../../../../redux/store';
 
 const SignUp = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { activeModal, email, emailError, isLoading, serverError } = useSelector((state: RootState) => state.ui);
+  const [localError, setLocalError] = useState('');
 
-  if (activeModal !== 'signup') return null;
+  const { activeModal, email, isLoading } = useSelector((state: RootState) => state.ui);
 
   const handleNext = () => {
-    dispatch(validateCredentials());
+    setLocalError('');
 
-    if (emailError) return;
+    const cleanedEmail = email ? email.trim() : '';
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!cleanedEmail) {
+      setLocalError('Пожалуйста, введите почту');
+      return;
+    }
+    if (!emailRegex.test(cleanedEmail)) {
+      setLocalError('Некорректный формат почты');
+      return;
+    }
+    dispatch(setEmail(cleanedEmail));
+
+    dispatch(setActiveModal('password'));
   };
   const handleBack = () => {
     dispatch(setActiveModal('intro'));
@@ -102,29 +114,25 @@ const SignUp = () => {
               h="52px"
               placeholder="Введите адрес эл. почты"
               value={email}
-              onChange={(e) => dispatch(setEmail(e.target.value))}
+              onChange={(e) => {
+                setLocalError('');
+                dispatch(setEmail(e.target.value));
+              }}
               p={{ x: '16px', y: '14px' }}
               rounded="12px"
               bg="#2a2a2a"
               border="1px solid"
-              borderColor={emailError ? '#ff4444' : '#444'}
+              borderColor={localError ? '#ff4444' : '#444'}
               focusBorderColor="#ffffffff"
               textColor="white"
               placeholderTextColor="#888"
             />
 
-            {emailError && (
+            {localError && (
               <Text textSize="12px" textColor="#ff4444" p={{ t: '8px', l: '8px' }}>
-                {emailError}
+                {localError}
               </Text>
             )}
-
-            {serverError && (
-              <Text textSize="12px" textColor="#ff4444" p={{ t: '8px', l: '8px' }}>
-                {serverError}
-              </Text>
-            )}
-
             <Button
               w="370px"
               h="52px"

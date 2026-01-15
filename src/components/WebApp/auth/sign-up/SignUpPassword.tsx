@@ -3,32 +3,50 @@ import { Modal, Div, Image, Text, Input, Button, Icon } from 'atomize';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Logo from '../../../../assets/images/mapApp/Logo.png';
-import { setActiveModal, setPassword, setConfirmPassword, validateCredentials } from '../Modal/uiRedux/uiAction';
-
+import { setActiveModal, setPassword, setConfirmPassword } from '../Modal/uiRedux/uiAction';
+import { signUpRequest } from '../authRedux/authAction';
 import { RootState, AppDispatch } from '../../../../redux/store';
 
 const SignUpPassword = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { activeModal, password, confirmPassword, passwordError, confirmError, isLoading, serverError } = useSelector(
+  const { activeModal, email, password, confirmPassword, isLoading, serverError } = useSelector(
     (state: RootState) => state.ui,
   );
 
   if (activeModal !== 'password') return null;
 
+  const validation = {
+    length: password.length >= 8,
+    upperCase: /[A-Z]/.test(password),
+    lowerCase: /[a-z]/.test(password),
+    number: /[0-9]/.test(password),
+    specialChar: /[~#@$%&!*_?^-]/.test(password),
+    match: password === confirmPassword && confirmPassword.length > 0,
+  };
+
+  const isAllValid =
+    validation.length &&
+    validation.upperCase &&
+    validation.lowerCase &&
+    validation.number &&
+    validation.specialChar &&
+    validation.match;
+
+  const getReqColor = (isValid: boolean) => {
+    if (password.length === 0) return '#ddd';
+    return isValid ? '#ACF709' : '#ff4444';
+  };
+
   const handleNext = () => {
-    dispatch(validateCredentials());
-
-    if (passwordError || confirmError) return;
+    if (isAllValid) {
+      dispatch(signUpRequest(email, password));
+      dispatch(setActiveModal('signup-code'));
+    }
   };
 
-  const handleBack = () => {
-    dispatch(setActiveModal('signup'));
-  };
-
-  const handleClose = () => {
-    dispatch(setActiveModal(null));
-  };
+  const handleBack = () => dispatch(setActiveModal('signup'));
+  const handleClose = () => dispatch(setActiveModal(null));
 
   return (
     <Modal
@@ -89,18 +107,13 @@ const SignUpPassword = () => {
           rounded="12px"
           bg="#2a2a2a"
           border="1px solid"
-          borderColor={passwordError ? '#ff4444' : '#444'}
-          focusBorderColor="#ffffffff"
+          borderColor={password.length > 0 && !validation.length ? '#ff4444' : '#444'}
+          focusBorderColor="#ffffff"
           textColor="white"
           placeholderTextColor="#888"
         />
-        {passwordError && (
-          <Text textSize="12px" textColor="#ff4444" p={{ t: '8px' }}>
-            {passwordError}
-          </Text>
-        )}
 
-        <Text textSize="14px" textColor="#ddd" p={{ t: '24px', b: '8px' }}>
+        <Text textSize="14px" textColor="#ddd" p={{ t: '20px', b: '8px' }}>
           Повторите пароль
         </Text>
         <Input
@@ -114,30 +127,34 @@ const SignUpPassword = () => {
           rounded="12px"
           bg="#2a2a2a"
           border="1px solid"
-          borderColor={confirmError ? '#ff4444' : '#444'}
-          focusBorderColor="#ffffffff"
+          borderColor={confirmPassword.length > 0 && !validation.match ? '#ff4444' : '#444'}
+          focusBorderColor="#ffffff"
           textColor="white"
           placeholderTextColor="#888"
         />
-        {confirmError && (
-          <Text textSize="12px" textColor="#ff4444" p={{ t: '8px' }}>
-            {confirmError}
+
+        <Div textSize="13px" p={{ t: '20px' }}>
+          <Text textColor="#ddd" p={{ b: '4px' }}>
+            Пароль должен содержать:
           </Text>
-        )}
+          <Text textColor={getReqColor(validation.length)}>• минимум 8 символов</Text>
+          <Text textColor={getReqColor(validation.upperCase)}>• хотя бы одну заглавную букву</Text>
+          <Text textColor={getReqColor(validation.lowerCase)}>• хотя бы одну строчную букву</Text>
+          <Text textColor={getReqColor(validation.number)}>• хотя бы одну цифру</Text>
+          <Text textColor={getReqColor(validation.specialChar)}>• один спецсимвол: ~ # @ $ % & ! * _ ? ^ -</Text>
+
+          {confirmPassword.length > 0 && (
+            <Text textColor={validation.match ? '#ACF709' : '#ff4444'} p={{ t: '4px' }}>
+              • пароли {validation.match ? 'совпадают' : 'не совпадают'}
+            </Text>
+          )}
+        </Div>
 
         {serverError && (
-          <Text textSize="12px" textColor="#ff4444" p={{ t: '16px' }}>
+          <Text textSize="12px" textColor="#ff4444" p={{ t: '10px' }}>
             {serverError}
           </Text>
         )}
-
-        <Div textSize="13px" textColor="#ddd" p={{ t: '20px', b: '30px' }}>
-          <Text>Пароль должен содержать:</Text>
-          <Text>• минимум 8 символов</Text>
-          <Text>• хотя бы одну заглавную букву</Text>
-          <Text>• хотя бы одну строчную букву или цифру</Text>
-          <Text>• один спецсимвол: ~ # @ $ % & ! * _ ? ^ -</Text>
-        </Div>
 
         <Button
           w="370px"
@@ -148,11 +165,13 @@ const SignUpPassword = () => {
           textWeight="700"
           textSize="16px"
           textColor="#333"
+          m={{ t: '30px' }}
           onClick={handleNext}
-          m={{ t: '20px' }}
-          disabled={isLoading}
+          disabled={isLoading || !isAllValid}
+          cursor={!isAllValid ? 'not-allowed' : 'pointer'}
+          opacity={!isAllValid ? '0.5' : '1'}
         >
-          {isLoading ? 'Регистрируем...' : 'Далее'}
+          {isLoading ? 'Загрузка...' : 'Далее'}
         </Button>
       </Div>
     </Modal>

@@ -21,7 +21,7 @@ export interface UiState {
   passwordError: string | null;
   confirmError: string | null;
   isLoading: boolean;
-  serverError: string | null;
+  error: string | null;
 }
 
 export const initialState: UiState = {
@@ -33,19 +33,25 @@ export const initialState: UiState = {
   passwordError: null,
   confirmError: null,
   isLoading: false,
-  serverError: null,
+  error: null,
 };
 
 export const uiReducer = (state = initialState, action: UiActions): UiState => {
   switch (action.type) {
     case UiActionTypes.SET_ACTIVE_MODAL:
+      if (action.payload === null) {
+        return {
+          ...initialState,
+          activeModal: null,
+        };
+      }
+
       return {
         ...state,
         activeModal: action.payload,
+        error: null,
         emailError: null,
         passwordError: null,
-        confirmError: null,
-        serverError: null,
       };
 
     case UiActionTypes.SET_EMAIL:
@@ -70,35 +76,8 @@ export const uiReducer = (state = initialState, action: UiActions): UiState => {
       };
 
     case UiActionTypes.VALIDATE_CREDENTIALS: {
-      const errors = {
-        emailError: null as string | null,
-        passwordError: null as string | null,
-        confirmError: null as string | null,
-      };
-
-      if (!state.email) {
-        errors.emailError = 'Email обязателен';
-      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(state.email)) {
-        errors.emailError = 'Некорректный email';
-      }
-
-      if (!state.password) {
-        errors.passwordError = 'Пароль обязателен';
-      } else if (state.password.length < 8) {
-        errors.passwordError = 'Минимум 8 символов';
-      } else if (!/[A-Z]/.test(state.password)) {
-        errors.passwordError = 'Нужна хотя бы одна заглавная буква';
-      } else if (!/[0-9]/.test(state.password)) {
-        errors.passwordError = 'Нужна хотя бы одна цифра';
-      }
-
-      if (state.confirmPassword && state.password !== state.confirmPassword) {
-        errors.confirmError = 'Пароли не совпадают';
-      }
-
       return {
         ...state,
-        ...errors,
       };
     }
 

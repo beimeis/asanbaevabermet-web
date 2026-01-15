@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Logo from '../../../../assets/images/mapApp/Logo.png';
 import { setActiveModal, setEmail, setPassword, validateCredentials } from '../Modal/uiRedux/uiAction';
-
 import { RootState, AppDispatch } from '../../../../redux/store';
 
 const SignIn = () => {
@@ -17,6 +16,8 @@ const SignIn = () => {
   if (activeModal !== 'login') return null;
 
   const handleLogin = () => {
+    const cleanedEmail = email ? email.trim() : '';
+    dispatch(setEmail(cleanedEmail));
     dispatch(validateCredentials());
   };
 
@@ -103,7 +104,7 @@ const SignIn = () => {
           border="1px solid"
           borderColor={emailError ? '#ff4444' : '#444'}
           textColor="white"
-          focusBorderColor="#ffffffff"
+          focusBorderColor="#ffffff"
           placeholderTextColor="#888"
         />
         {emailError && (
@@ -127,9 +128,10 @@ const SignIn = () => {
           bg="#2a2a2a"
           border="1px solid"
           borderColor={passwordError ? '#ff4444' : '#444'}
-          focusBorderColor="#ffffffff"
+          focusBorderColor="#ffffff"
           textColor="white"
           placeholderTextColor="#888"
+          onKeyPress={(e) => e.key === 'Enter' && handleLogin()}
         />
         {passwordError && (
           <Text textSize="12px" textColor="#ff4444" p={{ t: '8px' }}>
