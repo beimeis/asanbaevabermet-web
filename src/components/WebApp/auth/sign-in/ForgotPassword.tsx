@@ -3,19 +3,19 @@ import { Modal, Div, Image, Text, Input, Button, Icon } from 'atomize';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Logo from '../../../../assets/images/mapApp/Logo.png';
-import { setActiveModal, setEmail, validateCredentials } from '../Modal/uiRedux/uiAction';
+import { forgotPasswordRequest, setActiveModal, setEmail } from '../authRedux/authAction';
 
 import { RootState, AppDispatch } from '../../../../redux/store';
 
 const ForgotPassword = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { activeModal, email, emailError, isLoading, serverError } = useSelector((state: RootState) => state.ui);
+  const { activeModal, email, emailError, isLoading, error } = useSelector((state: RootState) => state.auth);
 
   if (activeModal !== 'forgot-password') return null;
 
   const handleNext = () => {
-    dispatch(validateCredentials());
+    dispatch(forgotPasswordRequest(email));
   };
 
   const handleBack = () => {
@@ -101,9 +101,9 @@ const ForgotPassword = () => {
           </Text>
         )}
 
-        {serverError && (
+        {error && (
           <Text textSize="12px" textColor="#ff4444" p={{ t: '16px' }}>
-            {serverError}
+            {error}
           </Text>
         )}
 

@@ -11,7 +11,7 @@ const rootEpic = combineEpics();
 
 const rootReducer = combineReducers({
   getDevices,
-  authReducer,
+  auth: authReducer,
 });
 
 let store;

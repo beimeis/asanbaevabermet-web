@@ -31,7 +31,24 @@ export enum AuthActionTypes {
   SIGN_OUT_REQUEST = 'SIGN_OUT_REQUEST',
   SIGN_OUT_SUCCESS = 'SIGN_OUT_SUCCESS',
   SIGN_OUT_FAILURE = 'SIGN_OUT_FAILURE',
+
+  SET_ACTIVE_MODAL = 'SET_ACTIVE_MODAL',
+  SET_SIGNUP_FLOW = 'SET_SIGNUP_FLOW',
+  SET_RECOVERY_FLOW = 'SET_RECOVERY_FLOW',
+  RESET_FORM = 'RESET_FORM',
 }
+
+export type ModalType =
+  | 'intro'
+  | 'login'
+  | 'signup'
+  | 'password'
+  | 'forgot-password'
+  | 'reset-code'
+  | 'new-password'
+  | 'signup-code'
+  | 'password-setup'
+  | null;
 
 export interface SignUpRequestAction {
   type: AuthActionTypes.SIGN_UP_REQUEST;
@@ -124,6 +141,21 @@ export interface SetConfirmPasswordAction {
 export interface ValidateCredentialsAction {
   type: AuthActionTypes.VALIDATE_CREDENTIALS;
 }
+export interface SetActiveModalAction {
+  type: AuthActionTypes.SET_ACTIVE_MODAL;
+  payload: ModalType;
+}
+export interface SetSignupFlowAction {
+  type: AuthActionTypes.SET_SIGNUP_FLOW;
+  payload: boolean;
+}
+export interface SetRecoveryFlowAction {
+  type: AuthActionTypes.SET_RECOVERY_FLOW;
+  payload: boolean;
+}
+export interface ResetFormAction {
+  type: AuthActionTypes.RESET_FORM;
+}
 
 export type AuthActions =
   | SignUpRequestAction
@@ -150,7 +182,11 @@ export type AuthActions =
   | SetEmailAction
   | SetPasswordAction
   | SetConfirmPasswordAction
-  | ValidateCredentialsAction;
+  | ValidateCredentialsAction
+  | SetActiveModalAction
+  | SetSignupFlowAction
+  | SetRecoveryFlowAction
+  | ResetFormAction;
 
 export const signUpRequest = (email: string, password: string): SignUpRequestAction => ({
   type: AuthActionTypes.SIGN_UP_REQUEST,
@@ -242,4 +278,19 @@ export const setConfirmPassword = (confirmPassword: string): SetConfirmPasswordA
 });
 export const validateCredentials = (): ValidateCredentialsAction => ({
   type: AuthActionTypes.VALIDATE_CREDENTIALS,
+});
+export const setActiveModal = (modal: ModalType): SetActiveModalAction => ({
+  type: AuthActionTypes.SET_ACTIVE_MODAL,
+  payload: modal,
+});
+export const setSignupFlow = (isSignup: boolean): SetSignupFlowAction => ({
+  type: AuthActionTypes.SET_SIGNUP_FLOW,
+  payload: isSignup,
+});
+export const setRecoveryFlow = (isRecovery: boolean): SetRecoveryFlowAction => ({
+  type: AuthActionTypes.SET_RECOVERY_FLOW,
+  payload: isRecovery,
+});
+export const resetForm = (): ResetFormAction => ({
+  type: AuthActionTypes.RESET_FORM,
 });

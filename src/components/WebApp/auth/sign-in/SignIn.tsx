@@ -3,14 +3,14 @@ import { Modal, Div, Image, Text, Input, Button, Icon } from 'atomize';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Logo from '../../../../assets/images/mapApp/Logo.png';
-import { setActiveModal, setEmail, setPassword, validateCredentials } from '../Modal/uiRedux/uiAction';
+import { setActiveModal, setEmail, setPassword, signInRequest } from '../authRedux/authAction';
 import { RootState, AppDispatch } from '../../../../redux/store';
 
 const SignIn = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { activeModal, email, password, emailError, passwordError, isLoading, serverError } = useSelector(
-    (state: RootState) => state.ui,
+  const { activeModal, email, password, emailError, passwordError, isLoading, error } = useSelector(
+    (state: RootState) => state.auth,
   );
 
   if (activeModal !== 'login') return null;
@@ -18,7 +18,7 @@ const SignIn = () => {
   const handleLogin = () => {
     const cleanedEmail = email ? email.trim() : '';
     dispatch(setEmail(cleanedEmail));
-    dispatch(validateCredentials());
+    dispatch(signInRequest(cleanedEmail, password));
   };
 
   const handleBack = () => {
@@ -139,9 +139,9 @@ const SignIn = () => {
           </Text>
         )}
 
-        {serverError && (
+        {error && (
           <Text textSize="12px" textColor="#ff4444" p={{ t: '16px' }}>
-            {serverError}
+            {error}
           </Text>
         )}
 

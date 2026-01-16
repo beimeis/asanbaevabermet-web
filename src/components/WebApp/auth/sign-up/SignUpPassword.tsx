@@ -3,15 +3,15 @@ import { Modal, Div, Image, Text, Input, Button, Icon } from 'atomize';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Logo from '../../../../assets/images/mapApp/Logo.png';
-import { setActiveModal, setPassword, setConfirmPassword } from '../Modal/uiRedux/uiAction';
+import { setActiveModal, setPassword, setConfirmPassword } from '../authRedux/authAction';
 import { signUpRequest } from '../authRedux/authAction';
 import { RootState, AppDispatch } from '../../../../redux/store';
 
 const SignUpPassword = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { activeModal, email, password, confirmPassword, isLoading, serverError } = useSelector(
-    (state: RootState) => state.ui,
+  const { activeModal, email, password, confirmPassword, isLoading, error } = useSelector(
+    (state: RootState) => state.auth,
   );
 
   if (activeModal !== 'password') return null;
@@ -150,9 +150,9 @@ const SignUpPassword = () => {
           )}
         </Div>
 
-        {serverError && (
+        {error && (
           <Text textSize="12px" textColor="#ff4444" p={{ t: '10px' }}>
-            {serverError}
+            {error}
           </Text>
         )}
 

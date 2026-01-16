@@ -6,15 +6,19 @@ import { combineEpics, createEpicMiddleware } from 'redux-observable';
 /* Local dependencies */
 import getDevices from '../components/devices/getDevices/redux/reducer';
 import { authReducer } from '../components/WebApp/auth/authRedux/authReducer';
-import { uiReducer } from '../components/WebApp/auth/Modal/uiRedux/uiReducer';
-import { signUpEpic, signUpConfirmCodeEpic } from '../components/WebApp/auth/authRedux/Epic';
+import {
+  signUpEpic,
+  signUpConfirmCodeEpic,
+  signInEpic,
+  signUpRedirectEpic,
+  frogotPasswordEpic,
+} from '../components/WebApp/auth/authRedux/Epic';
 
-const rootEpic = combineEpics(signUpEpic, signUpConfirmCodeEpic);
+const rootEpic = combineEpics(signUpEpic, signUpConfirmCodeEpic, signInEpic, signUpRedirectEpic, frogotPasswordEpic);
 
 const rootReducer = combineReducers({
   getDevices,
   auth: authReducer,
-  ui: uiReducer,
 });
 
 let store;

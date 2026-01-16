@@ -16,6 +16,10 @@ import {
   signInSuccess,
   signInFailure,
   SignInRequestAction,
+  setActiveModal,
+  forgotPasswordSuccess,
+  forgotPasswordFailure,
+  ForgotPasswordRequestAction,
 } from './authAction';
 
 const cognitoClient = new CognitoClient({
@@ -39,11 +43,26 @@ export function signUpConfirmCodeEpic(action$): Observable<AuthActions> {
     ),
   );
 }
+
+export function signUpRedirectEpic(action$): Observable<AuthActions> {
+  return action$.pipe(
+    filter((action: AuthActions) => action.type === AuthActionTypes.SIGN_UP_CODE_SUCCESS),
+    switchMap(() => Promise.resolve(setActiveModal('login'))),
+  );
+}
 export function signInEpic(action$): Observable<AuthActions> {
   return action$.pipe(
     filter((action: AuthActions) => action.type === AuthActionTypes.SIGN_IN_REQUEST),
     switchMap(({ payload: { email, password } }: SignInRequestAction) =>
       cognitoClient.signIn(email, password).then(signInSuccess).catch(signInFailure),
+    ),
+  );
+}
+export function frogotPasswordEpic(action$): Observable<AuthActions> {
+  return action$.pipe(
+    filter((action: AuthActions) => action.type === AuthActionTypes.FORGOT_PASSWORD_REQUEST),
+    switchMap(({ payload: { email } }: ForgotPasswordRequestAction) =>
+      cognitoClient.forgotPassword(email).then(forgotPasswordSuccess).catch(forgotPasswordFailure),
     ),
   );
 }

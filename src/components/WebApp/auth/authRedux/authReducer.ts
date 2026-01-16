@@ -1,7 +1,7 @@
-import { AuthActionTypes, AuthActions } from './authAction';
+import { AuthActionTypes, AuthActions, ModalType } from './authAction';
 
 export interface AuthState {
-  activeModal: string | null;
+  activeModal: ModalType;
   email: string;
   code: string;
   password: string;
@@ -10,6 +10,7 @@ export interface AuthState {
   error: string | null;
   emailError: string | null;
   passwordError: string | null;
+  confirmError: string | null;
   resetPasswordFlow: boolean;
   newPasswordFlow: boolean;
   isAuthenticated: boolean;
@@ -26,6 +27,7 @@ export const initialAuthState: AuthState = {
   error: null,
   emailError: null,
   passwordError: null,
+  confirmError: null,
   resetPasswordFlow: false,
   newPasswordFlow: false,
   isAuthenticated: false,
@@ -34,6 +36,38 @@ export const initialAuthState: AuthState = {
 
 export const authReducer = (state = initialAuthState, action: AuthActions): AuthState => {
   switch (action.type) {
+    case AuthActionTypes.SET_ACTIVE_MODAL:
+      if (action.payload === null) {
+        return {
+          ...initialAuthState,
+          activeModal: null,
+        };
+      }
+      return {
+        ...state,
+        activeModal: action.payload,
+        error: null,
+        emailError: null,
+        passwordError: null,
+      };
+
+    case AuthActionTypes.SET_SIGNUP_FLOW:
+      return {
+        ...state,
+      };
+
+    case AuthActionTypes.SET_RECOVERY_FLOW:
+      return {
+        ...state,
+        resetPasswordFlow: action.payload,
+      };
+
+    case AuthActionTypes.RESET_FORM:
+      return {
+        ...initialAuthState,
+        activeModal: state.activeModal,
+      };
+
     case AuthActionTypes.SIGN_UP_REQUEST:
       return {
         ...state,
@@ -66,11 +100,10 @@ export const authReducer = (state = initialAuthState, action: AuthActions): Auth
         ...state,
         isLoading: false,
         error: null,
-        activeModal: 'login',
         code: '',
-        password: '',
         confirmPassword: '',
       };
+
     case AuthActionTypes.SIGN_UP_CODE_FAILURE:
       return {
         ...state,
@@ -199,7 +232,14 @@ export const authReducer = (state = initialAuthState, action: AuthActions): Auth
     case AuthActionTypes.SET_CONFIRM_PASSWORD:
       return {
         ...state,
+        confirmPassword: action.payload,
         passwordError: null,
+        confirmError: null,
+      };
+
+    case AuthActionTypes.VALIDATE_CREDENTIALS:
+      return {
+        ...state,
       };
 
     default:

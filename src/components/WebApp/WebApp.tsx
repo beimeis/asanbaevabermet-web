@@ -15,13 +15,13 @@ import SignUpPinCode from './auth/sign-up/SignUpPinCode';
 import ForgotPassword from '../../components/WebApp/auth/sign-in/ForgotPassword';
 import NewPassword from '../../components/WebApp/auth/sign-in/NewPassword';
 import SignInPinCode from './auth/sign-in/SignInPinCode';
-import { setActiveModal } from './auth/Modal/uiRedux/uiAction';
+import { setActiveModal } from './auth/authRedux/authAction';
 import { RootState, AppDispatch } from '../../redux/store';
 
 export default function WebApp() {
   const dispatch = useDispatch<AppDispatch>();
 
-  const activeModal = useSelector((state: RootState) => state.ui?.activeModal);
+  const { isAuthenticated, email, activeModal } = useSelector((state: RootState) => state.auth);
 
   const handleOpenIntro = () => {
     dispatch(setActiveModal('intro'));
@@ -82,28 +82,55 @@ export default function WebApp() {
             </Text>
           </Button>
         </Link>
-
-        <Button
-          onClick={handleOpenIntro}
-          bg="#333"
-          border="2px solid white"
-          hoverBg="#ACF709"
-          hoverTextColor="black"
-          hoverBorderColor="#ACF709"
-          rounded="16px"
-          d="flex"
-          align="center"
-          justify="center"
-          p={{ x: '20px', y: '12px' }}
-          h="52px"
-          minW="140px"
-          textWeight="600"
-        >
-          <Image src={AccIcon} w="24px" h="24px" />
-          <Text textSize="18px" p={{ l: '12px' }}>
-            Войти
-          </Text>
-        </Button>
+        <Div>
+          {isAuthenticated ? (
+            <Div>
+              <Button
+                bg="#333"
+                border="2px solid white"
+                hoverBg="#ACF709"
+                hoverTextColor="black"
+                hoverBorderColor="#ACF709"
+                rounded="16px"
+                d="flex"
+                align="center"
+                justify="center"
+                p={{ x: '20px', y: '12px' }}
+                h="52px"
+                minW="140px"
+                textWeight="600"
+              >
+                <Text textColor="#ACF709" hoverBg="#ACF709" hoverTextColor="black">
+                  {email}
+                </Text>
+              </Button>
+            </Div>
+          ) : (
+            <Div>
+              <Button
+                onClick={handleOpenIntro}
+                bg="#333"
+                border="2px solid white"
+                hoverBg="#ACF709"
+                hoverTextColor="black"
+                hoverBorderColor="#ACF709"
+                rounded="16px"
+                d="flex"
+                align="center"
+                justify="center"
+                p={{ x: '20px', y: '12px' }}
+                h="52px"
+                minW="140px"
+                textWeight="600"
+              >
+                <Image src={AccIcon} w="24px" h="24px" />
+                <Text textSize="18px" p={{ l: '12px' }}>
+                  Войти
+                </Text>
+              </Button>
+            </Div>
+          )}
+        </Div>
       </Div>
 
       {activeModal && renderModal()}

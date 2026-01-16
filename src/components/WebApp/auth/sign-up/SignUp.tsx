@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 /* Local dependencies */
 import Logo from '../../../../assets/images/mapApp/Logo.png';
-import { setActiveModal, setEmail } from '../Modal/uiRedux/uiAction';
+import { setActiveModal, setEmail } from '../authRedux/authAction';
 import { RootState, AppDispatch } from '../../../../redux/store';
 
 const SignUp = () => {
@@ -13,7 +13,7 @@ const SignUp = () => {
 
   const [localError, setLocalError] = useState('');
 
-  const { activeModal, email, isLoading } = useSelector((state: RootState) => state.ui);
+  const { activeModal, email, isLoading } = useSelector((state: RootState) => state.auth);
 
   const handleNext = () => {
     setLocalError('');

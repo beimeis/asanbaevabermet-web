@@ -2,13 +2,13 @@ import React from 'react';
 import { Modal, Div, Image, Text, Button, Icon } from 'atomize';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../../../redux/store';
-import { setActiveModal } from './uiRedux/uiAction';
+import { setActiveModal } from '../authRedux/authAction';
 
 import Logo from '../../../../assets/images/mapApp/Logo.png';
 
 const CustomModal = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { activeModal, isLoading } = useSelector((state: RootState) => state.ui);
+  const { activeModal, isLoading } = useSelector((state: RootState) => state.auth);
 
   if (activeModal !== 'intro') return null;
 

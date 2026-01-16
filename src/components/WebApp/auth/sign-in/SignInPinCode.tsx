@@ -3,14 +3,14 @@ import { Modal, Div, Image, Text, Input, Button, Icon } from 'atomize';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Logo from '../../../../assets/images/mapApp/Logo.png';
-import { setActiveModal } from '../Modal/uiRedux/uiAction';
+import { setActiveModal } from '../authRedux/authAction';
 
 import { RootState, AppDispatch } from '../../../../redux/store';
 
 const SignInPinCode = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { activeModal, isLoading, serverError } = useSelector((state: RootState) => state.ui);
+  const { activeModal, isLoading, error } = useSelector((state: RootState) => state.auth);
 
   const [pinCode, setPinCode] = useState('');
 
@@ -90,16 +90,16 @@ const SignInPinCode = () => {
           rounded="12px"
           bg="#2a2a2a"
           border="1px solid"
-          borderColor={serverError ? '#ff4444' : '#444'}
+          borderColor={error ? '#ff4444' : '#444'}
           focusBorderColor="#ffffffff"
           textColor="white"
           placeholderTextColor="#888"
           maxLength={6}
         />
 
-        {serverError && (
+        {error && (
           <Text textSize="12px" textColor="#ff4444" p={{ t: '8px' }}>
-            {serverError}
+            {error}
           </Text>
         )}
 

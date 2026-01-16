@@ -3,14 +3,13 @@ import { Modal, Div, Image, Text, Input, Button, Icon } from 'atomize';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Logo from '../../../../assets/images/mapApp/Logo.png';
-import { setActiveModal } from '../Modal/uiRedux/uiAction';
-import { signUpCodeRequest } from '../authRedux/authAction';
+import { setActiveModal, signUpCodeRequest } from '../authRedux/authAction';
 import { RootState, AppDispatch } from '../../../../redux/store';
 
 const SignUpPinCode = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { activeModal, email, isLoading, serverError } = useSelector((state: RootState) => state.ui);
+  const { activeModal, isLoading, error, email } = useSelector((state: RootState) => state.auth);
 
   const [pinCode, setPinCode] = useState('');
 
@@ -76,41 +75,35 @@ const SignUpPinCode = () => {
       />
 
       <Div p={{ x: '140px', t: '100px' }}>
-        <Text textSize="24px" textWeight="600" textColor="white" textAlign="center" p={{ b: '20px' }}>
+        <Text textSize="24px" textWeight="600" textColor="white" textAlign="center" p={{ b: '30px' }}>
           Подтверждение
         </Text>
-
-        <Text textSize="14px" textColor="#ddd" p={{ b: '8px' }}>
-          Введи код из СМС
+        <Text textSize="14px" textColor="#ddd" p={{ t: '24px', b: '17px' }}>
+          Введи полученный код, чтобы подтвердить свою почту
         </Text>
-
         <Input
           w="370px"
           h="50px"
           type="text"
-          placeholder="Код из СМС"
+          placeholder="Введите код"
           value={pinCode}
           onChange={(e) => setPinCode(e.target.value)}
           p={{ x: '16px', y: '14px' }}
           rounded="12px"
           bg="#2a2a2a"
           border="1px solid"
-          borderColor={serverError ? '#ff4444' : '#444'}
+          borderColor={error ? '#ff4444' : '#444'}
           focusBorderColor="#ffffffff"
           textColor="white"
           placeholderTextColor="#888"
           maxLength={6}
         />
 
-        {serverError && (
+        {error && (
           <Text textSize="12px" textColor="#ff4444" p={{ t: '8px' }}>
-            {serverError}
+            {error}
           </Text>
         )}
-
-        <Text textSize="14px" textColor="#ddd" p={{ t: '24px', b: '8px' }}>
-          Введи полученный код, чтобы подтвердить свой номер телефона
-        </Text>
 
         <Button
           w="370px"
