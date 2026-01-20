@@ -41,7 +41,6 @@ const SignUpPassword = () => {
   const handleNext = () => {
     if (isAllValid) {
       dispatch(signUpRequest(email, password));
-      dispatch(setActiveModal('signup-code'));
     }
   };
 

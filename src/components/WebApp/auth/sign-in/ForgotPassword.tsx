@@ -3,19 +3,27 @@ import { Modal, Div, Image, Text, Input, Button, Icon } from 'atomize';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Logo from '../../../../assets/images/mapApp/Logo.png';
-import { forgotPasswordRequest, setActiveModal, setEmail } from '../authRedux/authAction';
-
+import { resetPasswordRequest, setActiveModal, setEmail } from '../authRedux/authAction';
 import { RootState, AppDispatch } from '../../../../redux/store';
 
-const ForgotPassword = () => {
+const ForgotPassword: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { activeModal, email, emailError, isLoading, error } = useSelector((state: RootState) => state.auth);
+  const { activeModal, email, isLoading, error } = useSelector((state: RootState) => state.auth);
 
   if (activeModal !== 'forgot-password') return null;
 
+  const cleanedEmail = email ? email.trim() : '';
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const isAllValid = emailRegex.test(cleanedEmail);
+
   const handleNext = () => {
-    dispatch(forgotPasswordRequest(email));
+    if (!isAllValid) return;
+
+    dispatch(setEmail(cleanedEmail));
+    dispatch(resetPasswordRequest(cleanedEmail));
+    dispatch(setActiveModal('reset-code'));
   };
 
   const handleBack = () => {
@@ -28,7 +36,7 @@ const ForgotPassword = () => {
 
   return (
     <Modal
-      isOpen={activeModal === 'forgot-password'}
+      isOpen
       align="center"
       w={{ xs: '90%', md: '43.125rem' }}
       h={{ xs: 'auto', md: '32.25rem' }}
@@ -40,7 +48,6 @@ const ForgotPassword = () => {
         background: 'rgba(0, 0, 0, 0.55)',
         backdropFilter: 'blur(16px)',
         WebkitBackdropFilter: 'blur(16px)',
-        borderRadius: '20px',
       }}
       onClick={(e) => e.stopPropagation()}
     >
@@ -89,20 +96,14 @@ const ForgotPassword = () => {
           rounded="12px"
           bg="#2a2a2a"
           border="1px solid"
-          borderColor={emailError ? '#ff4444' : '#444'}
+          borderColor={!isAllValid && email.length > 0 ? '#ff4444' : error ? '#ff4444' : '#444'}
           textColor="white"
-          focusBorderColor="#ffffffff"
+          focusBorderColor="#fff"
           placeholderTextColor="#888"
         />
 
-        {emailError && (
-          <Text textSize="12px" textColor="#ff4444" p={{ t: '8px' }}>
-            {emailError}
-          </Text>
-        )}
-
         {error && (
-          <Text textSize="12px" textColor="#ff4444" p={{ t: '16px' }}>
+          <Text textSize="12px" textColor="#ff4444" p={{ t: '8px' }}>
             {error}
           </Text>
         )}
@@ -118,7 +119,9 @@ const ForgotPassword = () => {
           textColor="#333"
           onClick={handleNext}
           m={{ t: '40px' }}
-          disabled={isLoading}
+          disabled={isLoading || !isAllValid}
+          cursor={!isAllValid ? 'not-allowed' : 'pointer'}
+          opacity={!isAllValid ? '0.5' : '1'}
         >
           {isLoading ? 'Отправляем...' : 'Получить код'}
         </Button>

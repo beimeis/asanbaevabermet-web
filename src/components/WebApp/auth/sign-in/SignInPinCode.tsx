@@ -3,20 +3,26 @@ import { Modal, Div, Image, Text, Input, Button, Icon } from 'atomize';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Logo from '../../../../assets/images/mapApp/Logo.png';
-import { setActiveModal } from '../authRedux/authAction';
+import { setActiveModal, setCode } from '../authRedux/authAction';
 
 import { RootState, AppDispatch } from '../../../../redux/store';
 
 const SignInPinCode = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { activeModal, isLoading, error } = useSelector((state: RootState) => state.auth);
+  const { activeModal, isLoading, error, email, password } = useSelector((state: RootState) => state.auth);
 
   const [pinCode, setPinCode] = useState('');
 
   if (activeModal !== 'reset-code') return null;
 
-  const handleNext = () => {};
+  const handleNext = () => {
+    if (pinCode.length === 6) {
+      dispatch(setCode(pinCode));
+      setPinCode('');
+      dispatch(setActiveModal('new-password'));
+    }
+  };
 
   const handleBack = () => {
     dispatch(setActiveModal('forgot-password'));

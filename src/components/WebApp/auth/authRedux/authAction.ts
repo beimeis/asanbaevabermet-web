@@ -2,6 +2,7 @@ export enum AuthActionTypes {
   SET_EMAIL = 'SET_EMAIL',
   SET_PASSWORD = 'SET_PASSWORD',
   SET_CONFIRM_PASSWORD = 'SET_CONFIRM_PASSWORD',
+  SET_CODE = 'SET_CODE',
   VALIDATE_CREDENTIALS = 'VALIDATE_CREDENTIALS',
 
   SIGN_UP_REQUEST = 'SIGN_UP_REQUEST',
@@ -16,13 +17,9 @@ export enum AuthActionTypes {
   SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS',
   SIGN_IN_FAILURE = 'SIGN_IN_FAILURE',
 
-  FORGOT_PASSWORD_REQUEST = 'FORGOT_PASSWORD_REQUEST',
-  FORGOT_PASSWORD_SUCCESS = 'FORGOT_PASSWORD_SUCCESS',
-  FORGOT_PASSWORD_FAILURE = 'FORGOT_PASSWORD_FAILURE',
-
-  CONFIRM_FORGOT_CODE_REQUEST = 'CONFIRM_FORGOT_CODE_REQUEST',
-  CONFIRM_FORGOT_CODE_SUCCESS = 'CONFIRM_FORGOT_CODE_SUCCESS',
-  CONFIRM_FORGOT_CODE_FAILURE = 'CONFIRM_FORGOT_CODE_FAILURE',
+  CONFIRM_PASSWORD_REQUEST = 'CONFIRM_PASSWORD_REQUEST',
+  CONFIRM_PASSWORD_SUCCESS = 'CONFIRM_PASSWORD_SUCCESS',
+  CONFIRM_PASSWORD_FAILURE = 'CONFIRM_PASSWORD_FAILURE',
 
   RESET_PASSWORD_REQUEST = 'RESET_PASSWORD_REQUEST',
   RESET_PASSWORD_SUCCESS = 'RESET_PASSWORD_SUCCESS',
@@ -83,31 +80,20 @@ export interface SignInFailureAction {
   type: AuthActionTypes.SIGN_IN_FAILURE;
   payload: string;
 }
-export interface ForgotPasswordRequestAction {
-  type: AuthActionTypes.FORGOT_PASSWORD_REQUEST;
-  payload: { email: string };
+export interface ConfirmPasswordRequestAction {
+  type: AuthActionTypes.CONFIRM_PASSWORD_REQUEST;
+  payload: { email: string; code: string; password: string };
 }
-export interface ForgotPasswordSuccessAction {
-  type: AuthActionTypes.FORGOT_PASSWORD_SUCCESS;
+export interface ConfirmPasswordSuccessAction {
+  type: AuthActionTypes.CONFIRM_PASSWORD_SUCCESS;
 }
-export interface ForgotPasswordFailureAction {
-  type: AuthActionTypes.FORGOT_PASSWORD_FAILURE;
-  payload: string;
-}
-export interface ConfirmForgotCodeRequestAction {
-  type: AuthActionTypes.CONFIRM_FORGOT_CODE_REQUEST;
-  payload: { email: string; code: string };
-}
-export interface ConfirmForgotCodeSuccessAction {
-  type: AuthActionTypes.CONFIRM_FORGOT_CODE_SUCCESS;
-}
-export interface ConfirmForgotCodeFailureAction {
-  type: AuthActionTypes.CONFIRM_FORGOT_CODE_FAILURE;
+export interface ConfirmPasswordFailureAction {
+  type: AuthActionTypes.CONFIRM_PASSWORD_FAILURE;
   payload: string;
 }
 export interface ResetPasswordRequestAction {
   type: AuthActionTypes.RESET_PASSWORD_REQUEST;
-  payload: { email: string; password: string };
+  payload: { email: string };
 }
 export interface ResetPasswordSuccessAction {
   type: AuthActionTypes.RESET_PASSWORD_SUCCESS;
@@ -136,6 +122,10 @@ export interface SetPasswordAction {
 }
 export interface SetConfirmPasswordAction {
   type: AuthActionTypes.SET_CONFIRM_PASSWORD;
+  payload: string;
+}
+export interface SetCodeAction {
+  type: AuthActionTypes.SET_CODE;
   payload: string;
 }
 export interface ValidateCredentialsAction {
@@ -167,12 +157,9 @@ export type AuthActions =
   | SignInRequestAction
   | SignInSuccessAction
   | SignInFailureAction
-  | ForgotPasswordRequestAction
-  | ForgotPasswordSuccessAction
-  | ForgotPasswordFailureAction
-  | ConfirmForgotCodeRequestAction
-  | ConfirmForgotCodeSuccessAction
-  | ConfirmForgotCodeFailureAction
+  | ConfirmPasswordRequestAction
+  | ConfirmPasswordSuccessAction
+  | ConfirmPasswordFailureAction
   | ResetPasswordRequestAction
   | ResetPasswordSuccessAction
   | ResetPasswordFailureAction
@@ -182,6 +169,7 @@ export type AuthActions =
   | SetEmailAction
   | SetPasswordAction
   | SetConfirmPasswordAction
+  | SetCodeAction
   | ValidateCredentialsAction
   | SetActiveModalAction
   | SetSignupFlowAction
@@ -206,7 +194,7 @@ export const signUpCodeRequest = (email: string, code: string): SignUpCodeReques
 export const signUpCodeSuccess = (): SignUpCodeSuccessAction => ({
   type: AuthActionTypes.SIGN_UP_CODE_SUCCESS,
 });
-export const singUpCodeFailure = (error: string): SignUpCodeFailureAction => ({
+export const signUpCodeFailure = (error: string): SignUpCodeFailureAction => ({
   type: AuthActionTypes.SIGN_UP_CODE_FAILURE,
   payload: error,
 });
@@ -221,31 +209,24 @@ export const signInFailure = (error: string): SignInFailureAction => ({
   type: AuthActionTypes.SIGN_IN_FAILURE,
   payload: error,
 });
-export const forgotPasswordRequest = (email: string): ForgotPasswordRequestAction => ({
-  type: AuthActionTypes.FORGOT_PASSWORD_REQUEST,
-  payload: { email },
+export const confirmPasswordRequest = (
+  email: string,
+  code: string,
+  password: string,
+): ConfirmPasswordRequestAction => ({
+  type: AuthActionTypes.CONFIRM_PASSWORD_REQUEST,
+  payload: { email, code, password },
 });
-export const forgotPasswordSuccess = (): ForgotPasswordSuccessAction => ({
-  type: AuthActionTypes.FORGOT_PASSWORD_SUCCESS,
+export const confirmPasswordSuccess = (): ConfirmPasswordSuccessAction => ({
+  type: AuthActionTypes.CONFIRM_PASSWORD_SUCCESS,
 });
-export const forgotPasswordFailure = (error: string): ForgotPasswordFailureAction => ({
-  type: AuthActionTypes.FORGOT_PASSWORD_FAILURE,
+export const confirmPasswordFailure = (error: string): ConfirmPasswordFailureAction => ({
+  type: AuthActionTypes.CONFIRM_PASSWORD_FAILURE,
   payload: error,
 });
-export const confirmForgoteCodeRequest = (email: string, code: string): ConfirmForgotCodeRequestAction => ({
-  type: AuthActionTypes.CONFIRM_FORGOT_CODE_REQUEST,
-  payload: { email, code },
-});
-export const confirmForgotCodeSuccess = (): ConfirmForgotCodeSuccessAction => ({
-  type: AuthActionTypes.CONFIRM_FORGOT_CODE_SUCCESS,
-});
-export const confirmForgotCodeFailure = (error: string): ConfirmForgotCodeFailureAction => ({
-  type: AuthActionTypes.CONFIRM_FORGOT_CODE_FAILURE,
-  payload: error,
-});
-export const resetPasswordRequest = (email: string, password: string): ResetPasswordRequestAction => ({
+export const resetPasswordRequest = (email: string): ResetPasswordRequestAction => ({
   type: AuthActionTypes.RESET_PASSWORD_REQUEST,
-  payload: { email, password },
+  payload: { email },
 });
 export const resetPasswordSuccess = (): ResetPasswordSuccessAction => ({
   type: AuthActionTypes.RESET_PASSWORD_SUCCESS,
@@ -275,6 +256,10 @@ export const setPassword = (password: string): SetPasswordAction => ({
 export const setConfirmPassword = (confirmPassword: string): SetConfirmPasswordAction => ({
   type: AuthActionTypes.SET_CONFIRM_PASSWORD,
   payload: confirmPassword,
+});
+export const setCode = (code: string): SetCodeAction => ({
+  type: AuthActionTypes.SET_CODE,
+  payload: code,
 });
 export const validateCredentials = (): ValidateCredentialsAction => ({
   type: AuthActionTypes.VALIDATE_CREDENTIALS,

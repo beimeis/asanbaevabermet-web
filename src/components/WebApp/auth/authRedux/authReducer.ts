@@ -136,41 +136,20 @@ export const authReducer = (state = initialAuthState, action: AuthActions): Auth
         error: action.payload,
       };
 
-    case AuthActionTypes.FORGOT_PASSWORD_REQUEST:
-      return {
-        ...state,
-        isLoading: true,
-        error: null,
-        email: action.payload.email,
-        resetPasswordFlow: true,
-      };
-    case AuthActionTypes.FORGOT_PASSWORD_SUCCESS:
-      return {
-        ...state,
-        isLoading: false,
-        error: null,
-      };
-    case AuthActionTypes.FORGOT_PASSWORD_FAILURE:
-      return {
-        ...state,
-        isLoading: false,
-        error: action.payload,
-      };
-
-    case AuthActionTypes.CONFIRM_FORGOT_CODE_REQUEST:
+    case AuthActionTypes.CONFIRM_PASSWORD_REQUEST:
       return {
         ...state,
         isLoading: true,
         error: null,
       };
-    case AuthActionTypes.CONFIRM_FORGOT_CODE_SUCCESS:
+    case AuthActionTypes.CONFIRM_PASSWORD_SUCCESS:
       return {
         ...state,
         isLoading: false,
         error: null,
         newPasswordFlow: true,
       };
-    case AuthActionTypes.CONFIRM_FORGOT_CODE_FAILURE:
+    case AuthActionTypes.CONFIRM_PASSWORD_FAILURE:
       return {
         ...state,
         isLoading: false,

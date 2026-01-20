@@ -1,6 +1,6 @@
 /* External dependencies */
 import React from 'react';
-import { Div, Button, Image, Text } from 'atomize';
+import { Div, Button, Image, Text, Icon } from 'atomize';
 import { Link } from 'gatsby';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -15,7 +15,7 @@ import SignUpPinCode from './auth/sign-up/SignUpPinCode';
 import ForgotPassword from '../../components/WebApp/auth/sign-in/ForgotPassword';
 import NewPassword from '../../components/WebApp/auth/sign-in/NewPassword';
 import SignInPinCode from './auth/sign-in/SignInPinCode';
-import { setActiveModal } from './auth/authRedux/authAction';
+import { setActiveModal, signOutRequest } from './auth/authRedux/authAction';
 import { RootState, AppDispatch } from '../../redux/store';
 
 export default function WebApp() {
@@ -84,7 +84,7 @@ export default function WebApp() {
         </Link>
         <Div>
           {isAuthenticated ? (
-            <Div>
+            <Div d="flex" style={{ gap: '10px' }}>
               <Button
                 bg="#333"
                 border="2px solid white"
@@ -103,6 +103,22 @@ export default function WebApp() {
                 <Text textColor="#ACF709" hoverBg="#ACF709" hoverTextColor="black">
                   {email}
                 </Text>
+              </Button>
+              <Button
+                bg="#333"
+                border="2px solid white"
+                hoverBg="#ACF709"
+                hoverTextColor="black"
+                hoverBorderColor="#ACF709"
+                rounded="16px"
+                d="flex"
+                p={{ x: '20px', y: '12px' }}
+                h="52px"
+                minW="50px"
+                textWeight="200"
+                onClick={() => dispatch(signOutRequest())}
+              >
+                <Icon name="Logout" size="26px" color="#ACF709" hoverBg="#ACF709" hoverColor="black" />
               </Button>
             </Div>
           ) : (

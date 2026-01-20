@@ -3,14 +3,13 @@ import { Modal, Div, Image, Text, Input, Button, Icon } from 'atomize';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Logo from '../../../../assets/images/mapApp/Logo.png';
-import { setActiveModal, setPassword, setConfirmPassword } from '../authRedux/authAction';
-import { signUpRequest } from '../authRedux/authAction';
+import { setActiveModal, setPassword, setConfirmPassword, confirmPasswordRequest } from '../authRedux/authAction';
 import { RootState, AppDispatch } from '../../../../redux/store';
 
 const NewPassword = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { activeModal, email, password, confirmPassword, isLoading, error } = useSelector(
+  const { activeModal, email, password, confirmPassword, isLoading, error, code } = useSelector(
     (state: RootState) => state.auth,
   );
 
@@ -40,8 +39,8 @@ const NewPassword = () => {
 
   const handleNext = () => {
     if (isAllValid) {
-      dispatch(signUpRequest(email, password));
-      dispatch(setActiveModal('reset-code'));
+      dispatch(confirmPasswordRequest(email, code, password));
+      dispatch(setActiveModal('login'));
     }
   };
 
