@@ -17,9 +17,12 @@ export interface AuthState {
   isLoading: boolean;
 }
 
+const savedEmail = typeof window !== 'undefined' ? localStorage.getItem('email') : null;
+const savedIsAuthenticated = typeof window !== 'undefined' ? localStorage.getItem('isAuthenticated') === 'true' : false;
+
 export const initialAuthState: AuthState = {
   activeModal: null,
-  email: '',
+  email: savedEmail || '',
   password: '',
   code: '',
   newPassword: '',
@@ -30,7 +33,7 @@ export const initialAuthState: AuthState = {
   confirmError: null,
   resetPasswordFlow: false,
   newPasswordFlow: false,
-  isAuthenticated: false,
+  isAuthenticated: savedIsAuthenticated,
   isLoading: false,
 };
 
@@ -169,7 +172,7 @@ export const authReducer = (state = initialAuthState, action: AuthActions): Auth
         error: null,
         resetPasswordFlow: false,
         newPasswordFlow: false,
-        activeModal: 'login',
+        activeModal: 'reset-code',
       };
     case AuthActionTypes.RESET_PASSWORD_FAILURE:
       return {
@@ -186,6 +189,10 @@ export const authReducer = (state = initialAuthState, action: AuthActions): Auth
     case AuthActionTypes.SIGN_OUT_SUCCESS:
       return {
         ...initialAuthState,
+        isAuthenticated: false,
+        email: '',
+        activeModal: null,
+        error: null,
       };
     case AuthActionTypes.SIGN_OUT_FAILURE:
       return {
@@ -214,6 +221,13 @@ export const authReducer = (state = initialAuthState, action: AuthActions): Auth
         confirmPassword: action.payload,
         passwordError: null,
         confirmError: null,
+      };
+
+    case AuthActionTypes.SET_CODE:
+      return {
+        ...state,
+        code: action.payload,
+        error: null,
       };
 
     case AuthActionTypes.VALIDATE_CREDENTIALS:

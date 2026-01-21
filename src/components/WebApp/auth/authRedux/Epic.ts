@@ -99,7 +99,13 @@ export function signInEpic(action$): Observable<AuthActions> {
     switchMap(({ payload: { email, password } }: SignInRequestAction) =>
       cognitoClient
         .signIn(email, password)
-        .then(signInSuccess)
+        .then(() => {
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('email', email);
+            localStorage.setItem('isAuthenticated', 'true');
+          }
+          return signInSuccess();
+        })
         .catch((err) => Promise.resolve(signInFailure(getLocalizedError(err)))),
     ),
   );
@@ -126,14 +132,32 @@ export function confirmPasswordEpic(action$): Observable<AuthActions> {
     ),
   );
 }
+
+export function confirmPasswordSuccessEpic(action$): Observable<AuthActions> {
+  return action$.pipe(
+    filter((action: AuthActions) => action.type === AuthActionTypes.CONFIRM_PASSWORD_SUCCESS),
+    switchMap(() => Promise.resolve({ type: AuthActionTypes.SET_ACTIVE_MODAL, payload: 'login' })),
+  );
+}
 export function signOutEpic(action$): Observable<AuthActions> {
   return action$.pipe(
     filter((action: AuthActions) => action.type === AuthActionTypes.SIGN_OUT_REQUEST),
     switchMap(({}: SignOutRequestAction) =>
-      cognitoClient
-        .signOut()
-        .then(signOutSuccess)
-        .catch((err) => Promise.resolve(signOutFailure(getLocalizedError(err)))),
+      Promise.resolve(cognitoClient.signOut())
+        .then(() => {
+          if (typeof window !== 'undefined') {
+            localStorage.removeItem('email');
+            localStorage.removeItem('isAuthenticated');
+          }
+          return signOutSuccess();
+        })
+        .catch(() => {
+          if (typeof window !== 'undefined') {
+            localStorage.removeItem('email');
+            localStorage.removeItem('isAuthenticated');
+          }
+          return signOutSuccess();
+        }),
     ),
   );
 }

@@ -23,7 +23,6 @@ const ForgotPassword: React.FC = () => {
 
     dispatch(setEmail(cleanedEmail));
     dispatch(resetPasswordRequest(cleanedEmail));
-    dispatch(setActiveModal('reset-code'));
   };
 
   const handleBack = () => {

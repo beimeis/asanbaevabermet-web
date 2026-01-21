@@ -14,6 +14,7 @@ import {
   signUpRedirectEpic,
   forgotPasswordEpic,
   confirmPasswordEpic,
+  confirmPasswordSuccessEpic,
   signOutEpic,
 } from '../components/WebApp/auth/authRedux/Epic';
 
@@ -25,6 +26,7 @@ const rootEpic = combineEpics(
   signUpRedirectEpic,
   forgotPasswordEpic,
   confirmPasswordEpic,
+  confirmPasswordSuccessEpic,
   signOutEpic,
 );
 

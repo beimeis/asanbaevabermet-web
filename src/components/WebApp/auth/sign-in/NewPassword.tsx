@@ -30,7 +30,8 @@ const NewPassword = () => {
     validation.lowerCase &&
     validation.number &&
     validation.specialChar &&
-    validation.match;
+    validation.match &&
+    code.length > 0;
 
   const getReqColor = (isValid: boolean) => {
     if (password.length === 0) return '#ddd';
@@ -40,7 +41,6 @@ const NewPassword = () => {
   const handleNext = () => {
     if (isAllValid) {
       dispatch(confirmPasswordRequest(email, code, password));
-      dispatch(setActiveModal('login'));
     }
   };
 
