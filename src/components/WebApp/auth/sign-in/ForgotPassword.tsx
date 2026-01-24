@@ -6,7 +6,7 @@ import Logo from '../../../../assets/images/mapApp/Logo.png';
 import { resetPasswordRequest, setActiveModal, setEmail } from '../authRedux/authAction';
 import { RootState, AppDispatch } from '../../../../redux/store';
 
-const ForgotPassword: React.FC = () => {
+const ForgotPassword = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const { activeModal, email, isLoading, error } = useSelector((state: RootState) => state.auth);

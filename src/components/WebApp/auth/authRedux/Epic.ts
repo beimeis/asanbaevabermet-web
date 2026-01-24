@@ -10,9 +10,6 @@ import {
   signUpSuccess,
   signUpFailure,
   SignUpRequestAction,
-  SignUpCodeRequestAction,
-  signUpCodeSuccess,
-  signUpCodeFailure,
   signInSuccess,
   signInFailure,
   SignInRequestAction,
@@ -26,6 +23,9 @@ import {
   signOutSuccess,
   signOutFailure,
   SignOutRequestAction,
+  ConfirmSignUpRequestAction,
+  confirmSignUpSuccess,
+  confirmSignUpFailure,
 } from './authAction';
 
 const cognitoClient = new CognitoClient({
@@ -64,33 +64,19 @@ export function signUpEpic(action$): Observable<AuthActions> {
       cognitoClient
         .signUp(email, password)
         .then(signUpSuccess)
-        .catch((err) => Promise.resolve(signUpFailure(getLocalizedError(err)))),
+        .catch((err) => signUpFailure(getLocalizedError(err))),
     ),
   );
 }
-
-export function signUpSuccessEpic(action$): Observable<AuthActions> {
+export function confirmSignUpEpic(action$): Observable<AuthActions> {
   return action$.pipe(
-    filter((action: AuthActions) => action.type === AuthActionTypes.SIGN_UP_SUCCESS),
-    switchMap(() => Promise.resolve(setActiveModal('signup-code'))),
-  );
-}
-export function signUpConfirmCodeEpic(action$): Observable<AuthActions> {
-  return action$.pipe(
-    filter((action: AuthActions) => action.type === AuthActionTypes.SIGN_UP_CODE_REQUEST),
-    switchMap(({ payload: { email, code } }: SignUpCodeRequestAction) =>
+    filter((action: AuthActions) => action.type === AuthActionTypes.CONFIRM_SIGN_UP_REQUEST),
+    switchMap(({ payload: { email, code } }: ConfirmSignUpRequestAction) =>
       cognitoClient
         .signUpConfirmCode(email, code)
-        .then(signUpCodeSuccess)
-        .catch((err) => Promise.resolve(signUpCodeFailure(getLocalizedError(err)))),
+        .then(confirmSignUpSuccess)
+        .catch((err) => confirmSignUpFailure(getLocalizedError(err))),
     ),
-  );
-}
-
-export function signUpRedirectEpic(action$): Observable<AuthActions> {
-  return action$.pipe(
-    filter((action: AuthActions) => action.type === AuthActionTypes.SIGN_UP_CODE_SUCCESS),
-    switchMap(() => Promise.resolve(setActiveModal('login'))),
   );
 }
 export function signInEpic(action$): Observable<AuthActions> {
@@ -99,14 +85,14 @@ export function signInEpic(action$): Observable<AuthActions> {
     switchMap(({ payload: { email, password } }: SignInRequestAction) =>
       cognitoClient
         .signIn(email, password)
-        .then(() => {
+        .then((result) => {
           if (typeof window !== 'undefined') {
             localStorage.setItem('email', email);
             localStorage.setItem('isAuthenticated', 'true');
           }
-          return signInSuccess();
+          return signInSuccess(result);
         })
-        .catch((err) => Promise.resolve(signInFailure(getLocalizedError(err)))),
+        .catch((err) => signInFailure(getLocalizedError(err))),
     ),
   );
 }
@@ -117,7 +103,7 @@ export function forgotPasswordEpic(action$): Observable<AuthActions> {
       cognitoClient
         .forgotPassword(email)
         .then(resetPasswordSuccess)
-        .catch((err) => Promise.resolve(resetPasswordFailure(getLocalizedError(err)))),
+        .catch((err) => resetPasswordFailure(getLocalizedError(err))),
     ),
   );
 }
@@ -128,22 +114,17 @@ export function confirmPasswordEpic(action$): Observable<AuthActions> {
       cognitoClient
         .confirmPassword(email, code, password)
         .then(confirmPasswordSuccess)
-        .catch((err) => Promise.resolve(confirmPasswordFailure(getLocalizedError(err)))),
+        .catch((err) => confirmPasswordFailure(getLocalizedError(err))),
     ),
   );
 }
 
-export function confirmPasswordSuccessEpic(action$): Observable<AuthActions> {
-  return action$.pipe(
-    filter((action: AuthActions) => action.type === AuthActionTypes.CONFIRM_PASSWORD_SUCCESS),
-    switchMap(() => Promise.resolve({ type: AuthActionTypes.SET_ACTIVE_MODAL, payload: 'login' })),
-  );
-}
 export function signOutEpic(action$): Observable<AuthActions> {
   return action$.pipe(
     filter((action: AuthActions) => action.type === AuthActionTypes.SIGN_OUT_REQUEST),
     switchMap(({}: SignOutRequestAction) =>
-      Promise.resolve(cognitoClient.signOut())
+      cognitoClient
+        .signOut()
         .then(() => {
           if (typeof window !== 'undefined') {
             localStorage.removeItem('email');

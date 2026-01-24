@@ -8,25 +8,19 @@ import getDevices from '../components/devices/getDevices/redux/reducer';
 import { authReducer } from '../components/WebApp/auth/authRedux/authReducer';
 import {
   signUpEpic,
-  signUpSuccessEpic,
-  signUpConfirmCodeEpic,
+  confirmSignUpEpic,
   signInEpic,
-  signUpRedirectEpic,
   forgotPasswordEpic,
   confirmPasswordEpic,
-  confirmPasswordSuccessEpic,
   signOutEpic,
 } from '../components/WebApp/auth/authRedux/Epic';
 
 const rootEpic = combineEpics(
   signUpEpic,
-  signUpSuccessEpic,
-  signUpConfirmCodeEpic,
+  confirmSignUpEpic,
   signInEpic,
-  signUpRedirectEpic,
   forgotPasswordEpic,
   confirmPasswordEpic,
-  confirmPasswordSuccessEpic,
   signOutEpic,
 );
 

@@ -15,6 +15,7 @@ const CustomModal = () => {
   return (
     <Modal
       isOpen={activeModal === 'intro'}
+      onClose={() => dispatch(setActiveModal(null))}
       align="center"
       w={{ xs: '90%', md: '43.125rem' }}
       h={{ xs: 'auto', md: '32.25rem' }}

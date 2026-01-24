@@ -92,13 +92,13 @@ export const authReducer = (state = initialAuthState, action: AuthActions): Auth
         error: action.payload,
       };
 
-    case AuthActionTypes.SIGN_UP_CODE_REQUEST:
+    case AuthActionTypes.CONFIRM_SIGN_UP_REQUEST:
       return {
         ...state,
         isLoading: true,
         error: null,
       };
-    case AuthActionTypes.SIGN_UP_CODE_SUCCESS:
+    case AuthActionTypes.CONFIRM_SIGN_UP_SUCCESS:
       return {
         ...state,
         isLoading: false,
@@ -107,7 +107,7 @@ export const authReducer = (state = initialAuthState, action: AuthActions): Auth
         confirmPassword: '',
       };
 
-    case AuthActionTypes.SIGN_UP_CODE_FAILURE:
+    case AuthActionTypes.CONFIRM_SIGN_UP_FAILURE:
       return {
         ...state,
         isLoading: false,
@@ -150,7 +150,11 @@ export const authReducer = (state = initialAuthState, action: AuthActions): Auth
         ...state,
         isLoading: false,
         error: null,
-        newPasswordFlow: true,
+        resetPasswordFlow: false,
+        activeModal: 'login',
+        password: '',
+        code: '',
+        isAuthenticated: false,
       };
     case AuthActionTypes.CONFIRM_PASSWORD_FAILURE:
       return {
@@ -158,7 +162,6 @@ export const authReducer = (state = initialAuthState, action: AuthActions): Auth
         isLoading: false,
         error: action.payload,
       };
-
     case AuthActionTypes.RESET_PASSWORD_REQUEST:
       return {
         ...state,

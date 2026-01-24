@@ -9,9 +9,9 @@ export enum AuthActionTypes {
   SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS',
   SIGN_UP_FAILURE = 'SIGN_UP_FAILURE',
 
-  SIGN_UP_CODE_REQUEST = 'SIGN_UP_CODE_REQUEST',
-  SIGN_UP_CODE_SUCCESS = 'SIGN_UP_CODE_SUCCESS',
-  SIGN_UP_CODE_FAILURE = 'SIGN_UP_CODE_FAILURE',
+  CONFIRM_SIGN_UP_REQUEST = 'CONFIRM_SIGN_UP_REQUEST',
+  CONFIRM_SIGN_UP_SUCCESS = 'CONFIRM_SIGN_UP_SUCCESS',
+  CONFIRM_SIGN_UP_FAILURE = 'CONFIRM_SIGN_UP_FAILURE',
 
   SIGN_IN_REQUEST = 'SIGN_IN_REQUEST',
   SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS',
@@ -53,20 +53,22 @@ export interface SignUpRequestAction {
 }
 export interface SignUpSuccessAction {
   type: AuthActionTypes.SIGN_UP_SUCCESS;
+  result;
 }
 export interface SignUpFailureAction {
   type: AuthActionTypes.SIGN_UP_FAILURE;
   payload: string;
 }
-export interface SignUpCodeRequestAction {
-  type: AuthActionTypes.SIGN_UP_CODE_REQUEST;
+export interface ConfirmSignUpRequestAction {
+  type: AuthActionTypes.CONFIRM_SIGN_UP_REQUEST;
   payload: { email: string; code: string };
 }
-export interface SignUpCodeSuccessAction {
-  type: AuthActionTypes.SIGN_UP_CODE_SUCCESS;
+export interface ConfirmSignUpSuccessAction {
+  type: AuthActionTypes.CONFIRM_SIGN_UP_SUCCESS;
+  result;
 }
-export interface SignUpCodeFailureAction {
-  type: AuthActionTypes.SIGN_UP_CODE_FAILURE;
+export interface ConfirmSignUpFailureAction {
+  type: AuthActionTypes.CONFIRM_SIGN_UP_FAILURE;
   payload: string;
 }
 export interface SignInRequestAction {
@@ -75,6 +77,7 @@ export interface SignInRequestAction {
 }
 export interface SignInSuccessAction {
   type: AuthActionTypes.SIGN_IN_SUCCESS;
+  result;
 }
 export interface SignInFailureAction {
   type: AuthActionTypes.SIGN_IN_FAILURE;
@@ -86,6 +89,7 @@ export interface ConfirmPasswordRequestAction {
 }
 export interface ConfirmPasswordSuccessAction {
   type: AuthActionTypes.CONFIRM_PASSWORD_SUCCESS;
+  result;
 }
 export interface ConfirmPasswordFailureAction {
   type: AuthActionTypes.CONFIRM_PASSWORD_FAILURE;
@@ -97,6 +101,7 @@ export interface ResetPasswordRequestAction {
 }
 export interface ResetPasswordSuccessAction {
   type: AuthActionTypes.RESET_PASSWORD_SUCCESS;
+  result;
 }
 export interface ResetPasswordFailureAction {
   type: AuthActionTypes.RESET_PASSWORD_FAILURE;
@@ -151,9 +156,9 @@ export type AuthActions =
   | SignUpRequestAction
   | SignUpFailureAction
   | SignUpSuccessAction
-  | SignUpCodeRequestAction
-  | SignUpCodeSuccessAction
-  | SignUpCodeFailureAction
+  | ConfirmSignUpRequestAction
+  | ConfirmSignUpSuccessAction
+  | ConfirmSignUpFailureAction
   | SignInRequestAction
   | SignInSuccessAction
   | SignInFailureAction
@@ -180,30 +185,33 @@ export const signUpRequest = (email: string, password: string): SignUpRequestAct
   type: AuthActionTypes.SIGN_UP_REQUEST,
   payload: { email, password },
 });
-export const signUpSuccess = (): SignUpSuccessAction => ({
+export const signUpSuccess = (result: any): SignUpSuccessAction => ({
   type: AuthActionTypes.SIGN_UP_SUCCESS,
+  result,
 });
 export const signUpFailure = (error: string): SignUpFailureAction => ({
   type: AuthActionTypes.SIGN_UP_FAILURE,
   payload: error,
 });
-export const signUpCodeRequest = (email: string, code: string): SignUpCodeRequestAction => ({
-  type: AuthActionTypes.SIGN_UP_CODE_REQUEST,
+export const confirmSignUpRequest = (email: string, code: string): ConfirmSignUpRequestAction => ({
+  type: AuthActionTypes.CONFIRM_SIGN_UP_REQUEST,
   payload: { email, code },
 });
-export const signUpCodeSuccess = (): SignUpCodeSuccessAction => ({
-  type: AuthActionTypes.SIGN_UP_CODE_SUCCESS,
+export const confirmSignUpSuccess = (result: any): ConfirmSignUpSuccessAction => ({
+  type: AuthActionTypes.CONFIRM_SIGN_UP_SUCCESS,
+  result,
 });
-export const signUpCodeFailure = (error: string): SignUpCodeFailureAction => ({
-  type: AuthActionTypes.SIGN_UP_CODE_FAILURE,
+export const confirmSignUpFailure = (error: string): ConfirmSignUpFailureAction => ({
+  type: AuthActionTypes.CONFIRM_SIGN_UP_FAILURE,
   payload: error,
 });
 export const signInRequest = (email: string, password: string): SignInRequestAction => ({
   type: AuthActionTypes.SIGN_IN_REQUEST,
   payload: { email, password },
 });
-export const signInSuccess = (): SignInSuccessAction => ({
+export const signInSuccess = (result: any): SignInSuccessAction => ({
   type: AuthActionTypes.SIGN_IN_SUCCESS,
+  result,
 });
 export const signInFailure = (error: string): SignInFailureAction => ({
   type: AuthActionTypes.SIGN_IN_FAILURE,
@@ -217,8 +225,9 @@ export const confirmPasswordRequest = (
   type: AuthActionTypes.CONFIRM_PASSWORD_REQUEST,
   payload: { email, code, password },
 });
-export const confirmPasswordSuccess = (): ConfirmPasswordSuccessAction => ({
+export const confirmPasswordSuccess = (result: any): ConfirmPasswordSuccessAction => ({
   type: AuthActionTypes.CONFIRM_PASSWORD_SUCCESS,
+  result,
 });
 export const confirmPasswordFailure = (error: string): ConfirmPasswordFailureAction => ({
   type: AuthActionTypes.CONFIRM_PASSWORD_FAILURE,
@@ -228,8 +237,9 @@ export const resetPasswordRequest = (email: string): ResetPasswordRequestAction 
   type: AuthActionTypes.RESET_PASSWORD_REQUEST,
   payload: { email },
 });
-export const resetPasswordSuccess = (): ResetPasswordSuccessAction => ({
+export const resetPasswordSuccess = (result): ResetPasswordSuccessAction => ({
   type: AuthActionTypes.RESET_PASSWORD_SUCCESS,
+  result,
 });
 export const resetPasswordFailure = (error: string): ResetPasswordFailureAction => ({
   type: AuthActionTypes.RESET_PASSWORD_FAILURE,
