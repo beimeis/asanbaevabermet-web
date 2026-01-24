@@ -7,7 +7,7 @@ export interface AuthState {
   password: string;
   newPassword: string;
   confirmPassword: string;
-  error: string | null;
+  error: any | null;
   emailError: string | null;
   passwordError: string | null;
   confirmError: string | null;

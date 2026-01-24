@@ -57,7 +57,7 @@ export interface SignUpSuccessAction {
 }
 export interface SignUpFailureAction {
   type: AuthActionTypes.SIGN_UP_FAILURE;
-  payload: string;
+  payload: any;
 }
 export interface ConfirmSignUpRequestAction {
   type: AuthActionTypes.CONFIRM_SIGN_UP_REQUEST;
@@ -69,7 +69,7 @@ export interface ConfirmSignUpSuccessAction {
 }
 export interface ConfirmSignUpFailureAction {
   type: AuthActionTypes.CONFIRM_SIGN_UP_FAILURE;
-  payload: string;
+  payload: any;
 }
 export interface SignInRequestAction {
   type: AuthActionTypes.SIGN_IN_REQUEST;
@@ -81,7 +81,7 @@ export interface SignInSuccessAction {
 }
 export interface SignInFailureAction {
   type: AuthActionTypes.SIGN_IN_FAILURE;
-  payload: string;
+  payload: any;
 }
 export interface ConfirmPasswordRequestAction {
   type: AuthActionTypes.CONFIRM_PASSWORD_REQUEST;
@@ -93,7 +93,7 @@ export interface ConfirmPasswordSuccessAction {
 }
 export interface ConfirmPasswordFailureAction {
   type: AuthActionTypes.CONFIRM_PASSWORD_FAILURE;
-  payload: string;
+  payload: any;
 }
 export interface ResetPasswordRequestAction {
   type: AuthActionTypes.RESET_PASSWORD_REQUEST;
@@ -105,7 +105,7 @@ export interface ResetPasswordSuccessAction {
 }
 export interface ResetPasswordFailureAction {
   type: AuthActionTypes.RESET_PASSWORD_FAILURE;
-  payload: string;
+  payload: any;
 }
 export interface SignOutRequestAction {
   type: AuthActionTypes.SIGN_OUT_REQUEST;
@@ -115,7 +115,7 @@ export interface SignOutSuccessAction {
 }
 export interface SignOutFailureAction {
   type: AuthActionTypes.SIGN_OUT_FAILURE;
-  payload: string;
+  payload: any;
 }
 export interface SetEmailAction {
   type: AuthActionTypes.SET_EMAIL;
@@ -189,7 +189,7 @@ export const signUpSuccess = (result: any): SignUpSuccessAction => ({
   type: AuthActionTypes.SIGN_UP_SUCCESS,
   result,
 });
-export const signUpFailure = (error: string): SignUpFailureAction => ({
+export const signUpFailure = (error: any): SignUpFailureAction => ({
   type: AuthActionTypes.SIGN_UP_FAILURE,
   payload: error,
 });
@@ -201,7 +201,7 @@ export const confirmSignUpSuccess = (result: any): ConfirmSignUpSuccessAction =>
   type: AuthActionTypes.CONFIRM_SIGN_UP_SUCCESS,
   result,
 });
-export const confirmSignUpFailure = (error: string): ConfirmSignUpFailureAction => ({
+export const confirmSignUpFailure = (error: any): ConfirmSignUpFailureAction => ({
   type: AuthActionTypes.CONFIRM_SIGN_UP_FAILURE,
   payload: error,
 });
@@ -213,7 +213,7 @@ export const signInSuccess = (result: any): SignInSuccessAction => ({
   type: AuthActionTypes.SIGN_IN_SUCCESS,
   result,
 });
-export const signInFailure = (error: string): SignInFailureAction => ({
+export const signInFailure = (error: any): SignInFailureAction => ({
   type: AuthActionTypes.SIGN_IN_FAILURE,
   payload: error,
 });
@@ -229,7 +229,7 @@ export const confirmPasswordSuccess = (result: any): ConfirmPasswordSuccessActio
   type: AuthActionTypes.CONFIRM_PASSWORD_SUCCESS,
   result,
 });
-export const confirmPasswordFailure = (error: string): ConfirmPasswordFailureAction => ({
+export const confirmPasswordFailure = (error: any): ConfirmPasswordFailureAction => ({
   type: AuthActionTypes.CONFIRM_PASSWORD_FAILURE,
   payload: error,
 });
@@ -241,7 +241,7 @@ export const resetPasswordSuccess = (result): ResetPasswordSuccessAction => ({
   type: AuthActionTypes.RESET_PASSWORD_SUCCESS,
   result,
 });
-export const resetPasswordFailure = (error: string): ResetPasswordFailureAction => ({
+export const resetPasswordFailure = (error: any): ResetPasswordFailureAction => ({
   type: AuthActionTypes.RESET_PASSWORD_FAILURE,
   payload: error,
 });
@@ -251,7 +251,7 @@ export const signOutRequest = (): SignOutRequestAction => ({
 export const signOutSuccess = (): SignOutSuccessAction => ({
   type: AuthActionTypes.SIGN_OUT_SUCCESS,
 });
-export const signOutFailure = (error: string): SignOutFailureAction => ({
+export const signOutFailure = (error: any): SignOutFailureAction => ({
   type: AuthActionTypes.SIGN_OUT_FAILURE,
   payload: error,
 });

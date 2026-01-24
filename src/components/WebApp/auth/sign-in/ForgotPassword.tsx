@@ -1,12 +1,15 @@
 import React from 'react';
 import { Modal, Div, Image, Text, Input, Button, Icon } from 'atomize';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import Logo from '../../../../assets/images/mapApp/Logo.png';
 import { resetPasswordRequest, setActiveModal, setEmail } from '../authRedux/authAction';
 import { RootState, AppDispatch } from '../../../../redux/store';
+import { getAuthErrorKey } from '../../../../utils/errorHelpers';
 
 const ForgotPassword = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch<AppDispatch>();
 
   const { activeModal, email, isLoading, error } = useSelector((state: RootState) => state.auth);
@@ -103,7 +106,7 @@ const ForgotPassword = () => {
 
         {error && (
           <Text textSize="12px" textColor="#ff4444" p={{ t: '8px' }}>
-            {error}
+            {t(getAuthErrorKey(error))}
           </Text>
         )}
 

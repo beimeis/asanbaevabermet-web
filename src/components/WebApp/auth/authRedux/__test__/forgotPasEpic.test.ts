@@ -40,4 +40,24 @@ describe('forgotPasswordEpic', () => {
       result,
     });
   });
+
+  it('should fail to call `forgotPasswordEpic` and return `RESET_PASSWORD_FAILURE`', async () => {
+    const error = new Error('Failed to reset password');
+
+    forgotPasswordSpy.mockImplementationOnce(async (_email) => {
+      expect(_email).toEqual(email);
+
+      return Promise.reject(error);
+    });
+
+    const state$ = forgotPasswordEpic(of(resetPasswordRequest(email)));
+    const action = await lastValueFrom(state$);
+
+    expect.assertions(2);
+
+    expect(action).toEqual({
+      type: AuthActionTypes.RESET_PASSWORD_FAILURE,
+      payload: error,
+    });
+  });
 });

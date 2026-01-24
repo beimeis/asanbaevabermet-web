@@ -33,30 +33,6 @@ const cognitoClient = new CognitoClient({
   ClientId: process.env.GATSBY_COGNITO_CLIENT_ID,
 });
 
-const getLocalizedError = (error: any): string => {
-  const message = error?.message || error?.toString() || '';
-
-  if (message.includes('Cannot reset password for the user'))
-    return 'Невозможно сбросить пароль: не подтвержден Email.';
-  if (message.includes('User does not exist')) return 'Пользователь не найден.';
-  if (message.includes('Incorrect username or password')) return 'Неверный логин или пароль.';
-  if (message.includes('Password did not conform')) return 'Пароль не должен содержать пробелы.';
-  if (message.includes('User is not confirmed')) return 'Пользователь не подтвержден.';
-  if (message.includes('Invalid code') || message.includes('Code mismatch')) return 'Неверный код.';
-  if (message.includes('LimitExceededException') || message.includes('TooManyRequestsException'))
-    return 'Превышен лимит попыток. Пожалуйста, попробуйте позже.';
-  if (
-    message.includes('ExpiredCodeException') ||
-    message.includes('Invalid code provided, please request a code again')
-  )
-    return 'Срок действия кода истек. Пожалуйста, запросите новый код.';
-  if (message.includes('An account with the given email already exists'))
-    return 'Учетная запись с указанным адресом электронной почты уже существует.';
-  if (message.includes('Invalid verification code provided, please try again.'))
-    return 'Введен неверный код подтверждения, попробуйте еще раз.';
-  return message || 'Произошла ошибка';
-};
-
 export function signUpEpic(action$): Observable<AuthActions> {
   return action$.pipe(
     filter((action: AuthActions) => action.type === AuthActionTypes.SIGN_UP_REQUEST),
@@ -64,7 +40,7 @@ export function signUpEpic(action$): Observable<AuthActions> {
       cognitoClient
         .signUp(email, password)
         .then(signUpSuccess)
-        .catch((err) => signUpFailure(getLocalizedError(err))),
+        .catch((err) => signUpFailure(err)),
     ),
   );
 }
@@ -75,7 +51,7 @@ export function confirmSignUpEpic(action$): Observable<AuthActions> {
       cognitoClient
         .signUpConfirmCode(email, code)
         .then(confirmSignUpSuccess)
-        .catch((err) => confirmSignUpFailure(getLocalizedError(err))),
+        .catch((err) => confirmSignUpFailure(err)),
     ),
   );
 }
@@ -92,7 +68,7 @@ export function signInEpic(action$): Observable<AuthActions> {
           }
           return signInSuccess(result);
         })
-        .catch((err) => signInFailure(getLocalizedError(err))),
+        .catch((err) => signInFailure(err)),
     ),
   );
 }
@@ -103,7 +79,7 @@ export function forgotPasswordEpic(action$): Observable<AuthActions> {
       cognitoClient
         .forgotPassword(email)
         .then(resetPasswordSuccess)
-        .catch((err) => resetPasswordFailure(getLocalizedError(err))),
+        .catch((err) => resetPasswordFailure(err)),
     ),
   );
 }
@@ -114,7 +90,7 @@ export function confirmPasswordEpic(action$): Observable<AuthActions> {
       cognitoClient
         .confirmPassword(email, code, password)
         .then(confirmPasswordSuccess)
-        .catch((err) => confirmPasswordFailure(getLocalizedError(err))),
+        .catch((err) => confirmPasswordFailure(err)),
     ),
   );
 }

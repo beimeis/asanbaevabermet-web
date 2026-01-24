@@ -44,4 +44,26 @@ describe('confirmPasswordEpic', () => {
       result,
     });
   });
+
+  it('should fail to call `confirmPasswordEpic` and return `CONFIRM_PASSWORD_FAILURE`', async () => {
+    const error = new Error('Confirm password failed');
+
+    confirmPasswordSpy.mockImplementationOnce(async (_email, _password, _code) => {
+      expect(_email).toEqual(email);
+      expect(_password).toEqual(password);
+      expect(_code).toEqual(code);
+
+      return Promise.reject(error);
+    });
+
+    const state$ = confirmPasswordEpic(of(confirmPasswordRequest(email, password, code)));
+    const action = await lastValueFrom(state$);
+
+    expect.assertions(4);
+
+    expect(action).toEqual({
+      type: AuthActionTypes.CONFIRM_PASSWORD_FAILURE,
+      payload: error,
+    });
+  });
 });

@@ -1,13 +1,16 @@
 import React from 'react';
 import { Modal, Div, Image, Text, Input, Button, Icon } from 'atomize';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import Logo from '../../../../assets/images/mapApp/Logo.png';
 import { setActiveModal, setPassword, setConfirmPassword } from '../authRedux/authAction';
 import { signUpRequest } from '../authRedux/authAction';
 import { RootState, AppDispatch } from '../../../../redux/store';
+import { getAuthErrorKey } from '../../../../utils/errorHelpers';
 
 const SignUpPassword = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch<AppDispatch>();
 
   const { activeModal, email, password, confirmPassword, isLoading, error } = useSelector(
@@ -152,7 +155,7 @@ const SignUpPassword = () => {
 
         {error && (
           <Text textSize="12px" textColor="#ff4444" p={{ t: '10px' }}>
-            {error}
+            {t(getAuthErrorKey(error))}
           </Text>
         )}
 

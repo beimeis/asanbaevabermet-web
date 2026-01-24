@@ -42,4 +42,24 @@ describe('signUpEpic', () => {
       result,
     });
   });
+  it('should fail to call `signUpEpic` and return `SIGN_UP_FAILURE`', async () => {
+    const error = new Error('Sign up failed');
+
+    signUpSpy.mockImplementationOnce(async (_email, _password) => {
+      expect(_email).toEqual(email);
+      expect(_password).toEqual(password);
+
+      return Promise.reject(error);
+    });
+
+    const state$ = signUpEpic(of(signUpRequest(email, password)));
+    const action = await lastValueFrom(state$);
+
+    expect.assertions(3);
+
+    expect(action).toEqual({
+      type: AuthActionTypes.SIGN_UP_FAILURE,
+      payload: error,
+    });
+  });
 });

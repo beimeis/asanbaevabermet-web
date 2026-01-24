@@ -2,14 +2,12 @@
   "heroTitle": "Map",
   "heroSubtitle1": "Finik terminal map, explore,",
   "heroSubtitle2": "mark and earn points",
-  
   "featuresExploreTitle": "Explore",
   "featuresExploreText": "Finik terminal map — explore, mark, and earn points",
   "featuresMarkTitle": "Mark",
   "featuresMarkText": "Finik terminal map — explore, mark, and earn points",
   "featuresEarnTitle": "Earn points",
   "featuresEarnText": "Finik terminal map — explore, mark, and earn points",
-
   "cardsPlayTitle": "Play.",
   "cardsPlayText": "An exciting game",
   "cardsRedeemTitle": "Redeem.",
@@ -22,7 +20,6 @@
   "cardsMarkText": "We'll install a terminal",
   "cardsStudyTitle": "Discover.",
   "cardsStudyText": "A unique map",
-
   "footerBrand": "Finik",
   "footerDescriptionLine1": "Convenient and reliable domestic",
   "footerDescriptionLine2": "payment app in Kyrgyzstan",
@@ -34,6 +31,20 @@
   "footerProductsAcquiring": "Acquiring",
   "footerAboutTitle": "About us",
   "footerAboutCompany": "Company",
-  "footerAboutDocuments": "Documents"
-
+  "footerAboutDocuments": "Documents",
+  "auth": {
+    "errors": {
+      "resetPasswordEmailNotConfirmed": "Cannot reset password: Email not confirmed.",
+      "userNotFound": "User not found.",
+      "incorrectCredentials": "Incorrect username or password.",
+      "passwordNoSpaces": "Password should not contain spaces.",
+      "userNotConfirmed": "User is not confirmed.",
+      "invalidCode": "Invalid code.",
+      "limitExceeded": "Attempt limit exceeded. Please try again later.",
+      "codeExpired": "Code expired. Please request a new code.",
+      "emailExists": "An account with the given email already exists.",
+      "invalidVerificationCode": "Invalid verification code provided, please try again.",
+      "genericError": "An error occurred"
+    }
+  }
 }

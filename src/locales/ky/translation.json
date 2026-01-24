@@ -2,14 +2,12 @@
   "heroTitle": "Карта",
   "heroSubtitle1": "Finik терминалдарынын картасы, изилдеңиз,",
   "heroSubtitle2": "белгилеп, упай топтогула",
-
   "featuresExploreTitle": "Изилдеңиз",
   "featuresExploreText": "Finik терминалдарынын картасы, изилдеңиз, белгилеп, упай топтогула",
   "featuresMarkTitle": "Белгилеңиз",
   "featuresMarkText": "Finik терминалдарынын картасы, изилдеңиз, белгилеп, упай топтогула",
   "featuresEarnTitle": "Упай топтогула",
   "featuresEarnText": "Finik терминалдарынын картасы, изилдеңиз, белгилеп, упай топтогула",
-
   "cardsPlayTitle": "Ойноңуз.",
   "cardsPlayText": "Кызыктуу оюн",
   "cardsRedeemTitle": "Алмаштырыңыз.",
@@ -22,7 +20,6 @@
   "cardsMarkText": "Биз терминалды орнотобуз",
   "cardsStudyTitle": "Изилдеңиз.",
   "cardsStudyText": "Уникалдуу карта",
-
   "footerBrand": "Finik",
   "footerDescriptionLine1": "Ыңгайлуу жана ишенимдүү жергиликтүү",
   "footerDescriptionLine2": "Кыргызстанда төлөм жүргүзүү үчүн колдонмо",
@@ -34,7 +31,20 @@
   "footerProductsAcquiring": "Эквайринг",
   "footerAboutTitle": "Биз жөнүндө",
   "footerAboutCompany": "Компания",
-  "footerAboutDocuments": "Документтер"
+  "footerAboutDocuments": "Документтер",
+  "auth": {
+    "errors": {
+      "resetPasswordEmailNotConfirmed": "Сырсөздү калыбына келтирүү мүмкүн эмес: Email тастыкталган эмес.",
+      "userNotFound": "Колдонуучу табылган жок.",
+      "incorrectCredentials": "Логин же сырсөз туура эмес.",
+      "passwordNoSpaces": "Сырсөздүн ичинде боштуктар болбошу керек.",
+      "userNotConfirmed": "Колдонуучу тастыкталган эмес.",
+      "invalidCode": "Ката код.",
+      "limitExceeded": "Аракеттердин чегинен ашты. Кийинчерээк кайталап көрүңүз.",
+      "codeExpired": "Коддун мөөнөтү бүттү. Жаңы кодду сураңыз.",
+      "emailExists": "Бул электрондук почта менен эсеп буга чейин бар.",
+      "invalidVerificationCode": "Туура эмес тастыктоо коду киргизилди, кайра аракет кылыңыз.",
+      "genericError": "Ката кетти"
+    }
+  }
 }
-
-

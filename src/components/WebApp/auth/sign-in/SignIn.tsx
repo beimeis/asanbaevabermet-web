@@ -1,12 +1,15 @@
 import React from 'react';
 import { Modal, Div, Image, Text, Input, Button, Icon } from 'atomize';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import Logo from '../../../../assets/images/mapApp/Logo.png';
 import { setActiveModal, setEmail, setPassword, signInRequest } from '../authRedux/authAction';
 import { RootState, AppDispatch } from '../../../../redux/store';
+import { getAuthErrorKey } from '../../../../utils/errorHelpers';
 
 const SignIn = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch<AppDispatch>();
 
   const { activeModal, email, password, emailError, passwordError, isLoading, error } = useSelector(
@@ -141,7 +144,7 @@ const SignIn = () => {
 
         {error && (
           <Text textSize="12px" textColor="#ff4444" p={{ t: '16px' }}>
-            {error}
+            {t(getAuthErrorKey(error))}
           </Text>
         )}
 

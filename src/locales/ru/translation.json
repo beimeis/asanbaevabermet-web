@@ -2,14 +2,12 @@
   "heroTitle": "Карта",
   "heroSubtitle1": "Карта терминалов от Finik, исследуйте,",
   "heroSubtitle2": "отмечайте и зарабатывайте баллы",
-
   "featuresExploreTitle": "Исследуйте",
   "featuresExploreText": "Карта терминалов от Finik, исследуйте, отмечайте и зарабатывайте баллы",
   "featuresMarkTitle": "Отмечайте",
   "featuresMarkText": "Карта терминалов от Finik, исследуйте, отмечайте и зарабатывайте баллы",
   "featuresEarnTitle": "Зарабатывай баллы",
   "featuresEarnText": "Карта терминалов от Finik, исследуйте, отмечайте и зарабатывайте баллы",
-
   "cardsPlayTitle": "Играй.",
   "cardsPlayText": "Увлекательная игра",
   "cardsRedeemTitle": "Обменивай.",
@@ -22,7 +20,6 @@
   "cardsMarkText": "Мы поставим терминал",
   "cardsStudyTitle": "Изучай.",
   "cardsStudyText": "Уникальная карта",
-
   "footerBrand": "Finik",
   "footerDescriptionLine1": "Удобное и надежное отечественное",
   "footerDescriptionLine2": "приложение для оплаты в Кыргызстане",
@@ -34,5 +31,20 @@
   "footerProductsAcquiring": "Эквайринг",
   "footerAboutTitle": "О нас",
   "footerAboutCompany": "Компания",
-  "footerAboutDocuments": "Документы"
+  "footerAboutDocuments": "Документы",
+  "auth": {
+    "errors": {
+      "resetPasswordEmailNotConfirmed": "Невозможно сбросить пароль: не подтвержден Email.",
+      "userNotFound": "Пользователь не найден.",
+      "incorrectCredentials": "Неверный логин или пароль.",
+      "passwordNoSpaces": "Пароль не должен содержать пробелы.",
+      "userNotConfirmed": "Пользователь не подтвержден.",
+      "invalidCode": "Неверный код.",
+      "limitExceeded": "Превышен лимит попыток. Пожалуйста, попробуйте позже.",
+      "codeExpired": "Срок действия кода истек. Пожалуйста, запросите новый код.",
+      "emailExists": "Учетная запись с указанным адресом электронной почты уже существует.",
+      "invalidVerificationCode": "Введен неверный код подтверждения, попробуйте еще раз.",
+      "genericError": "Произошла ошибка"
+    }
+  }
 }

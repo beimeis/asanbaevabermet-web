@@ -42,4 +42,25 @@ describe('sigInpEpic', () => {
       result,
     });
   });
+
+  it('should fail to call `signInEpic` and return `SIGN_IN_FAILURE`', async () => {
+    const error = new Error('Sign in failed');
+
+    signInSpy.mockImplementationOnce(async (_email, _password) => {
+      expect(_email).toEqual(email);
+      expect(_password).toEqual(password);
+
+      return Promise.reject(error);
+    });
+
+    const state$ = signInEpic(of(signInRequest(email, password)));
+    const action = await lastValueFrom(state$);
+
+    expect.assertions(3);
+
+    expect(action).toEqual({
+      type: AuthActionTypes.SIGN_IN_FAILURE,
+      payload: error,
+    });
+  });
 });

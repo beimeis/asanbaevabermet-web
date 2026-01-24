@@ -42,4 +42,25 @@ describe('confirmSignUpEpic', () => {
       result,
     });
   });
+
+  it('should fail to call `confirmSignUpEpic` and return `CONFIRM_SIGN_UP_FAILURE`', async () => {
+    const error = new Error('Confirm pincode failed');
+
+    confirmSignUpSpy.mockImplementationOnce(async (_email, _code) => {
+      expect(_email).toEqual(email);
+      expect(_code).toEqual(code);
+
+      return Promise.reject(error);
+    });
+
+    const state$ = confirmSignUpEpic(of(confirmSignUpRequest(email, code)));
+    const action = await lastValueFrom(state$);
+
+    expect.assertions(3);
+
+    expect(action).toEqual({
+      type: AuthActionTypes.CONFIRM_SIGN_UP_FAILURE,
+      payload: error,
+    });
+  });
 });
