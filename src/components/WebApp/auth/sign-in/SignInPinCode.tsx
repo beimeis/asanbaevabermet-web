@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Div, Image, Text, Input, Button, Icon } from 'atomize';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import Logo from '../../../../assets/images/mapApp/Logo.png';
 import { setActiveModal, setCode } from '../authRedux/authAction';
@@ -8,6 +9,7 @@ import { setActiveModal, setCode } from '../authRedux/authAction';
 import { RootState, AppDispatch } from '../../../../redux/store';
 
 const SignInPinCode = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch<AppDispatch>();
 
   const { activeModal, isLoading, error, email, password } = useSelector((state: RootState) => state.auth);
@@ -78,18 +80,18 @@ const SignInPinCode = () => {
 
       <Div p={{ x: '140px', t: '100px' }}>
         <Text textSize="24px" textWeight="600" textColor="white" textAlign="center" p={{ b: '40px' }}>
-          Подтверждение
+          {t('auth.signInPinCode.title')}
         </Text>
 
         <Text textSize="14px" textColor="#ddd" p={{ b: '8px' }}>
-          Введи код
+          {t('auth.signInPinCode.enterCodeLabel')}
         </Text>
 
         <Input
           w="370px"
           h="50px"
           type="text"
-          placeholder="Введите код"
+          placeholder={t('auth.signInPinCode.enterCodePlaceholder')}
           value={pinCode}
           onChange={(e) => setPinCode(e.target.value)}
           p={{ x: '16px', y: '14px' }}
@@ -110,7 +112,7 @@ const SignInPinCode = () => {
         )}
 
         <Text textSize="14px" textColor="#ddd" p={{ t: '24px', b: '8px' }}>
-          Введи полученный код для подтверждения
+          {t('auth.signInPinCode.infoText')}
         </Text>
 
         <Button
@@ -126,7 +128,7 @@ const SignInPinCode = () => {
           m={{ t: '20px' }}
           disabled={isLoading || !pinCode}
         >
-          {isLoading ? 'Проверяем...' : 'Далее'}
+          {isLoading ? t('auth.signInPinCode.loading') : t('auth.signInPinCode.next')}
         </Button>
       </Div>
     </Modal>

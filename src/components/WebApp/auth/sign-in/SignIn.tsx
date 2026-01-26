@@ -98,17 +98,17 @@ const SignIn = () => {
         textAlign="center"
         p={{ t: '60px' }}
       >
-        Войти в аккаунт
+        {t('auth.signIn.title')}
       </Text>
 
       <Div p={{ t: '80px', l: '130px' }}>
         <Text textSize="14px" textColor="#ddd" p={{ b: '8px' }}>
-          Эл. почта
+          {t('auth.signIn.emailLabel')}
         </Text>
         <Input
           w="370px"
           h="50px"
-          placeholder="Введите адрес эл. почты"
+          placeholder={t('auth.signIn.emailPlaceholder')}
           value={email}
           onChange={(e) => dispatch(setEmail(e.target.value))}
           p={{ x: '16px', y: '14px' }}
@@ -127,14 +127,14 @@ const SignIn = () => {
         )}
 
         <Text textSize="14px" textColor="#ddd" p={{ b: '8px', t: '8px' }}>
-          Пароль
+          {t('auth.signIn.passwordLabel')}
         </Text>
 
         <Div pos="relative" w="370px">
           <Input
             h="50px"
             type={showPassword ? 'text' : 'password'}
-            placeholder="Введите пароль"
+            placeholder={t('auth.signIn.passwordPlaceholder')}
             value={password}
             onChange={(e) => dispatch(setPassword(e.target.value))}
             p={{ x: '16px', y: '14px' }}
@@ -185,11 +185,11 @@ const SignIn = () => {
           onClick={handleLogin}
           disabled={isLoading}
         >
-          {isLoading ? 'Входим...' : 'Войти'}
+          {isLoading ? t('auth.signIn.loading') : t('auth.signIn.next')}
         </Button>
 
         <Text textSize="14px" textColor="#ACF709" cursor="pointer" p={{ t: '16px' }} onClick={handleForgotPassword}>
-          Забыли пароль?
+          {t('auth.signIn.forgotPassword')}
         </Text>
       </Div>
     </Modal>

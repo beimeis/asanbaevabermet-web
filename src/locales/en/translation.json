@@ -45,6 +45,112 @@
       "emailExists": "An account with the given email already exists.",
       "invalidVerificationCode": "Invalid verification code provided, please try again.",
       "genericError": "An error occurred"
+    },
+    "password": {
+      "title": "Create a password",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "Enter password",
+      "confirmPasswordLabel": "Confirm password",
+      "confirmPasswordPlaceholder": "Confirm password",
+
+      "requirementsTitle": "Password must contain:",
+      "requirements": {
+        "length": "at least 8 characters",
+        "upperCase": "at least one uppercase letter",
+        "lowerCase": "at least one lowercase letter",
+        "number": "at least one number",
+        "specialChar": "one special character: ~ # @ $ % & ! * _ ? ^ -",
+        "match": {
+          "ok": "passwords match",
+          "fail": "passwords do not match"
+        }
+      },
+
+      "next": "Next",
+      "loading": "Loading..."
+    },
+    "signup": {
+      "title": "Create an account",
+      "subtitleLine1": "Finik terminal map — explore,",
+      "subtitleLine2": "mark locations and earn points",
+      "emailHint": "We only need your email",
+      "emailPlaceholder": "Enter your email address",
+      "errors": {
+        "emptyEmail": "Please enter your email",
+        "invalidEmail": "Invalid email format"
+      },
+      "next": "Next",
+      "loading": "Checking..."
+    },
+    "signupPinCode": {
+      "title": "Confirmation",
+      "description": "Enter the code you received to confirm your email",
+      "placeholder": "Enter code",
+      "next": "Next",
+      "loading": "Checking..."
+    },
+    "forgotPassword": {
+      "title": "Reset Password",
+      "emailLabel": "Enter your email",
+      "emailPlaceholder": "Enter email address",
+      "next": "Get code",
+      "loading": "Sending..."
+    },
+    "newPassword": {
+      "title": "New Password",
+      "passwordLabel": "Password",
+      "confirmPasswordLabel": "Confirm Password",
+      "requirementsTitle": "Password must contain:",
+      "placeholder": {
+        "password": "Enter password",
+        "confirmPassword": "Repeat password"
+      },
+      "requirements": {
+        "length": "at least 8 characters",
+        "upperCase": "at least one uppercase letter",
+        "lowerCase": "at least one lowercase letter",
+        "number": "at least one number",
+        "specialChar": "one special character: ~ # @ $ % & ! * _ ? ^ -",
+        "match": {
+          "ok": "passwords match",
+          "fail": "passwords do not match"
+        }
+      },
+      "next": "Next",
+      "loading": "Loading..."
+    },
+      "signIn": {
+    "title": "Sign In",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Enter email address",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter password",
+    "next": "Sign In",
+    "loading": "Signing in...",
+    "forgotPassword": "Forgot password?"
+  },
+    "signInPinCode": {
+    "title": "Verification",
+    "enterCodeLabel": "Enter code",
+    "enterCodePlaceholder": "Enter code",
+    "infoText": "Enter the code you received to confirm",
+    "next": "Next",
+    "loading": "Checking..."
+  },
+      "introModal": {
+    "title": "Finik Map",
+    "descriptionLine1": "Mark places on the map where we don't have",
+    "descriptionLine2": "a terminal, we will install it, and send you",
+    "descriptionLine3": "bonuses that you can exchange for",
+    "descriptionLine4": "real prizes",
+    "login": "Log in",
+    "signup": "Sign up"
+  },
+    "webApp": {
+      "header": {
+        "map": "Map",
+        "login": "Sign in"
+      }
     }
   }
 }

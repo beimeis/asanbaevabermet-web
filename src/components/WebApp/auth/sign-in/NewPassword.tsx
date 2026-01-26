@@ -97,18 +97,18 @@ const NewPassword = () => {
         onClick={handleClose}
       />
       <Text textSize="30px" textColor="#ffffff" p={{ t: '60px', l: '220px' }}>
-        Новый пароль
+        {t('auth.newPassword.title')}
       </Text>
       <Div p={{ x: '140px', t: '20px' }}>
         <Text textSize="14px" textColor="#ddd" p={{ b: '8px' }}>
-          Пароль
+          {t('auth.newPassword.passwordLabel')}
         </Text>
 
         <Div pos="relative" w="370px">
           <Input
             h="50px"
             type={showPassword ? 'text' : 'password'}
-            placeholder="Введите пароль"
+            placeholder={t('auth.newPassword.placeholder.password')}
             value={password}
             onChange={(e) => dispatch(setPassword(e.target.value))}
             p={{ x: '16px', y: '14px' }}
@@ -136,14 +136,14 @@ const NewPassword = () => {
         </Div>
 
         <Text textSize="14px" textColor="#ddd" p={{ t: '20px', b: '8px' }}>
-          Повторите пароль
+          {t('auth.newPassword.confirmPasswordLabel')}
         </Text>
 
         <Div pos="relative" w="370px">
           <Input
             h="50px"
             type={showConfirmPassword ? 'text' : 'password'}
-            placeholder="Повторите пароль"
+            placeholder={t('auth.newPassword.placeholder.confirmPassword')}
             value={confirmPassword}
             onChange={(e) => dispatch(setConfirmPassword(e.target.value))}
             p={{ x: '16px', y: '14px' }}
@@ -172,17 +172,20 @@ const NewPassword = () => {
 
         <Div textSize="13px" p={{ t: '20px' }}>
           <Text textColor="#ddd" p={{ b: '4px' }}>
-            Пароль должен содержать:
+            {t('auth.newPassword.requirementsTitle')}
           </Text>
-          <Text textColor={getReqColor(validation.length)}>• минимум 8 символов</Text>
-          <Text textColor={getReqColor(validation.upperCase)}>• хотя бы одну заглавную букву</Text>
-          <Text textColor={getReqColor(validation.lowerCase)}>• хотя бы одну строчную букву</Text>
-          <Text textColor={getReqColor(validation.number)}>• хотя бы одну цифру</Text>
-          <Text textColor={getReqColor(validation.specialChar)}>• один спецсимвол: ~ # @ $ % & ! * _ ? ^ -</Text>
+          <Text textColor={getReqColor(validation.length)}>• {t('auth.newPassword.requirements.length')}</Text>
+          <Text textColor={getReqColor(validation.upperCase)}>•{t('auth.newPassword.requirements.upperCase')}</Text>
+          <Text textColor={getReqColor(validation.lowerCase)}>•{t('auth.newPassword.requirements.lowerCase')}</Text>
+          <Text textColor={getReqColor(validation.number)}>• {t('auth.newPassword.requirements.number')}</Text>
+          <Text textColor={getReqColor(validation.specialChar)}>•{t('auth.newPassword.requirements.specialChar')}</Text>
 
           {confirmPassword.length > 0 && (
             <Text textColor={validation.match ? '#ACF709' : '#ff4444'} p={{ t: '4px' }}>
-              • пароли {validation.match ? 'совпадают' : 'не совпадают'}
+              •{' '}
+              {validation.match
+                ? t('auth.newPassword.requirements.match.ok')
+                : t('auth.newPassword.requirements.match.fail')}
             </Text>
           )}
         </Div>
@@ -208,7 +211,7 @@ const NewPassword = () => {
           cursor={!isAllValid ? 'not-allowed' : 'pointer'}
           opacity={!isAllValid ? '0.5' : '1'}
         >
-          {isLoading ? 'Загрузка...' : 'Далее'}
+          {isLoading ? t('auth.newPassword.loading') : t('auth.newPassword.next')}
         </Button>
       </Div>
     </Modal>

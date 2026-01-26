@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Modal, Div, Image, Text, Input, Button, Icon } from 'atomize';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 /* Local dependencies */
 import Logo from '../../../../assets/images/mapApp/Logo.png';
@@ -9,6 +10,7 @@ import { setActiveModal, setEmail } from '../authRedux/authAction';
 import { RootState, AppDispatch } from '../../../../redux/store';
 
 const SignUp = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch<AppDispatch>();
 
   const [localError, setLocalError] = useState('');
@@ -22,11 +24,11 @@ const SignUp = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!cleanedEmail) {
-      setLocalError('Пожалуйста, введите почту');
+      setLocalError(t('auth.signup.errors.emptyEmail'));
       return;
     }
     if (!emailRegex.test(cleanedEmail)) {
-      setLocalError('Некорректный формат почты');
+      setLocalError(t('auth.signup.errors.invalidEmail'));
       return;
     }
     dispatch(setEmail(cleanedEmail));
@@ -94,25 +96,25 @@ const SignUp = () => {
             textAlign="center"
             p={{ b: '20px', t: '120px' }}
           >
-            Создайте аккаунт
+            {t('auth.signup.title')}
           </Text>
 
           <Text textSize="15px" textColor="#ddd" p={{ l: '180px', b: '8px' }}>
-            Карта терминалов от Finik, исследуйте,
+            {t('auth.signup.subtitleLine1')}
           </Text>
           <Text textSize="15px" textColor="#ddd" p={{ l: '190px' }}>
-            отмечайте и зарабатывайте баллы
+            {t('auth.signup.subtitleLine2')}
           </Text>
 
           <Div p={{ l: '140px', t: '50px' }}>
             <Text textSize="14px" textColor="#ddd" p={{ b: '8px', l: '8px' }}>
-              Нам нужна только ваша почта
+              {t('auth.signup.emailHint')}
             </Text>
 
             <Input
               w="370px"
               h="52px"
-              placeholder="Введите адрес эл. почты"
+              placeholder={t('auth.signup.emailPlaceholder')}
               value={email}
               onChange={(e) => {
                 setLocalError('');
@@ -146,7 +148,7 @@ const SignUp = () => {
               m={{ t: '20px' }}
               disabled={isLoading}
             >
-              {isLoading ? 'Проверяем...' : 'Далее'}
+              {isLoading ? t('auth.signup.loading') : t('auth.signup.next')}
             </Button>
           </Div>
         </Div>

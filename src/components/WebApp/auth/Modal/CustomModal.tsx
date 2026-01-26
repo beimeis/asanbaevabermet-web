@@ -1,12 +1,14 @@
 import React from 'react';
 import { Modal, Div, Image, Text, Button, Icon } from 'atomize';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+
 import { RootState, AppDispatch } from '../../../../redux/store';
 import { setActiveModal } from '../authRedux/authAction';
-
 import Logo from '../../../../assets/images/mapApp/Logo.png';
 
 const CustomModal = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch<AppDispatch>();
   const { activeModal, isLoading } = useSelector((state: RootState) => state.auth);
 
@@ -46,19 +48,19 @@ const CustomModal = () => {
 
         <Div d="flex" flexDir="column" textAlign="center" p={{ t: '20px' }} style={{ gap: '8px' }} maxW="360px">
           <Text textSize={{ xs: '32px', md: '40px' }} textWeight="500" textColor="white">
-            Финик Карта
+            {t('auth.introModal.title')}
           </Text>
           <Text textSize="14px" textWeight="400" textColor="white">
-            Отмечай места на карте где нет нашего
+            {t('auth.introModal.descriptionLine1')}
           </Text>
           <Text textSize="14px" textWeight="400" textColor="white">
-            терминала, мы поставим его, а тебе пришлем
+            {t('auth.introModal.descriptionLine2')}
           </Text>
           <Text textSize="14px" textWeight="400" textColor="white">
-            бонусы которые ты сможешь обменять на
+            {t('auth.introModal.descriptionLine3')}
           </Text>
           <Text textSize="14px" textWeight="400" textColor="white">
-            реальные призы
+            {t('auth.introModal.descriptionLine4')}
           </Text>
         </Div>
 
@@ -85,7 +87,7 @@ const CustomModal = () => {
             onClick={() => dispatch(setActiveModal('login'))}
             disabled={isLoading}
           >
-            Войти в аккаунт
+            {t('auth.introModal.login')}
           </Button>
 
           <Button
@@ -102,7 +104,7 @@ const CustomModal = () => {
             onClick={() => dispatch(setActiveModal('signup'))}
             disabled={isLoading}
           >
-            Регистрация
+            {t('auth.introModal.signup')}
           </Button>
         </Div>
       </Div>

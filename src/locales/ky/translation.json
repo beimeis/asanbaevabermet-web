@@ -45,6 +45,111 @@
       "emailExists": "Бул электрондук почта менен эсеп буга чейин бар.",
       "invalidVerificationCode": "Туура эмес тастыктоо коду киргизилди, кайра аракет кылыңыз.",
       "genericError": "Ката кетти"
+    },
+    "password": {
+      "title": "Сырсөз түзүңүз",
+      "passwordLabel": "Сырсөз",
+      "passwordPlaceholder": "Сырсөздү киргизиңиз",
+      "confirmPasswordLabel": "Сырсөздү кайталаңыз",
+      "confirmPasswordPlaceholder": "Сырсөздү кайталаңыз",
+
+      "requirementsTitle": "Сырсөз төмөнкүлөрдү камтышы керек:",
+      "requirements": {
+        "length": "кеминде 8 белги",
+        "upperCase": "кеминде бир баш тамга",
+        "lowerCase": "кеминде бир кичине тамга",
+        "number": "кеминде бир сан",
+        "specialChar": "бир атайын белги: ~ # @ $ % & ! * _ ? ^ -",
+        "match": {
+          "ok": "сырсөздөр дал келет",
+          "fail": "сырсөздөр дал келбейт"
+        }
+      },
+
+      "next": "Кийинки",
+      "loading": "Жүктөлүүдө..."
+    },
+    "signup": {
+      "title": "Аккаунт түзүңүз",
+      "subtitleLine1": "Finik терминалдарынын картасы — изилдеңиз,",
+      "subtitleLine2": "белгилеңиз жана упай топтоңуз",
+      "emailHint": "Бизге сиздин почтаңыз гана керек",
+      "emailPlaceholder": "Эл. почтанын дарегин киргизиңиз",
+      "errors": {
+        "emptyEmail": "Сураныч, почтаңызды киргизиңиз",
+        "invalidEmail": "Почтанын форматы туура эмес"
+      },
+      "next": "Кийинки",
+      "loading": "Текшерилип жатат..."
+    },
+    "signupPinCode": {
+      "title": "Ырастоо",
+      "description": "Эл. почтаңызды ырастоо үчүн келген кодду киргизиңиз",
+      "placeholder": "Кодду киргизиңиз",
+      "next": "Кийинки",
+      "loading": "Текшерилип жатат..."
+    },
+    "forgotPassword": {
+      "title": "Сырсөздү калыбына келтирүү",
+      "emailLabel": "Эл. почтаңызды киргизиңиз",
+      "emailPlaceholder": "Эл. почтанын дарегин киргизиңиз",
+      "next": "Код алуу",
+      "loading": "Жөнөтүлүүдө..."
+    },
+    "newPassword": {
+      "title": "Жаңы сырсөз",
+      "passwordLabel": "Сырсөз",
+      "confirmPasswordLabel": "Сырсөздү кайталаңыз",
+      "requirementsTitle": "Сырсөз төмөнкүлөрдү камтышы керек:",
+      "placeholder": {
+        "password": "Сырсөздү киргизиңиз",
+        "confirmPassword": "Сырсөздү кайталаңыз"
+      },
+      "requirements": {
+        "length": "кеминде 8 белги",
+        "upperCase": "кеминде бир баш тамга",
+        "lowerCase": "кеминде бир кичине тамга",
+        "number": "кеминде бир сан",
+        "specialChar": "бир атайын белги: ~ # @ $ % & ! * _ ? ^ -",
+        "match": {
+          "ok": "сырсөздөр дал келет",
+          "fail": "сырсөздөр дал келбейт"
+        }
+      },
+      "next": "Кийинки",
+      "loading": "Жүктөлүүдө..."
+    },
+      "signIn": {
+    "title": "Аккаунтка кирүү",
+    "emailLabel": "Эл. почта",
+    "emailPlaceholder": "Эл. почтанын дарегин киргизиңиз",
+    "passwordLabel": "Сырсөз",
+    "passwordPlaceholder": "Сырсөздү киргизиңиз",
+    "next": "Кирүү",
+    "loading": "Кирүүдө...",
+    "forgotPassword": "Сырсөздү унуттуңузбу?"
+  },  "signInPinCode": {
+    "title": "Тастыктоо",
+    "enterCodeLabel": "Кодду киргизиңиз",
+    "enterCodePlaceholder": "Кодду киргизиңиз",
+    "infoText": "Эл. почтаңызды тастыктоо үчүн келген кодду киргизиңиз",
+    "next": "Андан ары",
+    "loading": "Текшерүүдө..."
+  },
+    "introModal": {
+    "title": "Финик Карта",
+    "descriptionLine1": "Картанын үстүнө биздин терминал жок жерлерди белгилеңиз",
+    "descriptionLine2": "терминалды орнотобуз жана сизге жиберебиз",
+    "descriptionLine3": "алмаштыра ала турган бонустар",
+    "descriptionLine4": "чын сыйлыктарга",
+    "login": "Кирүү",
+    "signup": "Каттоо"
+  },
+    "webApp": {
+      "header": {
+        "map": "Карта",
+        "login": "Кирүү"
+      }
     }
   }
 }

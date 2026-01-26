@@ -3,6 +3,7 @@ import React from 'react';
 import { Div, Button, Image, Text, Icon } from 'atomize';
 import { Link } from 'gatsby';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 /* Local dependencies */
 import Logo from '../../assets/images/mapApp/Logo.png';
@@ -17,8 +18,11 @@ import NewPassword from '../../components/WebApp/auth/sign-in/NewPassword';
 import SignInPinCode from './auth/sign-in/SignInPinCode';
 import { setActiveModal, signOutRequest } from './auth/authRedux/authAction';
 import { RootState, AppDispatch } from '../../redux/store';
+import Locales from '../../locales/locales.js';
+import i18n from '../../locales/i18next.js';
 
 export default function WebApp() {
+  const { t } = useTranslation();
   const dispatch = useDispatch<AppDispatch>();
 
   const { isAuthenticated, email, activeModal } = useSelector((state: RootState) => state.auth);
@@ -78,7 +82,7 @@ export default function WebApp() {
           >
             <Image src={Logo} w="24px" h="24px" />
             <Text textSize="18px" textWeight="500" p={{ l: '12px' }}>
-              Карта
+              {t('auth.webApp.header.map')}
             </Text>
           </Button>
         </Link>
@@ -141,7 +145,7 @@ export default function WebApp() {
               >
                 <Image src={AccIcon} w="24px" h="24px" />
                 <Text textSize="18px" p={{ l: '12px' }}>
-                  Войти
+                  {t('auth.webApp.header.login')}
                 </Text>
               </Button>
             </Div>

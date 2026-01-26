@@ -81,17 +81,17 @@ const ForgotPassword = () => {
 
       <Div p={{ x: '140px', t: '100px' }}>
         <Text textSize="28px" textWeight="600" textColor="white" textAlign="center" p={{ b: '40px' }}>
-          Восстановление пароля
+          {t('auth.forgotPassword.title')}
         </Text>
 
         <Text textSize="14px" textColor="#ddd" p={{ b: '8px' }}>
-          Введите email
+          {t('auth.forgotPassword.emailLabel')}
         </Text>
 
         <Input
           w="370px"
           h="50px"
-          placeholder="Введите адрес эл. почты"
+          placeholder={t('auth.forgotPassword.emailPlaceholder')}
           value={email}
           onChange={(e) => dispatch(setEmail(e.target.value))}
           p={{ x: '16px', y: '14px' }}
@@ -125,7 +125,7 @@ const ForgotPassword = () => {
           cursor={!isAllValid ? 'not-allowed' : 'pointer'}
           opacity={!isAllValid ? '0.5' : '1'}
         >
-          {isLoading ? 'Отправляем...' : 'Получить код'}
+          {isLoading ? t('auth.forgotPassword.loading') : t('auth.forgotPassword.next')}
         </Button>
       </Div>
     </Modal>

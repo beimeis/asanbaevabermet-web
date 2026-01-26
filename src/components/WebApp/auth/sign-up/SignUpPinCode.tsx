@@ -80,16 +80,16 @@ const SignUpPinCode = () => {
 
       <Div p={{ x: '140px', t: '100px' }}>
         <Text textSize="24px" textWeight="600" textColor="white" textAlign="center" p={{ b: '30px' }}>
-          Подтверждение
+          {t('auth.signupPinCode.title')}
         </Text>
         <Text textSize="14px" textColor="#ddd" p={{ t: '24px', b: '17px' }}>
-          Введи полученный код, чтобы подтвердить свою почту
+          {t('auth.signupPinCode.description')}
         </Text>
         <Input
           w="370px"
           h="50px"
           type="text"
-          placeholder="Введите код"
+          placeholder={t('auth.signupPinCode.placeholder')}
           value={pinCode}
           onChange={(e) => setPinCode(e.target.value)}
           p={{ x: '16px', y: '14px' }}
@@ -122,7 +122,7 @@ const SignUpPinCode = () => {
           m={{ t: '20px' }}
           disabled={isLoading || !pinCode}
         >
-          {isLoading ? 'Проверяем...' : 'Далее'}
+          {isLoading ? t('auth.signupPinCode.loading') : t('auth.signupPinCode.next')}
         </Button>
       </Div>
     </Modal>

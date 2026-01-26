@@ -45,6 +45,112 @@
       "emailExists": "Учетная запись с указанным адресом электронной почты уже существует.",
       "invalidVerificationCode": "Введен неверный код подтверждения, попробуйте еще раз.",
       "genericError": "Произошла ошибка"
+    },
+    "password": {
+      "title": "Создайте пароль",
+      "passwordLabel": "Пароль",
+      "passwordPlaceholder": "Введите пароль",
+      "confirmPasswordLabel": "Повторите пароль",
+      "confirmPasswordPlaceholder": "Повторите пароль",
+
+      "requirementsTitle": "Пароль должен содержать:",
+      "requirements": {
+        "length": "минимум 8 символов",
+        "upperCase": "хотя бы одну заглавную букву",
+        "lowerCase": "хотя бы одну строчную букву",
+        "number": "хотя бы одну цифру",
+        "specialChar": "один спецсимвол: ~ # @ $ % & ! * _ ? ^ -",
+        "match": {
+          "ok": "пароли совпадают",
+          "fail": "пароли не совпадают"
+        }
+      },
+
+      "next": "Далее",
+      "loading": "Загрузка..."
+    },
+    "signup": {
+      "title": "Создайте аккаунт",
+      "subtitleLine1": "Карта терминалов от Finik, исследуйте,",
+      "subtitleLine2": "отмечайте и зарабатывайте баллы",
+      "emailHint": "Нам нужна только ваша почта",
+      "emailPlaceholder": "Введите адрес эл. почты",
+      "errors": {
+        "emptyEmail": "Пожалуйста, введите почту",
+        "invalidEmail": "Некорректный формат почты"
+      },
+      "next": "Далее",
+      "loading": "Проверяем..."
+    },
+    "signupPinCode": {
+      "title": "Подтверждение",
+      "description": "Введи полученный код, чтобы подтвердить свою почту",
+      "placeholder": "Введите код",
+      "next": "Далее",
+      "loading": "Проверяем..."
+    },
+    "forgotPassword": {
+      "title": "Восстановление пароля",
+      "emailLabel": "Введите email",
+      "emailPlaceholder": "Введите адрес эл. почты",
+      "next": "Получить код",
+      "loading": "Отправляем..."
+    },
+    "newPassword": {
+      "title": "Новый пароль",
+      "passwordLabel": "Пароль",
+      "confirmPasswordLabel": "Повторите пароль",
+      "requirementsTitle": "Пароль должен содержать:",
+      "placeholder": {
+        "password": "Введите пароль",
+        "confirmPassword": "Повторите пароль"
+      },
+      "requirements": {
+        "length": "минимум 8 символов",
+        "upperCase": "хотя бы одну заглавную букву",
+        "lowerCase": "хотя бы одну строчную букву",
+        "number": "хотя бы одну цифру",
+        "specialChar": "один спецсимвол: ~ # @ $ % & ! * _ ? ^ -",
+        "match": {
+          "ok": "пароли совпадают",
+          "fail": "пароли не совпадают"
+        }
+      },
+      "next": "Далее",
+      "loading": "Загрузка..."
+    },
+      "signIn": {
+    "title": "Войти в аккаунт",
+    "emailLabel": "Эл. почта",
+    "emailPlaceholder": "Введите адрес эл. почты",
+    "passwordLabel": "Пароль",
+    "passwordPlaceholder": "Введите пароль",
+    "next": "Войти",
+    "loading": "Входим...",
+    "forgotPassword": "Забыли пароль?"
+  },
+    "signInPinCode": {
+    "title": "Подтверждение",
+    "enterCodeLabel": "Введи код",
+    "enterCodePlaceholder": "Введите код",
+    "infoText": "Введи полученный код для подтверждения",
+    "next": "Далее",
+    "loading": "Проверяем..."
+  },
+     "introModal": {
+    "title": "Финик Карта",
+    "descriptionLine1": "Отмечай места на карте где нет нашего",
+    "descriptionLine2": "терминала, мы поставим его, а тебе пришлем",
+    "descriptionLine3": "бонусы которые ты сможешь обменять на",
+    "descriptionLine4": "реальные призы",
+    "login": "Войти в аккаунт",
+    "signup": "Регистрация"
+  },
+    "webApp": {
+      "header": {
+        "map": "Карта",
+        "login": "Войти"
+      }
     }
   }
 }
