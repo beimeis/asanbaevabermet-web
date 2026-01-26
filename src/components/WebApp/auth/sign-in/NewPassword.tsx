@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Modal, Div, Image, Text, Input, Button, Icon } from 'atomize';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
@@ -9,6 +9,9 @@ import { RootState, AppDispatch } from '../../../../redux/store';
 import { getAuthErrorKey } from '../../../../utils/errorHelpers';
 
 const NewPassword = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const { t } = useTranslation();
   const dispatch = useDispatch<AppDispatch>();
 
@@ -93,47 +96,79 @@ const NewPassword = () => {
         cursor="pointer"
         onClick={handleClose}
       />
-
-      <Div p={{ x: '140px', t: '100px' }}>
+      <Text textSize="30px" textColor="#ffffff" p={{ t: '60px', l: '220px' }}>
+        Новый пароль
+      </Text>
+      <Div p={{ x: '140px', t: '20px' }}>
         <Text textSize="14px" textColor="#ddd" p={{ b: '8px' }}>
           Пароль
         </Text>
-        <Input
-          w="370px"
-          h="50px"
-          type="password"
-          placeholder="Введите пароль"
-          value={password}
-          onChange={(e) => dispatch(setPassword(e.target.value))}
-          p={{ x: '16px', y: '14px' }}
-          rounded="12px"
-          bg="#2a2a2a"
-          border="1px solid"
-          borderColor={password.length > 0 && !validation.length ? '#ff4444' : '#444'}
-          focusBorderColor="#ffffff"
-          textColor="white"
-          placeholderTextColor="#888"
-        />
+
+        <Div pos="relative" w="370px">
+          <Input
+            h="50px"
+            type={showPassword ? 'text' : 'password'}
+            placeholder="Введите пароль"
+            value={password}
+            onChange={(e) => dispatch(setPassword(e.target.value))}
+            p={{ x: '16px', y: '14px' }}
+            pr="48px"
+            rounded="12px"
+            bg="#2a2a2a"
+            border="1px solid"
+            borderColor={password.length > 0 && !validation.length ? '#ff4444' : '#444'}
+            focusBorderColor="#ffffff"
+            textColor="white"
+            placeholderTextColor="#888"
+          />
+
+          <Icon
+            name={showPassword ? 'EyeSolid' : 'Eye'}
+            size="20px"
+            color="#aaa"
+            pos="absolute"
+            top="50%"
+            right="14px"
+            transform="translateY(-50%)"
+            cursor="pointer"
+            onClick={() => setShowPassword((prev) => !prev)}
+          />
+        </Div>
 
         <Text textSize="14px" textColor="#ddd" p={{ t: '20px', b: '8px' }}>
           Повторите пароль
         </Text>
-        <Input
-          w="370px"
-          h="50px"
-          type="password"
-          placeholder="Повторите пароль"
-          value={confirmPassword}
-          onChange={(e) => dispatch(setConfirmPassword(e.target.value))}
-          p={{ x: '16px', y: '14px' }}
-          rounded="12px"
-          bg="#2a2a2a"
-          border="1px solid"
-          borderColor={confirmPassword.length > 0 && !validation.match ? '#ff4444' : '#444'}
-          focusBorderColor="#ffffff"
-          textColor="white"
-          placeholderTextColor="#888"
-        />
+
+        <Div pos="relative" w="370px">
+          <Input
+            h="50px"
+            type={showConfirmPassword ? 'text' : 'password'}
+            placeholder="Повторите пароль"
+            value={confirmPassword}
+            onChange={(e) => dispatch(setConfirmPassword(e.target.value))}
+            p={{ x: '16px', y: '14px' }}
+            pr="48px"
+            rounded="12px"
+            bg="#2a2a2a"
+            border="1px solid"
+            borderColor={confirmPassword.length > 0 && !validation.match ? '#ff4444' : '#444'}
+            focusBorderColor="#ffffff"
+            textColor="white"
+            placeholderTextColor="#888"
+          />
+
+          <Icon
+            name={showConfirmPassword ? 'EyeSolid' : 'Eye'}
+            size="20px"
+            color="#aaa"
+            pos="absolute"
+            top="50%"
+            right="14px"
+            transform="translateY(-50%)"
+            cursor="pointer"
+            onClick={() => setShowConfirmPassword((prev) => !prev)}
+          />
+        </Div>
 
         <Div textSize="13px" p={{ t: '20px' }}>
           <Text textColor="#ddd" p={{ b: '4px' }}>

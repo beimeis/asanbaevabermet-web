@@ -78,18 +78,18 @@ const SignInPinCode = () => {
 
       <Div p={{ x: '140px', t: '100px' }}>
         <Text textSize="24px" textWeight="600" textColor="white" textAlign="center" p={{ b: '40px' }}>
-          Введите код
+          Подтверждение
         </Text>
 
         <Text textSize="14px" textColor="#ddd" p={{ b: '8px' }}>
-          Введи код из СМС
+          Введи код
         </Text>
 
         <Input
           w="370px"
           h="50px"
           type="text"
-          placeholder="Код из СМС"
+          placeholder="Введите код"
           value={pinCode}
           onChange={(e) => setPinCode(e.target.value)}
           p={{ x: '16px', y: '14px' }}
