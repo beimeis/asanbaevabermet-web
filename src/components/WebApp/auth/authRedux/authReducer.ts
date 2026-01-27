@@ -53,24 +53,6 @@ export const authReducer = (state = initialAuthState, action: AuthActions): Auth
         emailError: null,
         passwordError: null,
       };
-
-    case AuthActionTypes.SET_SIGNUP_FLOW:
-      return {
-        ...state,
-      };
-
-    case AuthActionTypes.SET_RECOVERY_FLOW:
-      return {
-        ...state,
-        resetPasswordFlow: action.payload,
-      };
-
-    case AuthActionTypes.RESET_FORM:
-      return {
-        ...initialAuthState,
-        activeModal: state.activeModal,
-      };
-
     case AuthActionTypes.SIGN_UP_REQUEST:
       return {
         ...state,
@@ -231,11 +213,6 @@ export const authReducer = (state = initialAuthState, action: AuthActions): Auth
         ...state,
         code: action.payload,
         error: null,
-      };
-
-    case AuthActionTypes.VALIDATE_CREDENTIALS:
-      return {
-        ...state,
       };
 
     default:

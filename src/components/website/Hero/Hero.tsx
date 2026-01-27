@@ -1,86 +1,63 @@
-/* External dependencies */;
-import React from 'react';
-import {useTranslation} from 'react-i18next'
-import { Div, Image, Text, Button } from 'atomize'
+/* External dependencies */ import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { Div, Image, Text, Button } from 'atomize';
 import { Link } from 'gatsby';
 /* Local dependencies */
-import Logo from '../../../assets/images/header/Logo.svg'
-import EarthIcon from '../../../assets/images/hero/EarthIcon.png'
-import AppIcon from '../../../assets/images/hero/AppIcon.png'
-import AppleIcon from '../../../assets/images/hero/AppleIcon.png'
+import Logo from '../../../assets/images/header/Logo.svg';
+import EarthIcon from '../../../assets/images/hero/EarthIcon.png';
+import AppIcon from '../../../assets/images/hero/AppIcon.png';
+import AppleIcon from '../../../assets/images/hero/AppleIcon.png';
 import './Hero.scss';
 
 export default function Hero() {
-  const { t} = useTranslation();
+  const { t } = useTranslation();
 
   return (
-    <Div m={{ t: '-750px' }}>
-      <Div className="content" d="flex" justify="center" align="center" m={{ l: '50px' }}>
+    <Div d="flex" flexDir="column" justify="center" align="center">
+      <Div className="content" d="flex" style={{ gap: '20px' }}>
         <Image src={Logo} w={{ xs: '100%', md: '65px' }} h={{ xs: 'auto', md: '58px' }} maxW="55px" />
         <Div>
-          <Text
-            fontFamily="Inter"
-            tag="h1"
-            textColor="white"
-            textWeight="700"
-            textSize="64px"
-            lineHeight="100%"
-            p={{ t: '10px', l: '20px' }}
-          >
+          <Text fontFamily="Inter" tag="h1" textColor="white" textWeight="700" textSize="64px" lineHeight="100%">
             {t('heroTitle')}
           </Text>
         </Div>
       </Div>
-      <Div className="content">
-        <Text
-          fontFamily="Inter"
-          p={{ t: '40px', l: '520px' }}
-          textColor="white"
-          textWeight="500"
-          textSize="20px"
-          d="flex"
-        >
+      <Div className="content" p={{ t: '20px' }}>
+        <Text fontFamily="Inter" textColor="white" textWeight="500" textSize="20px">
           {t('heroSubtitle1')}
         </Text>
-        <Text
-          fontFamily="Inter"
-          textColor="white"
-          textWeight="500"
-          textSize="20px"
-          p={{ t: '10px', l: '550px' }}
-          d="flex"
-        >
+        <Text fontFamily="Inter" textColor="white" textWeight="500" textSize="20px">
           {t('heroSubtitle2')}
         </Text>
       </Div>
-      <Div d="flex" m={{ l: '320px', t: '20px' }}>
-      <Link to='/webApp'>
-        <Button
-          w={{ xs: '100%', md: '176px' }}
-          h={{ xs: 'auto', md: '52px' }}
-          maxW="176px"
-          m={{ t: '30px', l: '60px' }}
-          border="2px solid"
-          borderColor=" #C0C0C0"
-        >
-          <Image
-            src={EarthIcon}
-            w={{ xs: '100%', md: '37px' }}
-            h={{ xs: 'auto', md: '37px' }}
-            maxW="37px"
-            m={{ r: '8px' }}
-            bg="black"
-          />
-          <Div d="grid" gridAutoFlow="column">
-            <Text textSize="10px" m={{ r: '35px' }}>
-              Go to the
-            </Text>
-            <Text textSize="20px" m={{ t: '5px' }}>
-              Web App
-            </Text>
-          </Div>
-        </Button>
-      </Link>
+      <Div d="flex">
+        <Link to="/webApp">
+          <Button
+            w={{ xs: '100%', md: '176px' }}
+            h={{ xs: 'auto', md: '52px' }}
+            maxW="176px"
+            m={{ t: '30px', l: '60px' }}
+            border="2px solid"
+            borderColor=" #C0C0C0"
+          >
+            <Image
+              src={EarthIcon}
+              w={{ xs: '100%', md: '37px' }}
+              h={{ xs: 'auto', md: '37px' }}
+              maxW="37px"
+              m={{ r: '8px' }}
+              bg="black"
+            />
+            <Div d="grid" gridAutoFlow="column">
+              <Text textSize="10px" m={{ r: '35px' }}>
+                Go to the
+              </Text>
+              <Text textSize="20px" m={{ t: '5px' }}>
+                Web App
+              </Text>
+            </Div>
+          </Button>
+        </Link>
         <Button
           w={{ xs: '100%', md: '176px' }}
           h={{ xs: 'auto', md: '52px' }}

@@ -38,187 +38,223 @@ exports[`MainPage component should match the snapshot 1`] = `
     className=""
   >
     <div
-      className="video-wrapper"
+      className=""
     >
-      <video
-        autoPlay={true}
-        className="video"
-        loop={true}
-        muted={true}
-        playsInline={true}
-        src="test-file-stub"
-      />
+      <div
+        className="video-wrapper"
+      >
+        <video
+          autoPlay={true}
+          className="video"
+          loop={true}
+          muted={true}
+          playsInline={true}
+          src="test-file-stub"
+        />
+      </div>
+    </div>
+    <div
+      className=""
+      style={
+        {
+          "pointerEvents": "none",
+          "zIndex": 10,
+        }
+      }
+    >
+      <div
+        className=""
+        style={
+          {
+            "pointerEvents": "all",
+          }
+        }
+      >
+        <div
+          className=""
+        >
+          <div
+            className="content "
+            style={
+              {
+                "gap": "20px",
+              }
+            }
+          >
+            <img
+              className=""
+              src="test-file-stub"
+            />
+            <div
+              className=""
+            >
+              <h1
+                className=""
+                lineHeight="100%"
+              >
+                heroTitle
+              </h1>
+            </div>
+          </div>
+          <div
+            className="content "
+          >
+            <p
+              className=""
+            >
+              heroSubtitle1
+            </p>
+            <p
+              className=""
+            >
+              heroSubtitle2
+            </p>
+          </div>
+          <div
+            className=""
+          >
+            <a
+              href="/webApp"
+            >
+              <button
+                className=""
+              >
+                <img
+                  bg="black"
+                  className=""
+                  src="test-file-stub"
+                />
+                <div
+                  className=""
+                  gridAutoFlow="column"
+                >
+                  <p
+                    className=""
+                  >
+                    Go to the
+                  </p>
+                  <p
+                    className=""
+                  >
+                    Web App
+                  </p>
+                </div>
+              </button>
+            </a>
+            <button
+              className=""
+            >
+              <img
+                className=""
+                src="test-file-stub"
+              />
+              <div
+                className=""
+                gridAutoFlow="column"
+              >
+                <p
+                  className=""
+                >
+                  Get it on
+                </p>
+                <p
+                  className=""
+                >
+                  Google Play
+                </p>
+              </div>
+            </button>
+            <button
+              className=""
+            >
+              <img
+                className=""
+                src="test-file-stub"
+              />
+              <div
+                className=""
+              >
+                <p
+                  className=""
+                >
+                  Download on the
+                </p>
+                <p
+                  className=""
+                >
+                  App Sotre
+                </p>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div
     className=""
   >
     <div
-      className="content "
+      className=""
     >
-      <img
-        className=""
-        src="test-file-stub"
-      />
       <div
         className=""
       >
-        <h1
+        <div
           className=""
-          lineHeight="100%"
         >
-          heroTitle
-        </h1>
-      </div>
-    </div>
-    <div
-      className="content "
-    >
-      <p
-        className=""
-      >
-        heroSubtitle1
-      </p>
-      <p
-        className=""
-      >
-        heroSubtitle2
-      </p>
-    </div>
-    <div
-      className=""
-    >
-      <a
-        href="/webApp"
-      >
-        <button
+          <div
+            className=""
+          >
+            <p
+              className=""
+            >
+              featuresExploreTitle
+            </p>
+            <p
+              className=""
+            >
+              featuresExploreText
+            </p>
+          </div>
+          <div
+            className=""
+          >
+            <p
+              className=""
+            >
+              featuresMarkTitle
+            </p>
+            <p
+              className=""
+            >
+              featuresMarkText
+            </p>
+          </div>
+          <div
+            className=""
+          >
+            <p
+              className=""
+            >
+              featuresEarnTitle
+            </p>
+            <p
+              className=""
+            >
+              featuresEarnText
+            </p>
+          </div>
+        </div>
+        <div
           className=""
         >
           <img
-            bg="black"
             className=""
             src="test-file-stub"
           />
-          <div
-            className=""
-            gridAutoFlow="column"
-          >
-            <p
-              className=""
-            >
-              Go to the
-            </p>
-            <p
-              className=""
-            >
-              Web App
-            </p>
-          </div>
-        </button>
-      </a>
-      <button
-        className=""
-      >
-        <img
-          className=""
-          src="test-file-stub"
-        />
-        <div
-          className=""
-          gridAutoFlow="column"
-        >
-          <p
-            className=""
-          >
-            Get it on
-          </p>
-          <p
-            className=""
-          >
-            Google Play
-          </p>
         </div>
-      </button>
-      <button
-        className=""
-      >
-        <img
-          className=""
-          src="test-file-stub"
-        />
-        <div
-          className=""
-        >
-          <p
-            className=""
-          >
-            Download on the
-          </p>
-          <p
-            className=""
-          >
-            App Sotre
-          </p>
-        </div>
-      </button>
-    </div>
-  </div>
-  <div
-    className=""
-  >
-    <div
-      className=""
-    >
-      <div
-        className=""
-      >
-        <p
-          className=""
-        >
-          featuresExploreTitle
-        </p>
-        <p
-          className=""
-        >
-          featuresExploreText
-        </p>
       </div>
-      <div
-        className=""
-      >
-        <p
-          className=""
-        >
-          featuresMarkTitle
-        </p>
-        <p
-          className=""
-        >
-          featuresMarkText
-        </p>
-      </div>
-      <div
-        className=""
-      >
-        <p
-          className=""
-        >
-          featuresEarnTitle
-        </p>
-        <p
-          className=""
-        >
-          featuresEarnText
-        </p>
-      </div>
-    </div>
-    <div
-      className=""
-    >
-      <img
-        className=""
-        src="test-file-stub"
-      />
     </div>
   </div>
   <div
@@ -241,6 +277,11 @@ exports[`MainPage component should match the snapshot 1`] = `
         </p>
         <p
           className=""
+          style={
+            {
+              "lineHeight": "1.1",
+            }
+          }
         >
           cardsPlayText
         </p>
@@ -259,14 +300,23 @@ exports[`MainPage component should match the snapshot 1`] = `
         </p>
         <p
           className=""
+          style={
+            {
+              "lineHeight": "1.1",
+            }
+          }
         >
           cardsRedeemText
         </p>
       </div>
-      <img
+      <div
         className=""
-        src="test-file-stub"
-      />
+      >
+        <img
+          className=""
+          src="test-file-stub"
+        />
+      </div>
     </div>
     <div
       className=""
@@ -285,6 +335,11 @@ exports[`MainPage component should match the snapshot 1`] = `
         </p>
         <p
           className=""
+          style={
+            {
+              "lineHeight": "1.1",
+            }
+          }
         >
           cardsEverywhereText
         </p>
@@ -293,10 +348,14 @@ exports[`MainPage component should match the snapshot 1`] = `
     <div
       className=""
     >
-      <img
+      <div
         className=""
-        src="test-file-stub"
-      />
+      >
+        <img
+          className=""
+          src="test-file-stub"
+        />
+      </div>
       <div
         className=""
       >
@@ -307,6 +366,11 @@ exports[`MainPage component should match the snapshot 1`] = `
         </p>
         <p
           className=""
+          style={
+            {
+              "lineHeight": "1.1",
+            }
+          }
         >
           cardsLookText
         </p>
@@ -315,10 +379,14 @@ exports[`MainPage component should match the snapshot 1`] = `
     <div
       className=""
     >
-      <img
+      <div
         className=""
-        src="test-file-stub"
-      />
+      >
+        <img
+          className=""
+          src="test-file-stub"
+        />
+      </div>
       <div
         className=""
       >
@@ -329,6 +397,11 @@ exports[`MainPage component should match the snapshot 1`] = `
         </p>
         <p
           className=""
+          style={
+            {
+              "lineHeight": "1.1",
+            }
+          }
         >
           cardsMarkText
         </p>
@@ -337,20 +410,13 @@ exports[`MainPage component should match the snapshot 1`] = `
     <div
       className=""
     >
-      <img
-        className=""
-        src="test-file-stub"
-      />
-      <img
-        className=""
-        src="test-file-stub"
-      />
-      <img
-        className=""
-        src="test-file-stub"
-      />
       <div
         className=""
+        style={
+          {
+            "textAlign": "center",
+          }
+        }
       >
         <p
           className=""
@@ -374,111 +440,116 @@ exports[`MainPage component should match the snapshot 1`] = `
       <div
         className=""
       >
-        <img
-          className=""
-          src="test-file-stub"
-        />
-        <p
-          className=""
-        >
-          footerBrand
-        </p>
-      </div>
-      <p
-        className=""
-      >
-        footerDescriptionLine1
-      </p>
-      <p
-        className=""
-      >
-        footerDescriptionLine2
-      </p>
-      <p
-        className=""
-      >
-        footerCopyright
-      </p>
-      <p
-        className=""
-      >
-        footerLicense
-      </p>
-      <div
-        className=""
-      >
         <div
           className=""
         >
+          <div
+            className=""
+          >
+            <img
+              className=""
+              src="test-file-stub"
+            />
+            <p
+              className=""
+            >
+              Finik
+            </p>
+          </div>
           <p
             className=""
           >
-            footerProductsTitle
+            footerDescriptionLine1
+             
+            footerDescriptionLine2
           </p>
           <p
             className=""
           >
-            footerProductsWallet
+            footerCopyright
           </p>
           <p
             className=""
           >
-            footerProductsTerminals
-          </p>
-          <p
-            className=""
-          >
-            footerProductsAcquiring
+            footerLicense
           </p>
         </div>
         <div
           className=""
         >
-          <p
+          <div
             className=""
           >
-            footerAboutTitle
-          </p>
-          <p
+            <p
+              className=""
+            >
+              footerProductsTitle
+            </p>
+            <p
+              className=""
+            >
+              footerProductsWallet
+            </p>
+            <p
+              className=""
+            >
+              footerProductsTerminals
+            </p>
+            <p
+              className=""
+            >
+              footerProductsAcquiring
+            </p>
+          </div>
+          <div
             className=""
           >
-            footerAboutCompany
-          </p>
-          <p
+            <p
+              className=""
+            >
+              footerAboutTitle
+            </p>
+            <p
+              className=""
+            >
+              footerAboutCompany
+            </p>
+            <p
+              className=""
+            >
+              footerAboutDocuments
+            </p>
+          </div>
+        </div>
+        <div
+          className=""
+        >
+          <img
             className=""
-          >
-            footerAboutDocuments
-          </p>
+            src="test-file-stub"
+          />
+          <img
+            className=""
+            src="test-file-stub"
+          />
+          <img
+            className=""
+            src="test-file-stub"
+          />
+          <img
+            className=""
+            src="test-file-stub"
+          />
+          <img
+            className=""
+            src="test-file-stub"
+          />
+          <img
+            className=""
+            src="test-file-stub"
+          />
         </div>
       </div>
-    </div>
-    <div
-      className=""
-    >
-      <img
-        className=""
-        src="test-file-stub"
-      />
-      <img
-        className=""
-        src="test-file-stub"
-      />
-      <img
-        className=""
-        src="test-file-stub"
-      />
-      <img
-        className=""
-        src="test-file-stub"
-      />
-      <img
-        className=""
-        src="test-file-stub"
-      />
-      <img
-        className=""
-        src="test-file-stub"
-      />
     </div>
   </div>
 </div>
