@@ -186,7 +186,7 @@ const SignUpPassword = () => {
             <Text textColor={getReqColor(validation.specialChar)}>• {t('auth.password.requirements.specialChar')}</Text>
             {confirmPassword.length > 0 && (
               <Text textColor={validation.match ? '#ACF709' : '#ff4444'}>
-                •{' '}
+                
                 {validation.match
                   ? t('auth.password.requirements.match.ok')
                   : t('auth.password.requirements.match.fail')}

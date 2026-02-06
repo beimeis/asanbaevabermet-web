@@ -10,8 +10,11 @@ import { getAuthErrorKey } from '../../../../utils/errorHelpers';
 
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [localError, setLocalError] = useState('');
+
   const { t } = useTranslation();
   const dispatch = useDispatch<AppDispatch>();
+
   const { activeModal, email, password, emailError, passwordError, isLoading, error } = useSelector(
     (state: RootState) => state.auth,
   );
@@ -21,7 +24,20 @@ const SignIn = () => {
   const validation = { length: password.length >= 8 };
 
   const handleLogin = () => {
+    setLocalError('');
+
     const cleanedEmail = email ? email.trim() : '';
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!cleanedEmail) {
+      setLocalError(t('auth.signup.errors.emptyEmail'));
+      return;
+    }
+    if (!emailRegex.test(cleanedEmail)) {
+      setLocalError(t('auth.signup.errors.invalidEmail'));
+      return;
+    }
+
     dispatch(setEmail(cleanedEmail));
     dispatch(signInRequest(cleanedEmail, password));
   };
@@ -103,18 +119,21 @@ const SignIn = () => {
             h="50px"
             placeholder={t('auth.signIn.emailPlaceholder')}
             value={email}
-            onChange={(e) => dispatch(setEmail(e.target.value))}
+            onChange={(e) => {
+              setLocalError('');
+              dispatch(setEmail(e.target.value));
+            }}
             p={{ x: '16px' }}
             rounded="12px"
             bg="#2a2a2a"
             border="1px solid"
-            borderColor={emailError ? '#ff4444' : '#444'}
+            borderColor={localError || emailError ? '#ff4444' : '#444'}
             textColor="white"
             focusBorderColor="#fff"
           />
-          {emailError && (
+          {(localError || emailError) && (
             <Text textSize="12px" textColor="#ff4444" m={{ t: '4px' }}>
-              {emailError}
+              {localError || emailError}
             </Text>
           )}
 

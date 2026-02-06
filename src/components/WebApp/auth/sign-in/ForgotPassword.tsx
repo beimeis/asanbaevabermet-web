@@ -85,7 +85,7 @@ const ForgotPassword = () => {
             h="50px"
             placeholder={t('auth.forgotPassword.emailPlaceholder')}
             value={email}
-            onChange={(e) => dispatch(setEmail(e.target.value))}
+            onChange={(e) => dispatch(e.target.value)}
             p={{ x: '16px' }}
             rounded="12px"
             bg="#2a2a2a"

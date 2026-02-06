@@ -151,16 +151,21 @@ const NewPassword = () => {
             <Text textColor="#ddd" m={{ b: '4px' }}>
               {t('auth.newPassword.requirementsTitle')}
             </Text>
-            {Object.keys(validation)
-              .filter((k) => k !== 'match')
-              .map((key) => (
-                <Text key={key} textColor={getReqColor(validation[key])}>
-                  • {t(`auth.newPassword.requirements.${key}`)}
-                </Text>
-              ))}
+
+            <Text textColor={getReqColor(validation.length)}>• {t('auth.newPassword.requirements.length')}</Text>
+
+            <Text textColor={getReqColor(validation.upperCase)}>• {t('auth.newPassword.requirements.upperCase')}</Text>
+
+            <Text textColor={getReqColor(validation.lowerCase)}>• {t('auth.newPassword.requirements.lowerCase')}</Text>
+
+            <Text textColor={getReqColor(validation.number)}>• {t('auth.newPassword.requirements.number')}</Text>
+
+            <Text textColor={getReqColor(validation.specialChar)}>
+              {t('auth.newPassword.requirements.specialChar')}
+            </Text>
+
             {confirmPassword.length > 0 && (
               <Text textColor={validation.match ? '#ACF709' : '#ff4444'}>
-                •{' '}
                 {validation.match
                   ? t('auth.newPassword.requirements.match.ok')
                   : t('auth.newPassword.requirements.match.fail')}
