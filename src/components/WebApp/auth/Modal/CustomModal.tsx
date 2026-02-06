@@ -19,61 +19,71 @@ const CustomModal = () => {
       isOpen={activeModal === 'intro'}
       onClose={() => dispatch(setActiveModal(null))}
       align="center"
-      w={{ xs: '90%', md: '43.125rem' }}
-      h={{ xs: 'auto', md: '32.25rem' }}
-      minH="600px"
-      minW="700px"
-      pos="relative"
       rounded="20px"
+      w={{ xs: '90%', md: 'auto' }}
+      maxW={{ xs: '100%', md: '90vw' }}
+      minW={{ xs: '0', md: '700px' }}
+      minH={{ xs: 'auto', md: '600px' }}
       style={{
         background: 'rgba(0, 0, 0, 0.55)',
         backdropFilter: 'blur(16px)',
         WebkitBackdropFilter: 'blur(16px)',
-        borderRadius: '20px',
       }}
-      overflow="hidden"
+      overflow="auto"
       onClick={(e) => e.stopPropagation()}
     >
+      <Icon
+        name="Cross"
+        size="24px"
+        color="#fff"
+        pos="absolute"
+        top="20px"
+        right="20px"
+        cursor="pointer"
+        onClick={() => dispatch(setActiveModal(null))}
+        zIndex="10"
+      />
+
       <Div
         d="flex"
         flexDir="column"
         align="center"
-        pos="absolute"
-        top={{ xs: '15%', md: '25%' }}
-        left="50%"
-        transform="translate(-50%, -50%)"
-        w={{ xs: '85%', md: 'auto' }}
+        justify="center"
+        w="100%"
+        h="100%"
+        minH={{ xs: 'auto', md: '600px' }}
+        p={{ x: '24px', y: '40px' }}
       >
-        <Image src={Logo} w="46px" h="46px" />
+        <Image src={Logo} w="46px" h="46px" m={{ b: '24px' }} />
 
-        <Div d="flex" flexDir="column" textAlign="center" p={{ t: '20px' }} style={{ gap: '8px' }} maxW="360px">
-          <Text textSize={{ xs: '32px', md: '40px' }} textWeight="500" textColor="white">
+        <Div d="flex" flexDir="column" textAlign="center" maxW="400px" m={{ b: '40px' }} style={{ gap: '8px' }}>
+          <Text
+            textSize={{ xs: '28px', md: '40px' }}
+            lineHeight="1.2"
+            textWeight="500"
+            textColor="white"
+            m={{ b: '12px' }}
+          >
             {t('auth.introModal.title')}
           </Text>
-          <Text textSize="14px" textWeight="400" textColor="white">
-            {t('auth.introModal.descriptionLine1')}
-          </Text>
-          <Text textSize="14px" textWeight="400" textColor="white">
-            {t('auth.introModal.descriptionLine2')}
-          </Text>
-          <Text textSize="14px" textWeight="400" textColor="white">
-            {t('auth.introModal.descriptionLine3')}
-          </Text>
-          <Text textSize="14px" textWeight="400" textColor="white">
-            {t('auth.introModal.descriptionLine4')}
-          </Text>
+
+          <Div>
+            <Text textSize="14px" textWeight="400" textColor="white">
+              {t('auth.introModal.descriptionLine1')}
+            </Text>
+            <Text textSize="14px" textWeight="400" textColor="white">
+              {t('auth.introModal.descriptionLine2')}
+            </Text>
+            <Text textSize="14px" textWeight="400" textColor="white">
+              {t('auth.introModal.descriptionLine3')}
+            </Text>
+            <Text textSize="14px" textWeight="400" textColor="white">
+              {t('auth.introModal.descriptionLine4')}
+            </Text>
+          </Div>
         </Div>
 
-        <Div
-          d="flex"
-          flexDir="column"
-          pos="absolute"
-          top={{ xs: '180px', md: '280px' }}
-          left="50%"
-          transform="translateX(-50%)"
-          w={{ xs: '80%', md: 'auto' }}
-          style={{ gap: '18px' }}
-        >
+        <Div d="flex" flexDir="column" w={{ xs: '100%', md: 'auto' }} align="center" style={{ gap: '16px' }}>
           <Button
             w={{ xs: '100%', md: '343px' }}
             h="52px"
@@ -108,17 +118,6 @@ const CustomModal = () => {
           </Button>
         </Div>
       </Div>
-
-      <Icon
-        name="Cross"
-        size="25px"
-        color="#fff"
-        pos="absolute"
-        top={{ xs: '16px', md: '24px' }}
-        right={{ xs: '16px', md: '24px' }}
-        cursor="pointer"
-        onClick={() => dispatch(setActiveModal(null))}
-      />
     </Modal>
   );
 };

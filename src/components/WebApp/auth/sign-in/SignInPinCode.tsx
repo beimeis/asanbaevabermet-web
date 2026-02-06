@@ -5,15 +5,12 @@ import { useTranslation } from 'react-i18next';
 
 import Logo from '../../../../assets/images/mapApp/Logo.png';
 import { setActiveModal, setCode } from '../authRedux/authAction';
-
 import { RootState, AppDispatch } from '../../../../redux/store';
 
 const SignInPinCode = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch<AppDispatch>();
-
-  const { activeModal, isLoading, error, email, password } = useSelector((state: RootState) => state.auth);
-
+  const { activeModal, isLoading, error } = useSelector((state: RootState) => state.auth);
   const [pinCode, setPinCode] = useState('');
 
   if (activeModal !== 'reset-code') return null;
@@ -26,110 +23,102 @@ const SignInPinCode = () => {
     }
   };
 
-  const handleBack = () => {
-    dispatch(setActiveModal('forgot-password'));
-  };
-
-  const handleClose = () => {
-    dispatch(setActiveModal(null));
-  };
+  const handleBack = () => dispatch(setActiveModal('forgot-password'));
+  const handleClose = () => dispatch(setActiveModal(null));
 
   return (
     <Modal
       isOpen={activeModal === 'reset-code'}
+      onClose={handleClose}
       align="center"
-      w={{ xs: '90%', md: '43.125rem' }}
-      h={{ xs: 'auto', md: '32.25rem' }}
-      minH="600px"
-      minW="700px"
-      pos="relative"
       rounded="20px"
-      style={{
-        background: 'rgba(0, 0, 0, 0.55)',
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
-        borderRadius: '20px',
-      }}
+      w={{ xs: '90%', md: 'auto' }}
+      minW={{ xs: '0', md: '700px' }}
+      minH={{ xs: 'auto', md: '600px' }}
+      style={{ background: 'rgba(0, 0, 0, 0.55)', backdropFilter: 'blur(16px)' }}
+      overflow="auto"
       onClick={(e) => e.stopPropagation()}
     >
       <Icon
         name="LeftArrow"
-        size="30px"
+        size="24px"
         color="#fff"
         pos="absolute"
-        left="24px"
-        top="24px"
+        left="20px"
+        top="20px"
         cursor="pointer"
         onClick={handleBack}
+        zIndex="10"
       />
-
-      <Div pos="absolute" top="30px" left="50%" transform="translateX(-50%)">
-        <Image src={Logo} w="46px" h="46px" />
-      </Div>
-
       <Icon
         name="Cross"
-        size="30px"
+        size="24px"
         color="#fff"
         pos="absolute"
-        right="25px"
-        top="25px"
+        right="20px"
+        top="20px"
         cursor="pointer"
         onClick={handleClose}
+        zIndex="10"
       />
 
-      <Div p={{ x: '140px', t: '100px' }}>
-        <Text textSize="24px" textWeight="600" textColor="white" textAlign="center" p={{ b: '40px' }}>
-          {t('auth.signInPinCode.title')}
-        </Text>
-
-        <Text textSize="14px" textColor="#ddd" p={{ b: '8px' }}>
-          {t('auth.signInPinCode.enterCodeLabel')}
-        </Text>
-
-        <Input
-          w="370px"
-          h="50px"
-          type="text"
-          placeholder={t('auth.signInPinCode.enterCodePlaceholder')}
-          value={pinCode}
-          onChange={(e) => setPinCode(e.target.value)}
-          p={{ x: '16px', y: '14px' }}
-          rounded="12px"
-          bg="#2a2a2a"
-          border="1px solid"
-          borderColor={error ? '#ff4444' : '#444'}
-          focusBorderColor="#ffffffff"
-          textColor="white"
-          placeholderTextColor="#888"
-          maxLength={6}
-        />
-
-        {error && (
-          <Text textSize="12px" textColor="#ff4444" p={{ t: '8px' }}>
-            {error}
+      <Div
+        d="flex"
+        flexDir="column"
+        align="center"
+        justify="center"
+        w="100%"
+        h="100%"
+        minH={{ xs: 'auto', md: '600px' }}
+        p={{ x: '24px', y: '60px' }}
+      >
+        <Image src={Logo} w="46px" h="46px" m={{ b: '24px' }} />
+        <Div d="flex" flexDir="column" w="100%" maxW="370px" align="center">
+          <Text textSize="24px" textWeight="600" textColor="white" textAlign="center" m={{ b: '32px' }}>
+            {t('auth.signInPinCode.title')}
           </Text>
-        )}
-
-        <Text textSize="14px" textColor="#ddd" p={{ t: '24px', b: '8px' }}>
-          {t('auth.signInPinCode.infoText')}
-        </Text>
-
-        <Button
-          w="370px"
-          h="52px"
-          bg="#ACF709"
-          hoverBg="#92d030"
-          rounded="12px"
-          textWeight="700"
-          textSize="16px"
-          textColor="#333"
-          onClick={handleNext}
-          m={{ t: '20px' }}
-          disabled={isLoading || !pinCode}
-        >
-          {isLoading ? t('auth.signInPinCode.loading') : t('auth.signInPinCode.next')}
-        </Button>
+          <Text textSize="14px" textColor="#ddd" m={{ b: '8px', l: '130px' }} w="100%">
+            {t('auth.signInPinCode.enterCodeLabel')}
+          </Text>
+          <Input
+            w="100%"
+            h="50px"
+            type="text"
+            placeholder={t('auth.signInPinCode.enterCodePlaceholder')}
+            value={pinCode}
+            onChange={(e) => setPinCode(e.target.value)}
+            p={{ x: '16px' }}
+            rounded="12px"
+            bg="#2a2a2a"
+            border="1px solid"
+            borderColor={error ? '#ff4444' : '#444'}
+            textColor="white"
+            maxLength={6}
+          />
+          {error && (
+            <Text textSize="12px" textColor="#ff4444" m={{ t: '8px' }} w="100%">
+              {error}
+            </Text>
+          )}
+          <Text textSize="14px" textColor="#ddd" m={{ t: '24px', b: '8px' }} textAlign="center">
+            {t('auth.signInPinCode.infoText')}
+          </Text>
+          <Button
+            w="100%"
+            h="52px"
+            bg="#ACF709"
+            hoverBg="#92d030"
+            rounded="12px"
+            textWeight="700"
+            textSize="16px"
+            textColor="#333"
+            onClick={handleNext}
+            m={{ t: '20px' }}
+            disabled={isLoading || !pinCode}
+          >
+            {isLoading ? t('auth.signInPinCode.loading') : t('auth.signInPinCode.next')}
+          </Button>
+        </Div>
       </Div>
     </Modal>
   );
