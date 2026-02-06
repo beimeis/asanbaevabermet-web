@@ -74,7 +74,7 @@ exports[`MainPage component should match the snapshot 1`] = `
           className=""
         >
           <div
-            className="content "
+            className=""
             style={
               {
                 "gap": "20px",
@@ -85,19 +85,15 @@ exports[`MainPage component should match the snapshot 1`] = `
               className=""
               src="test-file-stub"
             />
-            <div
+            <h1
               className=""
+              lineHeight="1.1"
             >
-              <h1
-                className=""
-                lineHeight="100%"
-              >
-                heroTitle
-              </h1>
-            </div>
+              heroTitle
+            </h1>
           </div>
           <div
-            className="content "
+            className=""
           >
             <p
               className=""
@@ -112,24 +108,38 @@ exports[`MainPage component should match the snapshot 1`] = `
           </div>
           <div
             className=""
+            style={
+              {
+                "gap": "16px",
+              }
+            }
           >
             <a
               href="/webApp"
+              style={
+                {
+                  "maxWidth": "176px",
+                  "width": "100%",
+                }
+              }
             >
               <button
                 className=""
               >
                 <img
-                  bg="black"
                   className=""
                   src="test-file-stub"
                 />
                 <div
                   className=""
-                  gridAutoFlow="column"
                 >
                   <p
                     className=""
+                    style={
+                      {
+                        "opacity": 0.8,
+                      }
+                    }
                   >
                     Go to the
                   </p>
@@ -147,10 +157,14 @@ exports[`MainPage component should match the snapshot 1`] = `
               <img
                 className=""
                 src="test-file-stub"
+                style={
+                  {
+                    "opacity": 0.7,
+                  }
+                }
               />
               <div
                 className=""
-                gridAutoFlow="column"
               >
                 <p
                   className=""
@@ -170,6 +184,11 @@ exports[`MainPage component should match the snapshot 1`] = `
               <img
                 className=""
                 src="test-file-stub"
+                style={
+                  {
+                    "opacity": 0.7,
+                  }
+                }
               />
               <div
                 className=""
@@ -177,12 +196,12 @@ exports[`MainPage component should match the snapshot 1`] = `
                 <p
                   className=""
                 >
-                  Download on the
+                  Download on
                 </p>
                 <p
                   className=""
                 >
-                  App Sotre
+                  App Store
                 </p>
               </div>
             </button>
@@ -208,6 +227,7 @@ exports[`MainPage component should match the snapshot 1`] = `
           >
             <p
               className=""
+              lineHeight="1.1"
             >
               featuresExploreTitle
             </p>
@@ -222,6 +242,7 @@ exports[`MainPage component should match the snapshot 1`] = `
           >
             <p
               className=""
+              lineHeight="1.1"
             >
               featuresMarkTitle
             </p>
@@ -236,6 +257,7 @@ exports[`MainPage component should match the snapshot 1`] = `
           >
             <p
               className=""
+              lineHeight="1.1"
             >
               featuresEarnTitle
             </p>
