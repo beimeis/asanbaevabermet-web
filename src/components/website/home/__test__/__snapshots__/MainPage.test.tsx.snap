@@ -18,19 +18,19 @@ exports[`MainPage component should match the snapshot 1`] = `
         className="lang-button "
         onClick={[Function]}
       >
-        кыргызский
+        Кыргызча
       </button>
       <button
         className="lang-button "
         onClick={[Function]}
       >
-        русский
+        Русский
       </button>
       <button
         className="lang-button "
         onClick={[Function]}
       >
-        англиский
+        English
       </button>
     </div>
   </div>
@@ -116,6 +116,11 @@ exports[`MainPage component should match the snapshot 1`] = `
           >
             <a
               href="/webApp"
+              hrefLang="en"
+              onClick={[Function]}
+              onPointerEnterCapture=""
+              onPointerLeaveCapture=""
+              placeholder=""
               style={
                 {
                   "maxWidth": "176px",
