@@ -1,7 +1,6 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { Div, Image, Text, Button } from 'atomize';
-import { Link } from 'gatsby';
+import { Link, useI18next } from 'gatsby-plugin-react-i18next';
 
 import Logo from '../../../assets/images/header/Logo.svg';
 import EarthIcon from '../../../assets/images/hero/EarthIcon.png';
@@ -10,7 +9,7 @@ import AppleIcon from '../../../assets/images/hero/AppleIcon.png';
 import './Hero.scss';
 
 export default function Hero() {
-  const { t } = useTranslation();
+  const { t } = useI18next();
 
   return (
     <Div d="flex" flexDir="column" justify="center" align="center" p={{ x: '20px', y: '40px' }} textAlign="center">
@@ -51,7 +50,13 @@ export default function Hero() {
         w={{ xs: '100%', md: 'auto' }}
         style={{ gap: '16px' }}
       >
-        <Link to="/webApp" style={{ width: '100%', maxWidth: '176px' }}>
+        <Link
+          to="/webApp"
+          style={{ width: '100%', maxWidth: '176px' }}
+          placeholder=""
+          onPointerEnterCapture=""
+          onPointerLeaveCapture=""
+        >
           <Button
             w="100%"
             h="52px"

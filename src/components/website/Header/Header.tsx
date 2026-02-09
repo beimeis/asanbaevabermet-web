@@ -1,23 +1,36 @@
 /* External dependencies */
-import {useTranslation} from 'react-i18next'
 import React from 'react';
 import { Div, Image, Button } from 'atomize';
-
+import { useI18next } from 'gatsby-plugin-react-i18next';
+import { navigate } from 'gatsby';
 /* Local dependencies */
 import './Header.scss';
 import Logo from '../../../assets/images/header/Logo.svg';
-import Locales from '../../../locales/locales.js'
-import i18n from '../../../locales/i18next.js'
 
 export default function Header() {
-    const { t} = useTranslation();
+  const { i18n } = useI18next();
+
+  const changeLanguage = (lng: 'ru' | 'en' | 'ky') => {
+    i18n.changeLanguage(lng);
+
+    navigate(`/${lng === 'ru' ? '' : lng}`, {
+      replace: true,
+    });
+  };
+
   return (
-    <Div className='container' >
+    <Div className="container">
       <Image src={Logo} w="32px" h="33px" left="120px" m="30px 90px " />
       <Div className="lang-container">
-        <Button onClick={() => i18n.changeLanguage(Locales.Locale.KY)} className="lang-button">кыргызский</Button>
-        <Button onClick={() => i18n.changeLanguage(Locales.Locale.RU)} className="lang-button">русский</Button>
-        <Button onClick={() => i18n.changeLanguage(Locales.Locale.EN)} className="lang-button">англиский</Button>
+        <Button onClick={() => changeLanguage('ky')} className="lang-button">
+          Кыргызча
+        </Button>
+        <Button onClick={() => changeLanguage('ru')} className="lang-button">
+          Русский
+        </Button>
+        <Button onClick={() => changeLanguage('en')} className="lang-button">
+          English
+        </Button>
       </Div>
     </Div>
   );

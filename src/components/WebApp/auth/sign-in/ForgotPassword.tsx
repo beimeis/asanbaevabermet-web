@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, Div, Image, Text, Input, Button, Icon } from 'atomize';
 import { useDispatch, useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
+import { useI18next } from 'gatsby-plugin-react-i18next';
 
 import Logo from '../../../../assets/images/mapApp/Logo.png';
 import { resetPasswordRequest, setActiveModal, setEmail } from '../authRedux/authAction';
@@ -9,7 +9,7 @@ import { RootState, AppDispatch } from '../../../../redux/store';
 import { getAuthErrorKey } from '../../../../utils/errorHelpers';
 
 const ForgotPassword = () => {
-  const { t } = useTranslation();
+  const { t } = useI18next();
   const dispatch = useDispatch<AppDispatch>();
   const { activeModal, email, isLoading, error } = useSelector((state: RootState) => state.auth);
 
@@ -75,17 +75,17 @@ const ForgotPassword = () => {
         <Image src={Logo} w="46px" h="46px" m={{ b: '24px' }} />
         <Div d="flex" flexDir="column" w="100%" maxW="370px">
           <Text textSize="28px" textWeight="600" textColor="white" textAlign="center" m={{ b: '32px' }}>
-            {t('auth.forgotPassword.title')}
+            {t('auth_forgotPassword_title')}
           </Text>
           <Text textSize="14px" textColor="#ddd" m={{ b: '8px' }}>
-            {t('auth.forgotPassword.emailLabel')}
+            {t('auth_forgotPassword_emailLabel')}
           </Text>
           <Input
             w="100%"
             h="50px"
-            placeholder={t('auth.forgotPassword.emailPlaceholder')}
+            placeholder={t('auth_forgotPassword_emailPlaceholder')}
             value={email}
-            onChange={(e) => dispatch(e.target.value)}
+            onChange={(e) => dispatch(setEmail(e.target.value))}
             p={{ x: '16px' }}
             rounded="12px"
             bg="#2a2a2a"
@@ -113,7 +113,7 @@ const ForgotPassword = () => {
             disabled={isLoading || !isAllValid}
             opacity={!isAllValid ? '0.5' : '1'}
           >
-            {isLoading ? t('auth.forgotPassword.loading') : t('auth.forgotPassword.next')}
+            {isLoading ? t('auth_forgotPassword_loading') : t('auth_forgotPassword_next')}
           </Button>
         </Div>
       </Div>

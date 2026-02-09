@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Div, Image, Text, Input, Button, Icon } from 'atomize';
 import { useDispatch, useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
+import { useI18next } from 'gatsby-plugin-react-i18next';
 
 import Logo from '../../../../assets/images/mapApp/Logo.png';
 import { setActiveModal, confirmSignUpRequest } from '../authRedux/authAction';
@@ -9,7 +9,7 @@ import { RootState, AppDispatch } from '../../../../redux/store';
 import { getAuthErrorKey } from '../../../../utils/errorHelpers';
 
 const SignUpPinCode = () => {
-  const { t } = useTranslation();
+  const { t } = useI18next();
   const dispatch = useDispatch<AppDispatch>();
   const { activeModal, isLoading, error, email } = useSelector((state: RootState) => state.auth);
   const [pinCode, setPinCode] = useState('');
@@ -82,18 +82,18 @@ const SignUpPinCode = () => {
 
         <Div d="flex" flexDir="column" w="100%" maxW="370px" align="center">
           <Text textSize="24px" textWeight="600" textColor="white" textAlign="center" m={{ b: '16px' }}>
-            {t('auth.signupPinCode.title')}
+            {t('auth_signupPinCode_title')}
           </Text>
 
           <Text textSize="14px" textColor="#ddd" textAlign="center" m={{ b: '24px' }}>
-            {t('auth.signupPinCode.description')}
+            {t('auth_signupPinCode_description')}
           </Text>
 
           <Input
             w="100%"
             h="50px"
             type="text"
-            placeholder={t('auth.signupPinCode.placeholder')}
+            placeholder={t('auth_signupPinCode_placeholder')}
             value={pinCode}
             onChange={(e) => setPinCode(e.target.value)}
             p={{ x: '16px' }}
@@ -125,7 +125,7 @@ const SignUpPinCode = () => {
             m={{ t: '24px' }}
             disabled={isLoading || !pinCode}
           >
-            {isLoading ? t('auth.signupPinCode.loading') : t('auth.signupPinCode.next')}
+            {isLoading ? t('auth_signupPinCode_loading') : t('auth_signupPinCode_next')}
           </Button>
         </Div>
       </Div>

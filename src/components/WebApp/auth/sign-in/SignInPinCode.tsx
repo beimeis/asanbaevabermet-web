@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Modal, Div, Image, Text, Input, Button, Icon } from 'atomize';
 import { useDispatch, useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
+import { useI18next } from 'gatsby-plugin-react-i18next';
 
 import Logo from '../../../../assets/images/mapApp/Logo.png';
 import { setActiveModal, setCode } from '../authRedux/authAction';
 import { RootState, AppDispatch } from '../../../../redux/store';
 
 const SignInPinCode = () => {
-  const { t } = useTranslation();
+  const { t } = useI18next();
   const dispatch = useDispatch<AppDispatch>();
   const { activeModal, isLoading, error } = useSelector((state: RootState) => state.auth);
   const [pinCode, setPinCode] = useState('');
@@ -75,16 +75,16 @@ const SignInPinCode = () => {
         <Image src={Logo} w="46px" h="46px" m={{ b: '24px' }} />
         <Div d="flex" flexDir="column" w="100%" maxW="370px" align="center">
           <Text textSize="24px" textWeight="600" textColor="white" textAlign="center" m={{ b: '32px' }}>
-            {t('auth.signInPinCode.title')}
+            {t('auth_signInPinCode_title')}
           </Text>
           <Text textSize="14px" textColor="#ddd" m={{ b: '8px', l: '130px' }} w="100%">
-            {t('auth.signInPinCode.enterCodeLabel')}
+            {t('auth_signInPinCode_enterCodeLabel')}
           </Text>
           <Input
             w="100%"
             h="50px"
             type="text"
-            placeholder={t('auth.signInPinCode.enterCodePlaceholder')}
+            placeholder={t('auth_signInPinCode_enterCodePlaceholder')}
             value={pinCode}
             onChange={(e) => setPinCode(e.target.value)}
             p={{ x: '16px' }}
@@ -101,7 +101,7 @@ const SignInPinCode = () => {
             </Text>
           )}
           <Text textSize="14px" textColor="#ddd" m={{ t: '24px', b: '8px' }} textAlign="center">
-            {t('auth.signInPinCode.infoText')}
+            {t('auth_signInPinCode_infoText')}
           </Text>
           <Button
             w="100%"
@@ -116,7 +116,7 @@ const SignInPinCode = () => {
             m={{ t: '20px' }}
             disabled={isLoading || !pinCode}
           >
-            {isLoading ? t('auth.signInPinCode.loading') : t('auth.signInPinCode.next')}
+            {isLoading ? t('auth_signInPinCode_loading') : t('auth_signInPinCode_next')}
           </Button>
         </Div>
       </Div>

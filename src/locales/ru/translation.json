@@ -1,28 +1,28 @@
 {
   "heroTitle": "Карта",
-  "heroSubtitle1": "Карта терминалов от Finik, исследуйте,",
+  "heroSubtitle1": "Карта терминалов Finik, исследуйте,",
   "heroSubtitle2": "отмечайте и зарабатывайте баллы",
   "featuresExploreTitle": "Исследуйте",
-  "featuresExploreText": "Карта терминалов от Finik, исследуйте, отмечайте и зарабатывайте баллы",
+  "featuresExploreText": "Карта терминалов Finik — исследуйте, отмечайте и зарабатывайте баллы",
   "featuresMarkTitle": "Отмечайте",
-  "featuresMarkText": "Карта терминалов от Finik, исследуйте, отмечайте и зарабатывайте баллы",
-  "featuresEarnTitle": "Зарабатывай баллы",
-  "featuresEarnText": "Карта терминалов от Finik, исследуйте, отмечайте и зарабатывайте баллы",
+  "featuresMarkText": "Карта терминалов Finik — исследуйте, отмечайте и зарабатывайте баллы",
+  "featuresEarnTitle": "Зарабатывайте баллы",
+  "featuresEarnText": "Карта терминалов Finik — исследуйте, отмечайте и зарабатывайте баллы",
   "cardsPlayTitle": "Играй.",
   "cardsPlayText": "Увлекательная игра",
   "cardsRedeemTitle": "Обменивай.",
-  "cardsRedeemText": "Получай подарки",
+  "cardsRedeemText": "Получай награды",
   "cardsEverywhereTitle": "Везде.",
   "cardsEverywhereText": "На всех платформах",
   "cardsLookTitle": "Оглянись.",
-  "cardsLookText": "Терминалы везде",
+  "cardsLookText": "Терминалы повсюду",
   "cardsMarkTitle": "Отмечай.",
-  "cardsMarkText": "Мы поставим терминал",
+  "cardsMarkText": "Мы установим терминал",
   "cardsStudyTitle": "Изучай.",
   "cardsStudyText": "Уникальная карта",
   "footerBrand": "Finik",
   "footerDescriptionLine1": "Удобное и надежное отечественное",
-  "footerDescriptionLine2": "приложение для оплаты в Кыргызстане",
+  "footerDescriptionLine2": "платежное приложение в Кыргызстане",
   "footerCopyright": "©2022 Averspay",
   "footerLicense": "Лицензия НБКР № 3006010615, № 2006010615 от 06.02.2015",
   "footerProductsTitle": "Продукты",
@@ -32,125 +32,94 @@
   "footerAboutTitle": "О нас",
   "footerAboutCompany": "Компания",
   "footerAboutDocuments": "Документы",
-  "auth": {
-    "errors": {
-      "resetPasswordEmailNotConfirmed": "Невозможно сбросить пароль: не подтвержден Email.",
-      "userNotFound": "Пользователь не найден.",
-      "incorrectCredentials": "Неверный логин или пароль.",
-      "passwordNoSpaces": "Пароль не должен содержать пробелы.",
-      "userNotConfirmed": "Пользователь не подтвержден.",
-      "invalidCode": "Неверный код.",
-      "limitExceeded": "Превышен лимит попыток. Пожалуйста, попробуйте позже.",
-      "codeExpired": "Срок действия кода истек. Пожалуйста, запросите новый код.",
-      "emailExists": "Учетная запись с указанным адресом электронной почты уже существует.",
-      "invalidVerificationCode": "Введен неверный код подтверждения, попробуйте еще раз.",
-      "genericError": "Произошла ошибка"
-    },
-    "password": {
-      "title": "Создайте пароль",
-      "passwordLabel": "Пароль",
-      "passwordPlaceholder": "Введите пароль",
-      "confirmPasswordLabel": "Повторите пароль",
-      "confirmPasswordPlaceholder": "Повторите пароль",
 
-      "requirementsTitle": "Пароль должен содержать:",
-      "requirements": {
-        "length": "минимум 8 символов",
-        "upperCase": "хотя бы одну заглавную букву",
-        "lowerCase": "хотя бы одну строчную букву",
-        "number": "хотя бы одну цифру",
-        "specialChar": "один спецсимвол: ~ # @ $ % & ! * _ ? ^ -",
-        "match": {
-          "ok": "пароли совпадают",
-          "fail": "пароли не совпадают"
-        }
-      },
+  "auth_errors_resetPasswordEmailNotConfirmed": "Невозможно сбросить пароль: Email не подтвержден.",
+  "auth_errors_userNotFound": "Пользователь не найден.",
+  "auth_errors_incorrectCredentials": "Неверное имя пользователя или пароль.",
+  "auth_errors_passwordNoSpaces": "Пароль не должен содержать пробелы.",
+  "auth_errors_userNotConfirmed": "Пользователь не подтвержден.",
+  "auth_errors_invalidCode": "Неверный код.",
+  "auth_errors_limitExceeded": "Превышен лимит попыток. Пожалуйста, попробуйте позже.",
+  "auth_errors_codeExpired": "Срок действия кода истек. Пожалуйста, запросите новый код.",
+  "auth_errors_emailExists": "Учетная запись с таким Email уже существует.",
+  "auth_errors_invalidVerificationCode": "Введен неверный код подтверждения, попробуйте еще раз.",
+  "auth_errors_genericError": "Произошла ошибка",
 
-      "next": "Далее",
-      "loading": "Загрузка..."
-    },
-    "signup": {
-      "title": "Создайте аккаунт",
-      "subtitleLine1": "Карта терминалов от Finik, исследуйте,",
-      "subtitleLine2": "отмечайте и зарабатывайте баллы",
-      "emailHint": "Нам нужна только ваша почта",
-      "emailPlaceholder": "Введите адрес эл. почты",
-      "errors": {
-        "emptyEmail": "Пожалуйста, введите почту",
-        "invalidEmail": "Некорректный формат почты"
-      },
-      "next": "Далее",
-      "loading": "Проверяем..."
-    },
-    "signupPinCode": {
-      "title": "Подтверждение",
-      "description": "Введи полученный код, чтобы подтвердить свою почту",
-      "placeholder": "Введите код",
-      "next": "Далее",
-      "loading": "Проверяем..."
-    },
-    "forgotPassword": {
-      "title": "Восстановление пароля",
-      "emailLabel": "Введите email",
-      "emailPlaceholder": "Введите адрес эл. почты",
-      "next": "Получить код",
-      "loading": "Отправляем..."
-    },
-    "newPassword": {
-      "title": "Новый пароль",
-      "passwordLabel": "Пароль",
-      "confirmPasswordLabel": "Повторите пароль",
-      "requirementsTitle": "Пароль должен содержать:",
-      "placeholder": {
-        "password": "Введите пароль",
-        "confirmPassword": "Повторите пароль"
-      },
-      "requirements": {
-        "length": "минимум 8 символов",
-        "upperCase": "хотя бы одну заглавную букву",
-        "lowerCase": "хотя бы одну строчную букву",
-        "number": "хотя бы одну цифру",
-        "specialChar": "один спецсимвол: ~ # @ $ % & ! * _ ? ^ -",
-        "match": {
-          "ok": "пароли совпадают",
-          "fail": "пароли не совпадают"
-        }
-      },
-      "next": "Далее",
-      "loading": "Загрузка..."
-    },
-      "signIn": {
-    "title": "Войти в аккаунт",
-    "emailLabel": "Эл. почта",
-    "emailPlaceholder": "Введите адрес эл. почты",
-    "passwordLabel": "Пароль",
-    "passwordPlaceholder": "Введите пароль",
-    "next": "Войти",
-    "loading": "Входим...",
-    "forgotPassword": "Забыли пароль?"
-  },
-    "signInPinCode": {
-    "title": "Подтверждение",
-    "enterCodeLabel": "Введи код",
-    "enterCodePlaceholder": "Введите код",
-    "infoText": "Введи полученный код для подтверждения",
-    "next": "Далее",
-    "loading": "Проверяем..."
-  },
-     "introModal": {
-    "title": "Финик Карта",
-    "descriptionLine1": "Отмечай места на карте где нет нашего",
-    "descriptionLine2": "терминала, мы поставим его, а тебе пришлем",
-    "descriptionLine3": "бонусы которые ты сможешь обменять на",
-    "descriptionLine4": "реальные призы",
-    "login": "Войти в аккаунт",
-    "signup": "Регистрация"
-  },
-    "webApp": {
-      "header": {
-        "map": "Карта",
-        "login": "Войти"
-      }
-    }
-  }
+  "auth_password_title": "Создайте пароль",
+  "auth_password_label": "Пароль",
+  "auth_password_placeholder": "Введите пароль",
+  "auth_password_confirmLabel": "Подтвердите пароль",
+  "auth_password_confirmPlaceholder": "Подтвердите пароль",
+  "auth_password_requirementsTitle": "Пароль должен содержать:",
+  "auth_password_req_length": "минимум 8 символов",
+  "auth_password_req_upper": "хотя бы одну заглавную букву",
+  "auth_password_req_lower": "хотя бы одну строчную букву",
+  "auth_password_req_number": "хотя бы одну цифру",
+  "auth_password_req_special": "один спецсимвол: ~ # @ $ % & ! * _ ? ^ -",
+  "auth_password_match_ok": "пароли совпадают",
+  "auth_password_match_fail": "пароли не совпадают",
+  "auth_password_next": "Далее",
+  "auth_password_loading": "Загрузка...",
+
+  "auth_signup_title": "Создать аккаунт",
+  "auth_signup_subtitleLine1": "Карта терминалов Finik — исследуйте,",
+  "auth_signup_subtitleLine2": "отмечайте локации и зарабатывайте баллы",
+  "auth_signup_emailHint": "Нам нужна только ваша почта",
+  "auth_signup_emailPlaceholder": "Введите адрес электронной почты",
+  "auth_signup_err_empty": "Пожалуйста, введите почту",
+  "auth_signup_err_invalid": "Неверный формат почты",
+  "auth_signup_next": "Далее",
+  "auth_signup_loading": "Проверка...",
+
+  "auth_signupPinCode_title": "Подтверждение",
+  "auth_signupPinCode_description": "Введите код, полученный для подтверждения почты",
+  "auth_signupPinCode_placeholder": "Введите код",
+  "auth_signupPinCode_next": "Далее",
+  "auth_signupPinCode_loading": "Проверка...",
+
+  "auth_forgotPassword_title": "Сброс пароля",
+  "auth_forgotPassword_emailLabel": "Введите ваш Email",
+  "auth_forgotPassword_emailPlaceholder": "Введите адрес почты",
+  "auth_forgotPassword_next": "Получить код",
+  "auth_forgotPassword_loading": "Отправка...",
+
+  "auth_newPassword_title": "Новый пароль",
+  "auth_newPassword_passwordLabel": "Пароль",
+  "auth_newPassword_confirmLabel": "Подтвердите пароль",
+  "auth_newPassword_req_length": "минимум 8 символов",
+  "auth_newPassword_req_upper": "хотя бы одну заглавную букву",
+  "auth_newPassword_req_lower": "хотя бы одну строчную букву",
+  "auth_newPassword_req_number": "хотя бы одну цифру",
+  "auth_newPassword_req_special": "один спецсимвол: ~ # @ $ % & ! * _ ? ^ -",
+  "auth_newPassword_match_ok": "пароли совпадают",
+  "auth_newPassword_match_fail": "пароли не совпадают",
+  "auth_newPassword_next": "Далее",
+  "auth_newPassword_loading": "Загрузка...",
+
+  "auth_signIn_title": "Войти",
+  "auth_signIn_emailLabel": "Email",
+  "auth_signIn_emailPlaceholder": "Введите адрес почты",
+  "auth_signIn_passwordLabel": "Пароль",
+  "auth_signIn_passwordPlaceholder": "Введите пароль",
+  "auth_signIn_next": "Войти",
+  "auth_signIn_loading": "Вход...",
+  "auth_signIn_forgotPassword": "Забыли пароль?",
+
+  "auth_signInPinCode_title": "Верификация",
+  "auth_signInPinCode_enterCodeLabel": "Введите код",
+  "auth_signInPinCode_enterCodePlaceholder": "Введите код",
+  "auth_signInPinCode_infoText": "Введите полученный код для подтверждения",
+  "auth_signInPinCode_next": "Далее",
+  "auth_signInPinCode_loading": "Проверка...",
+
+  "auth_introModal_title": "Finik Карта",
+  "auth_introModal_desc1": "Отмечайте на карте места, где нет нашего",
+  "auth_introModal_desc2": "терминала, мы его установим и отправим вам",
+  "auth_introModal_desc3": "бонусы, которые можно обменять на",
+  "auth_introModal_desc4": "реальные призы",
+  "auth_introModal_login": "Войти",
+  "auth_introModal_signup": "Регистрация",
+
+  "auth_webApp_header_map": "Карта",
+  "auth_webApp_header_login": "Войти"
 }

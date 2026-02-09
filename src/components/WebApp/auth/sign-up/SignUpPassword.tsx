@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Div, Image, Text, Input, Button, Icon } from 'atomize';
 import { useDispatch, useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
+import { useI18next } from 'gatsby-plugin-react-i18next';
 
 import Logo from '../../../../assets/images/mapApp/Logo.png';
 import { setActiveModal, setPassword, setConfirmPassword, signUpRequest } from '../authRedux/authAction';
@@ -12,7 +12,7 @@ const SignUpPassword = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const { t } = useTranslation();
+  const { t } = useI18next();
   const dispatch = useDispatch<AppDispatch>();
 
   const { activeModal, email, password, confirmPassword, isLoading, error } = useSelector(
@@ -108,18 +108,18 @@ const SignUpPassword = () => {
 
         <Div d="flex" flexDir="column" w="100%" maxW="370px">
           <Text textSize="30px" textColor="#ffffff" textAlign="center" m={{ b: '24px' }}>
-            {t('auth.password.title')}
+            {t('auth_password_title')}
           </Text>
 
           <Text textSize="14px" textColor="#ddd" m={{ b: '8px' }}>
-            {t('auth.password.passwordLabel')}
+            {t('auth_password_label')}
           </Text>
           <Div pos="relative" m={{ b: '20px' }}>
             <Input
               w="100%"
               h="50px"
               type={showPassword ? 'text' : 'password'}
-              placeholder={t('auth.password.passwordPlaceholder')}
+              placeholder={t('auth_password_placeholder')}
               value={password}
               onChange={(e) => dispatch(setPassword(e.target.value))}
               p={{ l: '16px', r: '48px' }}
@@ -144,14 +144,14 @@ const SignUpPassword = () => {
           </Div>
 
           <Text textSize="14px" textColor="#ddd" m={{ b: '8px' }}>
-            {t('auth.password.confirmPasswordLabel')}
+            {t('auth_password_confirmLabel')}
           </Text>
           <Div pos="relative" m={{ b: '20px' }}>
             <Input
               w="100%"
               h="50px"
               type={showConfirmPassword ? 'text' : 'password'}
-              placeholder={t('auth.password.confirmPasswordPlaceholder')}
+              placeholder={t('auth_password_confirmPlaceholder')}
               value={confirmPassword}
               onChange={(e) => dispatch(setConfirmPassword(e.target.value))}
               p={{ l: '16px', r: '48px' }}
@@ -177,19 +177,16 @@ const SignUpPassword = () => {
 
           <Div textSize="13px" m={{ b: '20px' }}>
             <Text textColor="#ddd" m={{ b: '4px' }}>
-              {t('auth.password.requirementsTitle')}
+              {t('auth_password_requirementsTitle')}
             </Text>
-            <Text textColor={getReqColor(validation.length)}>• {t('auth.password.requirements.length')}</Text>
-            <Text textColor={getReqColor(validation.upperCase)}>• {t('auth.password.requirements.upperCase')}</Text>
-            <Text textColor={getReqColor(validation.lowerCase)}>• {t('auth.password.requirements.lowerCase')}</Text>
-            <Text textColor={getReqColor(validation.number)}>• {t('auth.password.requirements.number')}</Text>
-            <Text textColor={getReqColor(validation.specialChar)}>• {t('auth.password.requirements.specialChar')}</Text>
+            <Text textColor={getReqColor(validation.length)}>• {t('auth_password_req_length')}</Text>
+            <Text textColor={getReqColor(validation.upperCase)}>• {t('auth_password_req_upper')}</Text>
+            <Text textColor={getReqColor(validation.lowerCase)}>• {t('auth_password_req_lower')}</Text>
+            <Text textColor={getReqColor(validation.number)}>• {t('auth_password_req_number')}</Text>
+            <Text textColor={getReqColor(validation.specialChar)}>• {t('auth_password_req_special')}</Text>
             {confirmPassword.length > 0 && (
               <Text textColor={validation.match ? '#ACF709' : '#ff4444'}>
-                
-                {validation.match
-                  ? t('auth.password.requirements.match.ok')
-                  : t('auth.password.requirements.match.fail')}
+                {validation.match ? t('auth_password_match_ok') : t('auth_password_match_fail')}
               </Text>
             )}
           </Div>
@@ -213,7 +210,7 @@ const SignUpPassword = () => {
             disabled={isLoading || !isAllValid}
             opacity={!isAllValid ? '0.5' : '1'}
           >
-            {isLoading ? t('auth.password.loading') : t('auth.password.next')}
+            {isLoading ? t('auth_password_loading') : t('auth_password_next')}
           </Button>
         </Div>
       </Div>

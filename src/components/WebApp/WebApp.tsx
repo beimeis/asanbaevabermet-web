@@ -3,7 +3,7 @@ import React from 'react';
 import { Div, Button, Image, Text, Icon } from 'atomize';
 import { Link } from 'gatsby';
 import { useDispatch, useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
+import { useI18next } from 'gatsby-plugin-react-i18next';
 
 /* Local dependencies */
 import Logo from '../../assets/images/mapApp/Logo.png';
@@ -20,7 +20,8 @@ import { setActiveModal, signOutRequest } from './auth/authRedux/authAction';
 import { RootState, AppDispatch } from '../../redux/store';
 
 export default function WebApp() {
-  const { t } = useTranslation();
+  const { t } = useI18next();
+
   const dispatch = useDispatch<AppDispatch>();
 
   const { isAuthenticated, email, activeModal } = useSelector((state: RootState) => state.auth);
@@ -61,7 +62,7 @@ export default function WebApp() {
         p={{ t: '20px', x: { xs: '20px', xl: '50px' } }}
         flexWrap="wrap"
       >
-        <Link to="/" style={{ textDecoration: 'none' }}>
+        <Link to="/">
           <Button
             bg="#333"
             border="2px solid #ccc3c3ff"
@@ -80,7 +81,7 @@ export default function WebApp() {
           >
             <Image src={Logo} w="24px" h="24px" />
             <Text textSize="18px" textWeight="500" p={{ l: '12px' }}>
-              {t('auth.webApp.header.map')}
+              {t('auth_webApp_header_map')}
             </Text>
           </Button>
         </Link>
@@ -143,7 +144,7 @@ export default function WebApp() {
               >
                 <Image src={AccIcon} w="24px" h="24px" />
                 <Text textSize="18px" p={{ l: '12px' }}>
-                  {t('auth.webApp.header.login')}
+                  {t('auth_webApp_header_login')}
                 </Text>
               </Button>
             </Div>

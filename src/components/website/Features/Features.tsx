@@ -1,10 +1,10 @@
 import React from 'react';
 import { Div, Text, Image, Container } from 'atomize';
-import { useTranslation } from 'react-i18next';
 import Iphone from '../../../assets/images/features/iPhone.png';
+import { useI18next } from 'gatsby-plugin-react-i18next';
 
 export default function Features() {
-  const { t } = useTranslation();
+  const { t } = useI18next();
 
   return (
     <Div bg="black" p={{ y: { xs: '2rem', md: '5rem' } }} overflow="hidden">

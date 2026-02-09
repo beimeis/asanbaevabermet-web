@@ -32,124 +32,94 @@
   "footerAboutTitle": "Биз жөнүндө",
   "footerAboutCompany": "Компания",
   "footerAboutDocuments": "Документтер",
-  "auth": {
-    "errors": {
-      "resetPasswordEmailNotConfirmed": "Сырсөздү калыбына келтирүү мүмкүн эмес: Email тастыкталган эмес.",
-      "userNotFound": "Колдонуучу табылган жок.",
-      "incorrectCredentials": "Логин же сырсөз туура эмес.",
-      "passwordNoSpaces": "Сырсөздүн ичинде боштуктар болбошу керек.",
-      "userNotConfirmed": "Колдонуучу тастыкталган эмес.",
-      "invalidCode": "Ката код.",
-      "limitExceeded": "Аракеттердин чегинен ашты. Кийинчерээк кайталап көрүңүз.",
-      "codeExpired": "Коддун мөөнөтү бүттү. Жаңы кодду сураңыз.",
-      "emailExists": "Бул электрондук почта менен эсеп буга чейин бар.",
-      "invalidVerificationCode": "Туура эмес тастыктоо коду киргизилди, кайра аракет кылыңыз.",
-      "genericError": "Ката кетти"
-    },
-    "password": {
-      "title": "Сырсөз түзүңүз",
-      "passwordLabel": "Сырсөз",
-      "passwordPlaceholder": "Сырсөздү киргизиңиз",
-      "confirmPasswordLabel": "Сырсөздү кайталаңыз",
-      "confirmPasswordPlaceholder": "Сырсөздү кайталаңыз",
 
-      "requirementsTitle": "Сырсөз төмөнкүлөрдү камтышы керек:",
-      "requirements": {
-        "length": "кеминде 8 белги",
-        "upperCase": "кеминде бир баш тамга",
-        "lowerCase": "кеминде бир кичине тамга",
-        "number": "кеминде бир сан",
-        "specialChar": "бир атайын белги: ~ # @ $ % & ! * _ ? ^ -",
-        "match": {
-          "ok": "сырсөздөр дал келет",
-          "fail": "сырсөздөр дал келбейт"
-        }
-      },
+  "auth_errors_resetPasswordEmailNotConfirmed": "Сырсөздү калыбына келтирүү мүмкүн эмес: Email тастыкталган эмес.",
+  "auth_errors_userNotFound": "Колдонуучу табылган жок.",
+  "auth_errors_incorrectCredentials": "Логин же сырсөз туура эмес.",
+  "auth_errors_passwordNoSpaces": "Сырсөздүн ичинде боштуктар болбошу керек.",
+  "auth_errors_userNotConfirmed": "Колдонуучу тастыкталган эмес.",
+  "auth_errors_invalidCode": "Ката код.",
+  "auth_errors_limitExceeded": "Аракеттердин чегинен ашты. Кийинчерээк кайталап көрүңүз.",
+  "auth_errors_codeExpired": "Коддун мөөнөтү бүттү. Жаңы кодду сураңыз.",
+  "auth_errors_emailExists": "Бул электрондук почта менен эсеп буга чейин бар.",
+  "auth_errors_invalidVerificationCode": "Туура эмес тастыктоо коду киргизилди, кайра аракет кылыңыз.",
+  "auth_errors_genericError": "Ката кетти",
 
-      "next": "Кийинки",
-      "loading": "Жүктөлүүдө..."
-    },
-    "signup": {
-      "title": "Аккаунт түзүңүз",
-      "subtitleLine1": "Finik терминалдарынын картасы — изилдеңиз,",
-      "subtitleLine2": "белгилеңиз жана упай топтоңуз",
-      "emailHint": "Бизге сиздин почтаңыз гана керек",
-      "emailPlaceholder": "Эл. почтанын дарегин киргизиңиз",
-      "errors": {
-        "emptyEmail": "Сураныч, почтаңызды киргизиңиз",
-        "invalidEmail": "Почтанын форматы туура эмес"
-      },
-      "next": "Кийинки",
-      "loading": "Текшерилип жатат..."
-    },
-    "signupPinCode": {
-      "title": "Ырастоо",
-      "description": "Эл. почтаңызды ырастоо үчүн келген кодду киргизиңиз",
-      "placeholder": "Кодду киргизиңиз",
-      "next": "Кийинки",
-      "loading": "Текшерилип жатат..."
-    },
-    "forgotPassword": {
-      "title": "Сырсөздү калыбына келтирүү",
-      "emailLabel": "Эл. почтаңызды киргизиңиз",
-      "emailPlaceholder": "Эл. почтанын дарегин киргизиңиз",
-      "next": "Код алуу",
-      "loading": "Жөнөтүлүүдө..."
-    },
-    "newPassword": {
-      "title": "Жаңы сырсөз",
-      "passwordLabel": "Сырсөз",
-      "confirmPasswordLabel": "Сырсөздү кайталаңыз",
-      "requirementsTitle": "Сырсөз төмөнкүлөрдү камтышы керек:",
-      "placeholder": {
-        "password": "Сырсөздү киргизиңиз",
-        "confirmPassword": "Сырсөздү кайталаңыз"
-      },
-      "requirements": {
-        "length": "кеминде 8 белги",
-        "upperCase": "кеминде бир баш тамга",
-        "lowerCase": "кеминде бир кичине тамга",
-        "number": "кеминде бир сан",
-        "specialChar": "бир атайын белги: ~ # @ $ % & ! * _ ? ^ -",
-        "match": {
-          "ok": "сырсөздөр дал келет",
-          "fail": "сырсөздөр дал келбейт"
-        }
-      },
-      "next": "Кийинки",
-      "loading": "Жүктөлүүдө..."
-    },
-      "signIn": {
-    "title": "Аккаунтка кирүү",
-    "emailLabel": "Эл. почта",
-    "emailPlaceholder": "Эл. почтанын дарегин киргизиңиз",
-    "passwordLabel": "Сырсөз",
-    "passwordPlaceholder": "Сырсөздү киргизиңиз",
-    "next": "Кирүү",
-    "loading": "Кирүүдө...",
-    "forgotPassword": "Сырсөздү унуттуңузбу?"
-  },  "signInPinCode": {
-    "title": "Тастыктоо",
-    "enterCodeLabel": "Кодду киргизиңиз",
-    "enterCodePlaceholder": "Кодду киргизиңиз",
-    "infoText": "Эл. почтаңызды тастыктоо үчүн келген кодду киргизиңиз",
-    "next": "Андан ары",
-    "loading": "Текшерүүдө..."
-  },
-    "introModal": {
-    "title": "Финик Карта",
-    "descriptionLine1": "Картанын үстүнө биздин терминал жок жерлерди белгилеңиз",
-    "descriptionLine2": "терминалды орнотобуз жана сизге жиберебиз",
-    "descriptionLine3": "алмаштыра ала турган бонустар",
-    "descriptionLine4": "чын сыйлыктарга",
-    "login": "Кирүү",
-    "signup": "Каттоо"
-  },
-    "webApp": {
-      "header": {
-        "map": "Карта",
-        "login": "Кирүү"
-      }
-    }
-  }
+  "auth_password_title": "Сырсөз түзүңүз",
+  "auth_password_label": "Сырсөз",
+  "auth_password_placeholder": "Сырсөздү киргизиңиз",
+  "auth_password_confirmLabel": "Сырсөздү кайталаңыз",
+  "auth_password_confirmPlaceholder": "Сырсөздү кайталаңыз",
+  "auth_password_requirementsTitle": "Сырсөз төмөнкүлөрдү камтышы керек:",
+  "auth_password_req_length": "кеминде 8 белги",
+  "auth_password_req_upper": "кеминде бир баш тамга",
+  "auth_password_req_lower": "кеминде бир кичине тамга",
+  "auth_password_req_number": "кеминде бир сан",
+  "auth_password_req_special": "бир атайын белги: ~ # @ $ % & ! * _ ? ^ -",
+  "auth_password_match_ok": "сырсөздөр дал келет",
+  "auth_password_match_fail": "сырсөздөр дал келбейт",
+  "auth_password_next": "Кийинки",
+  "auth_password_loading": "Жүктөлүүдө...",
+
+  "auth_signup_title": "Аккаунт түзүңүз",
+  "auth_signup_subtitleLine1": "Finik терминалдарынын картасы — изилдеңиз,",
+  "auth_signup_subtitleLine2": "белгилеңиз жана упай топтоңуз",
+  "auth_signup_emailHint": "Бизге сиздин почтаңыз гана керек",
+  "auth_signup_emailPlaceholder": "Эл. почтанын дарегин киргизиңиз",
+  "auth_signup_err_empty": "Сураныч, почтаңызды киргизиңиз",
+  "auth_signup_err_invalid": "Почтанын форматы туура эмес",
+  "auth_signup_next": "Кийинки",
+  "auth_signup_loading": "Текшерилип жатат...",
+
+  "auth_signupPinCode_title": "Ырастоо",
+  "auth_signupPinCode_description": "Эл. почтаңызды ырастоо үчүн келген кодду киргизиңиз",
+  "auth_signupPinCode_placeholder": "Кодду киргизиңиз",
+  "auth_signupPinCode_next": "Кийинки",
+  "auth_signupPinCode_loading": "Текшерилип жатат...",
+
+  "auth_forgotPassword_title": "Сырсөздү калыбына келтирүү",
+  "auth_forgotPassword_emailLabel": "Эл. почтаңызды киргизиңиз",
+  "auth_forgotPassword_emailPlaceholder": "Эл. почтанын дарегин киргизиңиз",
+  "auth_forgotPassword_next": "Код алуу",
+  "auth_forgotPassword_loading": "Жөнөтүлүүдө...",
+
+  "auth_newPassword_title": "Жаңы сырсөз",
+  "auth_newPassword_passwordLabel": "Сырсөз",
+  "auth_newPassword_confirmLabel": "Сырсөздү кайталаңыз",
+  "auth_newPassword_req_length": "кеминде 8 белги",
+  "auth_newPassword_req_upper": "кеминде бир баш тамга",
+  "auth_newPassword_req_lower": "кеминде бир кичине тамга",
+  "auth_newPassword_req_number": "кеминде бир сан",
+  "auth_newPassword_req_special": "бир атайын белги: ~ # @ $ % & ! * _ ? ^ -",
+  "auth_newPassword_match_ok": "сырсөздөр дал келет",
+  "auth_newPassword_match_fail": "сырсөздөр дал келбейт",
+  "auth_newPassword_next": "Кийинки",
+  "auth_newPassword_loading": "Жүктөлүүдө...",
+
+  "auth_signIn_title": "Аккаунтка кирүү",
+  "auth_signIn_emailLabel": "Эл. почта",
+  "auth_signIn_emailPlaceholder": "Эл. почтанын дарегин киргизиңиз",
+  "auth_signIn_passwordLabel": "Сырсөз",
+  "auth_signIn_passwordPlaceholder": "Сырсөздү киргизиңиз",
+  "auth_signIn_next": "Кирүү",
+  "auth_signIn_loading": "Кирүүдө...",
+  "auth_signIn_forgotPassword": "Сырсөздү унуттуңузбу?",
+
+  "auth_signInPinCode_title": "Тастыктоо",
+  "auth_signInPinCode_enterCodeLabel": "Кодду киргизиңиз",
+  "auth_signInPinCode_enterCodePlaceholder": "Кодду киргизиңиз",
+  "auth_signInPinCode_infoText": "Эл. почтаңызды тастыктоо үчүн келген кодду киргизиңиз",
+  "auth_signInPinCode_next": "Андан ары",
+  "auth_signInPinCode_loading": "Текшерүүдө...",
+
+  "auth_introModal_title": "Finik Карта",
+  "auth_introModal_desc1": "Картанын үстүнө биздин терминал жок жерлерди белгилеңиз",
+  "auth_introModal_desc2": "терминалды орнотобуз жана сизге жиберебиз",
+  "auth_introModal_desc3": "алмаштыра ала турган бонустар",
+  "auth_introModal_desc4": "чын сыйлыктарга",
+  "auth_introModal_login": "Кирүү",
+  "auth_introModal_signup": "Каттоо",
+
+  "auth_webApp_header_map": "Карта",
+  "auth_webApp_header_login": "Кирүү"
 }

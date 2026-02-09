@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Div, Image, Text, Input, Button, Icon } from 'atomize';
 import { useDispatch, useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
+import { useI18next } from 'gatsby-plugin-react-i18next';
 
 import Logo from '../../../../assets/images/mapApp/Logo.png';
 import { setActiveModal, setPassword, setConfirmPassword, confirmPasswordRequest } from '../authRedux/authAction';
@@ -11,7 +11,7 @@ import { getAuthErrorKey } from '../../../../utils/errorHelpers';
 const NewPassword = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const { t } = useTranslation();
+  const { t } = useI18next();
   const dispatch = useDispatch<AppDispatch>();
   const { activeModal, email, password, confirmPassword, isLoading, error, code } = useSelector(
     (state: RootState) => state.auth,
@@ -84,11 +84,11 @@ const NewPassword = () => {
         <Image src={Logo} w="46px" h="46px" m={{ b: '20px' }} />
         <Div d="flex" flexDir="column" w="100%" maxW="370px">
           <Text textSize="30px" textColor="#ffffff" textAlign="center" m={{ b: '24px' }}>
-            {t('auth.newPassword.title')}
+            {t('auth_newPassword_title')}
           </Text>
 
           <Text textSize="14px" textColor="#ddd" m={{ b: '8px' }}>
-            {t('auth.newPassword.passwordLabel')}
+            {t('auth_newPassword_passwordLabel')}
           </Text>
           <Div pos="relative" m={{ b: '16px' }}>
             <Input
@@ -118,7 +118,7 @@ const NewPassword = () => {
           </Div>
 
           <Text textSize="14px" textColor="#ddd" m={{ b: '8px' }}>
-            {t('auth.newPassword.confirmPasswordLabel')}
+            {t('auth_newPassword_confirmLabel')}
           </Text>
           <Div pos="relative" m={{ b: '16px' }}>
             <Input
@@ -149,26 +149,22 @@ const NewPassword = () => {
 
           <Div textSize="13px" m={{ b: '20px' }}>
             <Text textColor="#ddd" m={{ b: '4px' }}>
-              {t('auth.newPassword.requirementsTitle')}
+              {t('auth_newPassword_req_title')}
             </Text>
 
-            <Text textColor={getReqColor(validation.length)}>• {t('auth.newPassword.requirements.length')}</Text>
+            <Text textColor={getReqColor(validation.length)}>• {t('auth_newPassword_req_length')}</Text>
 
-            <Text textColor={getReqColor(validation.upperCase)}>• {t('auth.newPassword.requirements.upperCase')}</Text>
+            <Text textColor={getReqColor(validation.upperCase)}>• {t('auth_newPassword_req_upper')}</Text>
 
-            <Text textColor={getReqColor(validation.lowerCase)}>• {t('auth.newPassword.requirements.lowerCase')}</Text>
+            <Text textColor={getReqColor(validation.lowerCase)}>• {t('auth_newPassword_req_lower')}</Text>
 
-            <Text textColor={getReqColor(validation.number)}>• {t('auth.newPassword.requirements.number')}</Text>
+            <Text textColor={getReqColor(validation.number)}>• {t('auth_newPassword_req_number')}</Text>
 
-            <Text textColor={getReqColor(validation.specialChar)}>
-              {t('auth.newPassword.requirements.specialChar')}
-            </Text>
+            <Text textColor={getReqColor(validation.specialChar)}>{t('auth_newPassword_req_special')}</Text>
 
             {confirmPassword.length > 0 && (
               <Text textColor={validation.match ? '#ACF709' : '#ff4444'}>
-                {validation.match
-                  ? t('auth.newPassword.requirements.match.ok')
-                  : t('auth.newPassword.requirements.match.fail')}
+                {validation.match ? t('auth_newPassword_match_ok') : t('auth_newPassword_match_fail')}
               </Text>
             )}
           </Div>
@@ -191,7 +187,7 @@ const NewPassword = () => {
             disabled={isLoading || !isAllValid}
             opacity={!isAllValid ? '0.5' : '1'}
           >
-            {isLoading ? t('auth.newPassword.loading') : t('auth.newPassword.next')}
+            {isLoading ? t('auth_newPassword_loading') : t('auth_newPassword_next')}
           </Button>
         </Div>
       </Div>

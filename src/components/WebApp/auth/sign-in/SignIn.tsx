@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Div, Image, Text, Input, Button, Icon } from 'atomize';
 import { useDispatch, useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
+import { useI18next } from 'gatsby-plugin-react-i18next';
 
 import Logo from '../../../../assets/images/mapApp/Logo.png';
 import { setActiveModal, setEmail, setPassword, signInRequest } from '../authRedux/authAction';
@@ -12,7 +12,7 @@ const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [localError, setLocalError] = useState('');
 
-  const { t } = useTranslation();
+  const { t } = useI18next();
   const dispatch = useDispatch<AppDispatch>();
 
   const { activeModal, email, password, emailError, passwordError, isLoading, error } = useSelector(
@@ -108,16 +108,16 @@ const SignIn = () => {
             textAlign="center"
             m={{ b: '32px' }}
           >
-            {t('auth.signIn.title')}
+            {t('auth_signIn_title')}
           </Text>
 
           <Text textSize="14px" textColor="#ddd" m={{ b: '8px' }}>
-            {t('auth.signIn.emailLabel')}
+            {t('auth_signIn_emailLabel')}
           </Text>
           <Input
             w="100%"
             h="50px"
-            placeholder={t('auth.signIn.emailPlaceholder')}
+            placeholder={t('auth_signIn_emailPlaceholder')}
             value={email}
             onChange={(e) => {
               setLocalError('');
@@ -138,14 +138,14 @@ const SignIn = () => {
           )}
 
           <Text textSize="14px" textColor="#ddd" m={{ t: '16px', b: '8px' }}>
-            {t('auth.signIn.passwordLabel')}
+            {t('auth_signIn_passwordLabel')}
           </Text>
           <Div pos="relative">
             <Input
               w="100%"
               h="50px"
               type={showPassword ? 'text' : 'password'}
-              placeholder={t('auth.signIn.passwordPlaceholder')}
+              placeholder={t('auth_signIn_passwordPlaceholder')}
               value={password}
               onChange={(e) => dispatch(setPassword(e.target.value))}
               p={{ l: '16px', r: '48px' }}
@@ -193,7 +193,7 @@ const SignIn = () => {
             onClick={handleLogin}
             disabled={isLoading}
           >
-            {isLoading ? t('auth.signIn.loading') : t('auth.signIn.next')}
+            {isLoading ? t('auth_signIn_loading') : t('auth_signIn_next')}
           </Button>
 
           <Text
@@ -204,7 +204,7 @@ const SignIn = () => {
             m={{ t: '16px' }}
             onClick={handleForgotPassword}
           >
-            {t('auth.signIn.forgotPassword')}
+            {t('auth_signIn_forgotPassword')}
           </Text>
         </Div>
       </Div>

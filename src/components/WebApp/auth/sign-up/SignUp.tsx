@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Modal, Div, Image, Text, Input, Button, Icon } from 'atomize';
 import { useDispatch, useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
+import { useI18next } from 'gatsby-plugin-react-i18next';
 
 import Logo from '../../../../assets/images/mapApp/Logo.png';
 import { setActiveModal, setEmail } from '../authRedux/authAction';
 import { RootState, AppDispatch } from '../../../../redux/store';
 
 const SignUp = () => {
-  const { t } = useTranslation();
+  const { t } = useI18next();
   const dispatch = useDispatch<AppDispatch>();
   const [localError, setLocalError] = useState('');
   const { activeModal, email, isLoading } = useSelector((state: RootState) => state.auth);
@@ -96,27 +96,27 @@ const SignUp = () => {
             textAlign="center"
             m={{ b: '16px' }}
           >
-            {t('auth.signup.title')}
+            {t('auth_signup_title')}
           </Text>
 
           <Div textAlign="center" m={{ b: '32px' }}>
             <Text textSize="15px" textColor="#ddd">
-              {t('auth.signup.subtitleLine1')}
+              {t('auth_signup_subtitleLine1')}
             </Text>
             <Text textSize="15px" textColor="#ddd">
-              {t('auth.signup.subtitleLine2')}
+              {t('auth_signup_subtitleLine2')}
             </Text>
           </Div>
 
           <Div w="100%">
             <Text textSize="14px" textColor="#ddd" m={{ b: '8px', l: '8px' }}>
-              {t('auth.signup.emailHint')}
+              {t('auth_signup_emailHint')}
             </Text>
 
             <Input
               w="100%"
               h="52px"
-              placeholder={t('auth.signup.emailPlaceholder')}
+              placeholder={t('auth_signup_emailPlaceholder')}
               value={email}
               onChange={(e) => {
                 setLocalError('');
@@ -151,7 +151,7 @@ const SignUp = () => {
               m={{ t: '24px' }}
               disabled={isLoading}
             >
-              {isLoading ? t('auth.signup.loading') : t('auth.signup.next')}
+              {isLoading ? t('auth_signup_loading') : t('auth_signup_next')}
             </Button>
           </Div>
         </Div>

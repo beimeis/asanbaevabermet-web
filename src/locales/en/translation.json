@@ -32,125 +32,94 @@
   "footerAboutTitle": "About us",
   "footerAboutCompany": "Company",
   "footerAboutDocuments": "Documents",
-  "auth": {
-    "errors": {
-      "resetPasswordEmailNotConfirmed": "Cannot reset password: Email not confirmed.",
-      "userNotFound": "User not found.",
-      "incorrectCredentials": "Incorrect username or password.",
-      "passwordNoSpaces": "Password should not contain spaces.",
-      "userNotConfirmed": "User is not confirmed.",
-      "invalidCode": "Invalid code.",
-      "limitExceeded": "Attempt limit exceeded. Please try again later.",
-      "codeExpired": "Code expired. Please request a new code.",
-      "emailExists": "An account with the given email already exists.",
-      "invalidVerificationCode": "Invalid verification code provided, please try again.",
-      "genericError": "An error occurred"
-    },
-    "password": {
-      "title": "Create a password",
-      "passwordLabel": "Password",
-      "passwordPlaceholder": "Enter password",
-      "confirmPasswordLabel": "Confirm password",
-      "confirmPasswordPlaceholder": "Confirm password",
 
-      "requirementsTitle": "Password must contain:",
-      "requirements": {
-        "length": "at least 8 characters",
-        "upperCase": "at least one uppercase letter",
-        "lowerCase": "at least one lowercase letter",
-        "number": "at least one number",
-        "specialChar": "one special character: ~ # @ $ % & ! * _ ? ^ -",
-        "match": {
-          "ok": "passwords match",
-          "fail": "passwords do not match"
-        }
-      },
+  "auth_errors_resetPasswordEmailNotConfirmed": "Cannot reset password: Email not confirmed.",
+  "auth_errors_userNotFound": "User not found.",
+  "auth_errors_incorrectCredentials": "Incorrect username or password.",
+  "auth_errors_passwordNoSpaces": "Password should not contain spaces.",
+  "auth_errors_userNotConfirmed": "User is not confirmed.",
+  "auth_errors_invalidCode": "Invalid code.",
+  "auth_errors_limitExceeded": "Attempt limit exceeded. Please try again later.",
+  "auth_errors_codeExpired": "Code expired. Please request a new code.",
+  "auth_errors_emailExists": "An account with the given email already exists.",
+  "auth_errors_invalidVerificationCode": "Invalid verification code provided, please try again.",
+  "auth_errors_genericError": "An error occurred",
 
-      "next": "Next",
-      "loading": "Loading..."
-    },
-    "signup": {
-      "title": "Create an account",
-      "subtitleLine1": "Finik terminal map — explore,",
-      "subtitleLine2": "mark locations and earn points",
-      "emailHint": "We only need your email",
-      "emailPlaceholder": "Enter your email address",
-      "errors": {
-        "emptyEmail": "Please enter your email",
-        "invalidEmail": "Invalid email format"
-      },
-      "next": "Next",
-      "loading": "Checking..."
-    },
-    "signupPinCode": {
-      "title": "Confirmation",
-      "description": "Enter the code you received to confirm your email",
-      "placeholder": "Enter code",
-      "next": "Next",
-      "loading": "Checking..."
-    },
-    "forgotPassword": {
-      "title": "Reset Password",
-      "emailLabel": "Enter your email",
-      "emailPlaceholder": "Enter email address",
-      "next": "Get code",
-      "loading": "Sending..."
-    },
-    "newPassword": {
-      "title": "New Password",
-      "passwordLabel": "Password",
-      "confirmPasswordLabel": "Confirm Password",
-      "requirementsTitle": "Password must contain:",
-      "placeholder": {
-        "password": "Enter password",
-        "confirmPassword": "Repeat password"
-      },
-      "requirements": {
-        "length": "at least 8 characters",
-        "upperCase": "at least one uppercase letter",
-        "lowerCase": "at least one lowercase letter",
-        "number": "at least one number",
-        "specialChar": "one special character: ~ # @ $ % & ! * _ ? ^ -",
-        "match": {
-          "ok": "passwords match",
-          "fail": "passwords do not match"
-        }
-      },
-      "next": "Next",
-      "loading": "Loading..."
-    },
-      "signIn": {
-    "title": "Sign In",
-    "emailLabel": "Email",
-    "emailPlaceholder": "Enter email address",
-    "passwordLabel": "Password",
-    "passwordPlaceholder": "Enter password",
-    "next": "Sign In",
-    "loading": "Signing in...",
-    "forgotPassword": "Forgot password?"
-  },
-    "signInPinCode": {
-    "title": "Verification",
-    "enterCodeLabel": "Enter code",
-    "enterCodePlaceholder": "Enter code",
-    "infoText": "Enter the code you received to confirm",
-    "next": "Next",
-    "loading": "Checking..."
-  },
-      "introModal": {
-    "title": "Finik Map",
-    "descriptionLine1": "Mark places on the map where we don't have",
-    "descriptionLine2": "a terminal, we will install it, and send you",
-    "descriptionLine3": "bonuses that you can exchange for",
-    "descriptionLine4": "real prizes",
-    "login": "Log in",
-    "signup": "Sign up"
-  },
-    "webApp": {
-      "header": {
-        "map": "Map",
-        "login": "Sign in"
-      }
-    }
-  }
+  "auth_password_title": "Create a password",
+  "auth_password_label": "Password",
+  "auth_password_placeholder": "Enter password",
+  "auth_password_confirmLabel": "Confirm password",
+  "auth_password_confirmPlaceholder": "Confirm password",
+  "auth_password_requirementsTitle": "Password must contain:",
+  "auth_password_req_length": "at least 8 characters",
+  "auth_password_req_upper": "at least one uppercase letter",
+  "auth_password_req_lower": "at least one lowercase letter",
+  "auth_password_req_number": "at least one number",
+  "auth_password_req_special": "one special character: ~ # @ $ % & ! * _ ? ^ -",
+  "auth_password_match_ok": "passwords match",
+  "auth_password_match_fail": "passwords do not match",
+  "auth_password_next": "Next",
+  "auth_password_loading": "Loading...",
+
+  "auth_signup_title": "Create an account",
+  "auth_signup_subtitleLine1": "Finik terminal map — explore,",
+  "auth_signup_subtitleLine2": "mark locations and earn points",
+  "auth_signup_emailHint": "We only need your email",
+  "auth_signup_emailPlaceholder": "Enter your email address",
+  "auth_signup_err_empty": "Please enter your email",
+  "auth_signup_err_invalid": "Invalid email format",
+  "auth_signup_next": "Next",
+  "auth_signup_loading": "Checking...",
+
+  "auth_signupPinCode_title": "Confirmation",
+  "auth_signupPinCode_description": "Enter the code you received to confirm your email",
+  "auth_signupPinCode_placeholder": "Enter code",
+  "auth_signupPinCode_next": "Next",
+  "auth_signupPinCode_loading": "Checking...",
+
+  "auth_forgotPassword_title": "Reset Password",
+  "auth_forgotPassword_emailLabel": "Enter your email",
+  "auth_forgotPassword_emailPlaceholder": "Enter email address",
+  "auth_forgotPassword_next": "Get code",
+  "auth_forgotPassword_loading": "Sending...",
+
+  "auth_newPassword_title": "New Password",
+  "auth_newPassword_passwordLabel": "Password",
+  "auth_newPassword_confirmLabel": "Confirm Password",
+  "auth_newPassword_req_length": "at least 8 characters",
+  "auth_newPassword_req_upper": "at least one uppercase letter",
+  "auth_newPassword_req_lower": "at least one lowercase letter",
+  "auth_newPassword_req_number": "at least one number",
+  "auth_newPassword_req_special": "one special character: ~ # @ $ % & ! * _ ? ^ -",
+  "auth_newPassword_match_ok": "passwords match",
+  "auth_newPassword_match_fail": "passwords do not match",
+  "auth_newPassword_next": "Next",
+  "auth_newPassword_loading": "Loading...",
+
+  "auth_signIn_title": "Sign In",
+  "auth_signIn_emailLabel": "Email",
+  "auth_signIn_emailPlaceholder": "Enter email address",
+  "auth_signIn_passwordLabel": "Password",
+  "auth_signIn_passwordPlaceholder": "Enter password",
+  "auth_signIn_next": "Sign In",
+  "auth_signIn_loading": "Signing in...",
+  "auth_signIn_forgotPassword": "Forgot password?",
+
+  "auth_signInPinCode_title": "Verification",
+  "auth_signInPinCode_enterCodeLabel": "Enter code",
+  "auth_signInPinCode_enterCodePlaceholder": "Enter code",
+  "auth_signInPinCode_infoText": "Enter the code you received to confirm",
+  "auth_signInPinCode_next": "Next",
+  "auth_signInPinCode_loading": "Checking...",
+
+  "auth_introModal_title": "Finik Map",
+  "auth_introModal_desc1": "Mark places on the map where we don't have",
+  "auth_introModal_desc2": "a terminal, we will install it, and send you",
+  "auth_introModal_desc3": "bonuses that you can exchange for",
+  "auth_introModal_desc4": "real prizes",
+  "auth_introModal_login": "Log in",
+  "auth_introModal_signup": "Sign up",
+
+  "auth_webApp_header_map": "Map",
+  "auth_webApp_header_login": "Sign in"
 }

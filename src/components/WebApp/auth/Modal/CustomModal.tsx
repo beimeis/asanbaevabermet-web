@@ -64,21 +64,21 @@ const CustomModal = () => {
             textColor="white"
             m={{ b: '12px' }}
           >
-            {t('auth.introModal.title')}
+            {t('auth_introModal_title')}
           </Text>
 
           <Div>
             <Text textSize="14px" textWeight="400" textColor="white">
-              {t('auth.introModal.descriptionLine1')}
+              {t('auth_introModal_desc1')}
             </Text>
             <Text textSize="14px" textWeight="400" textColor="white">
-              {t('auth.introModal.descriptionLine2')}
+              {t('auth_introModal_desc2')}
             </Text>
             <Text textSize="14px" textWeight="400" textColor="white">
-              {t('auth.introModal.descriptionLine3')}
+              {t('auth_introModal_desc3')}
             </Text>
             <Text textSize="14px" textWeight="400" textColor="white">
-              {t('auth.introModal.descriptionLine4')}
+              {t('auth_introModal_desc4')}
             </Text>
           </Div>
         </Div>
@@ -97,7 +97,7 @@ const CustomModal = () => {
             onClick={() => dispatch(setActiveModal('login'))}
             disabled={isLoading}
           >
-            {t('auth.introModal.login')}
+            {t('auth_introModal_login')}
           </Button>
 
           <Button
@@ -114,7 +114,7 @@ const CustomModal = () => {
             onClick={() => dispatch(setActiveModal('signup'))}
             disabled={isLoading}
           >
-            {t('auth.introModal.signup')}
+            {t('auth_introModal_signup')}
           </Button>
         </Div>
       </Div>

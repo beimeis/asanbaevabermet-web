@@ -1,6 +1,6 @@
 import React from 'react';
 import { Div, Text, Image } from 'atomize';
-import { useTranslation } from 'react-i18next';
+import { useI18next } from 'gatsby-plugin-react-i18next';
 
 import Phones from '../../../assets/images/cards/Phones.png';
 import Box from '../../../assets/images/cards/Box.png';
@@ -10,7 +10,7 @@ import Pin from '../../../assets/images/cards/Map.png';
 import MapGif from '../../../assets/images/cards/Map.gif';
 
 export default function Cards() {
-  const { t } = useTranslation();
+  const { t } = useI18next();
 
   return (
     <Div p={{ x: { xs: '1rem', md: '0' } }} maxW="1200px" m="0 auto">
